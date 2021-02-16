@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script defer type="text/javascript" src="/resources/javascript/join.js"></script>
+<script defer type="text/javascript" src="/resources/javascript/join.js?ver=2"></script>
 </head>
 
 <body>

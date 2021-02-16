@@ -51,7 +51,7 @@ public class UserController {
 	@ResponseBody
 	@GetMapping("/chkId/{u_Id}")
 	public Map<String,Object> chkId(UserEntity param){
-		
+		System.out.println("아이디 확인 : "+param.getU_Id());
 		Map<String,Object> returnValue = new HashMap<String, Object>();
 		returnValue.put("result", service.idCheck(param));
 		
@@ -86,6 +86,9 @@ public class UserController {
 	public Map<String,Object> findPw(@RequestBody UserEntity param){
 		System.out.println("아이디 : "+param.getU_Id());
 		System.out.println("이메일 : "+param.getU_Mail());
+		
+		int result = service.findPw(param);
+		System.out.println("결과 : "+result);
 		
 		return null;
 	}

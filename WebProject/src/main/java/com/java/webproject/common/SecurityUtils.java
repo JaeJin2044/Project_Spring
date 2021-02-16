@@ -1,4 +1,4 @@
-package com.java.webproject;
+package com.java.webproject.common;
 
 import javax.servlet.http.HttpSession;
 
@@ -15,6 +15,15 @@ public class SecurityUtils {
 	
 	public String getHashPw(String pw, String salt) {		
 		return BCrypt.hashpw(pw, salt);
+	}
+	
+	public static String getPrivateCode(int len) {
+		String str = "";
+		for (int i = 0; i < len; i++) {
+			str += (int)(Math.random() * 10);
+		}
+		return str;
+		
 	}
 	
 	

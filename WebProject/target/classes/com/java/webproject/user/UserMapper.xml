@@ -10,7 +10,7 @@
 	(#{u_Nm},#{u_Id},#{u_Pass},#{u_Salt},#{u_Gender},#{u_Phone},#{u_Addr},#{u_Mail})
 	</insert>
 	
-	<!-- 아이디 중복확인 & 로그인 체크   -->
+	<!-- 아이디 중복확인 & 로그인 체크    -->
 	<select id="idCheck" resultType="UserEntity">
 	select * from t_user
 	where u_Id = #{u_Id}
@@ -22,6 +22,13 @@
 	where u_Nm = #{u_Nm}
 	and u_Phone = #{u_Phone}
 	</select>
+	
+	<!-- 비밀번호 변경  -->
+	<update id="changePw">
+		update t_user
+		set u_Pass = #{u_Pass}
+		where u_Id = #{u_Id}
+	</update>
 	
 
 

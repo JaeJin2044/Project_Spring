@@ -12,4 +12,6 @@ public interface UserMapper {
 	UserEntity idCheck(UserEntity param);
 	//아이디 찾기 
 	UserEntity findId(UserEntity param);
+	//비밀번호 변경 
+	int changePw(UserEntity param);
 }
