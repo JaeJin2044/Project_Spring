@@ -63,6 +63,8 @@
 				<button id="searchBtn2" type="button" onclick="pwSearch_click()" >확인</button>
 			<a href="${pageContext.request.contextPath}"><button type="button">취소</button></a>
 			</div>
+			
+			
 		</div>
 	</div>
 
