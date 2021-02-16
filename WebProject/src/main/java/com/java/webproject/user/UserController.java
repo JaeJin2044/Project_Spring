@@ -3,6 +3,8 @@ package com.java.webproject.user;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,16 +32,21 @@ public class UserController {
 	public void join() {
 		
 	}
+	@GetMapping("/userSearch")
+	public void userSearch() {
+		
+	}
 	
 	//로그인 Ajax By재진 
 	@ResponseBody
 	@PostMapping("/login")
-	public Map<String ,Object> login(@RequestBody UserEntity param){
+	public Map<String ,Object> login(@RequestBody UserEntity param,HttpSession hs){
+		Map<String,Object> returnValue = new HashMap<String, Object>();
+		returnValue.put("result",service.loginCheck(param,hs));
 		
-		return null;
+		return returnValue;
 	}
-	
-	
+
 	//아이디 중복확인 By재진
 	@ResponseBody
 	@GetMapping("/chkId/{u_Id}")
@@ -61,6 +68,28 @@ public class UserController {
 		
 		return returnValue;
 	}
+	
+	
+	//아이디 찾기 Ajax By재진
+	@ResponseBody
+	@PostMapping("/findId")
+	public Map<String ,Object> findId(@RequestBody UserEntity param){
+		Map<String,Object> returnValue = new HashMap<String, Object>();
+		returnValue.put("result",service.findId(param));
+		
+		return returnValue;
+	}
+	
+	//비밀번호 찾기 
+	@ResponseBody
+	@PostMapping("/findPw")
+	public Map<String,Object> findPw(@RequestBody UserEntity param){
+		System.out.println("아이디 : "+param.getU_Id());
+		System.out.println("이메일 : "+param.getU_Mail());
+		
+		return null;
+	}
+	
 	
 	
 	

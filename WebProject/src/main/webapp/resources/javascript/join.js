@@ -104,13 +104,10 @@ var msgElem = document.querySelector("#msg");
 
 idElem.addEventListener('keyup',function(){
 	msgElem.innerText = '아이디를 확인 해주세요';
-	msgElem.style.color = '#14148C';
 	joinBtnElem.setAttribute('disabled', 'disabled');
 })
 
-if(idCheckElem){
-	
-	
+if(idCheckElem){	
 	function ajax(){
 		var u_IdElem = frmElem.u_Id;
 		var u_Id = u_IdElem.value;

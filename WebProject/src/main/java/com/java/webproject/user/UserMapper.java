@@ -8,7 +8,8 @@ import com.java.webproject.model.UserEntity;
 public interface UserMapper {
 	//회원가입
 	int insUser(UserEntity param);
-	//아이디 중복확인
+	//아이디 중복확인 &&로그인 체크 
 	UserEntity idCheck(UserEntity param);
-
+	//아이디 찾기 
+	UserEntity findId(UserEntity param);
 }
