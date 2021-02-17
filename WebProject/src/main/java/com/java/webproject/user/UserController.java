@@ -84,13 +84,11 @@ public class UserController {
 	@ResponseBody
 	@PostMapping("/findPw")
 	public Map<String,Object> findPw(@RequestBody UserEntity param){
-		System.out.println("아이디 : "+param.getU_Id());
-		System.out.println("이메일 : "+param.getU_Mail());
 		
-		int result = service.findPw(param);
-		System.out.println("결과 : "+result);
 		
-		return null;
+		Map<String, Object> returnValue = new HashMap<String, Object>();
+		returnValue.put("result",service.findPw(param));
+		return returnValue;
 	}
 	
 	

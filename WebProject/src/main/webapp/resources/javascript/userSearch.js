@@ -79,9 +79,18 @@ function pwSearch_click(){
 		},
 		body : JSON.stringify(param)
 	}).then(function(res){
-		return res.json();
+		return res.json()
 	}).then(function(myJson){
-		console.log(myJson)
+		console.log(myJson.result)
+		if(myJson.result === -1){
+			alert('아이디가 등록되지 않았습니다')
+			u_IdElem.focus()
+		}else if(myJson.result === 0){
+			alert('이메일이 등록되지 않았습니다.')
+			u_MailElem.focus()
+		}else{
+			alert('고객님의 이메일로 임시비밀번호를 발송 하였습니다.')
+		}
 	})
 	
 	

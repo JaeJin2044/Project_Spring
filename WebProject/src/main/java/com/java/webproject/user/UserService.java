@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.java.webproject.Const;
+import com.java.webproject.common.MailUtils;
 import com.java.webproject.common.SecurityUtils;
 import com.java.webproject.model.UserEntity;
 
@@ -17,6 +18,9 @@ public class UserService {
 	
 	@Autowired
 	private SecurityUtils sUtils;
+	
+	@Autowired
+	private MailUtils mUtils;
 	
 	
 	//로그인체크(1:로그인 성공, 2:아이디 없음, 3:비밀번호가 틀림)
@@ -87,17 +91,19 @@ public class UserService {
 			return 0;
 		}
 		
-		String email = ck.getU_Mail();
-		System.out.println("당신의 이메일? "+email);
-		
 		//난수 생성 (임시비밀번호)
 		String code = sUtils.getPrivateCode(10);
 		
-		//임시비밀번호로 비밀번호 변경 
-		param.setU_Pass(code);
-		mapper.changePw(param);
+		//임시비밀번호로 비밀번호 변경(솔트값사용해서 임시비밀번호를 암호화)
+		String salt = ck.getU_Salt();
+		String tempPw = sUtils.getHashPw(code, salt);
+		ck.setU_Pass(tempPw);
+		mapper.changePw(ck);
 		
-		//임시비밀번호를 해당 이메일에 발송 
+		
+		//유저가 보는 임시비밀번호로 설정후 해당 이메일 발송 
+		ck.setU_Pass(code);
+		mUtils.sendMail(ck);
 		
 		return 1;
 	}

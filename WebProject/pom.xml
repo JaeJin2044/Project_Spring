@@ -160,6 +160,13 @@
 		    <version>0.4</version>
 		</dependency>
 		
+		<!-- 메일 api -->
+	<dependency>
+		<groupId>org.apache.commons</groupId>
+		<artifactId>commons-email</artifactId>
+		<version>1.2</version>
+	</dependency>
+		
 		
 		<!--  여기서부터 Tiles 뭔가 안돼서 잠시 대기  -->
 				
