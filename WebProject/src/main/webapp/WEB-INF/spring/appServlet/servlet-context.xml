@@ -46,6 +46,8 @@
     
 	<mybatis-spring:scan base-package="com.java.webproject" />
 	
-	
+	<!-- NaverLoginBO Class에 대한 Bean설정 추가 -->
+	<beans:bean id="naverLoginBO" class="com.java.webproject.oauth.NaverLoginBO" />
+
 	
 </beans:beans>

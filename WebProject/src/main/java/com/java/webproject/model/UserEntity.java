@@ -16,8 +16,14 @@ public class UserEntity {
 	private String u_Addr;
 	private String u_Mail;
 	private Date u_regDate;
+	private String u_LogType;
 	
-	
+	public String getU_LogType() {
+		return u_LogType;
+	}
+	public void setU_LogType(String u_LogType) {
+		this.u_LogType = u_LogType;
+	}
 	public int getU_Pk() {
 		return u_Pk;
 	}

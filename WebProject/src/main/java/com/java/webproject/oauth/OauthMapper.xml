@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.java.webproject.oauth.OauthMapper">
+
+	<select id="loginCheck" resultType="UserEntity">
+		select * from t_user
+		where u_Id = #{u_Id}
+	</select>
+	
+	<insert id="insUser">
+		insert into t_user
+		(u_Id,u_Nm,u_Mail,u_Gender,u_Phone,u_LogType)
+		values
+		(#{u_Id},#{u_Nm},#{u_Mail},#{u_Gender},#{u_Phone},#{u_LogType})
+	</insert>
+	
+	<select id="mailCheck" resultType="UserEntity">
+		select * from t_user
+		where u_Mail = #{u_Mail}
+	</select>
+
+	<select id="phoneCheck" resultType="UserEntity">
+		select * from t_user
+		where u_Phone = #{u_Phone}
+	</select>
+
+
+
+
+</mapper>

@@ -41,6 +41,7 @@
 				<div>
 					<input type="button" id="joinBtn" disabled="disabled" value="JOIN">
 				</div>
+				<a href="/user/login">로그인하러가기</a>
 			</div>
 			
 		</form>

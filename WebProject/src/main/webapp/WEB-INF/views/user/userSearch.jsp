@@ -11,6 +11,7 @@
 	<div id="container">
 		<h3>아이디 비밀번호 찾기 </h3>
 		<p>인증된 메일만 정보를 찾을수 있어용~~!</p>
+		<a href="/user/login">로그인 하러가기</a>
 		<div>
 			<input type="radio" id="search_1" name="search_total" onclick="search_check(1)" checked="checked">
 			<label 	for="search_1">아이디 찾기</label>

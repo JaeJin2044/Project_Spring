@@ -27,13 +27,18 @@ public class UserService {
 	public int loginCheck(UserEntity param, HttpSession hs) {
 		UserEntity dbData = mapper.idCheck(param);
 		
-		
+		//아이디 확인
 		if(dbData == null) {
 			return 2;
 		}
+		
 		String salt = dbData.getU_Salt();
+		if(salt == null) {
+			return 3;
+		}
+		
 		String tempPw = sUtils.getHashPw(param.getU_Pass(), salt);
-	
+		//비밀번호 확인
 		if(!tempPw.equals(dbData.getU_Pass())) {
 			return 3; 
 		}
@@ -94,7 +99,7 @@ public class UserService {
 		//난수 생성 (임시비밀번호)
 		String code = sUtils.getPrivateCode(10);
 		
-		//임시비밀번호로 비밀번호 변경(솔트값사용해서 임시비밀번호를 암호화)
+		//비밀번호 변경(솔트값사용해서 임시비밀번호를 암호화)
 		String salt = ck.getU_Salt();
 		String tempPw = sUtils.getHashPw(code, salt);
 		ck.setU_Pass(tempPw);

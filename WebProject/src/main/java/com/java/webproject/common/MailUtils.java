@@ -29,11 +29,9 @@ public class MailUtils {
 		
 		subject = "임시비밀번호입니다";
 		
-		
 		msg += "안녕하세요 귀하의 임시 비밀 번호는"+param.getU_Pass();
 		
 
-		
 		String mail = param.getU_Mail();
 		try {
 			HtmlEmail email = new HtmlEmail();

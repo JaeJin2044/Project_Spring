@@ -8,19 +8,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>메인 페이지 입니다.</h1>
-	
-	<c:if test="${loginUser!=null}">
-		${loginUser.u_Nm}님 안녕하세요
-		<a href="/user/logout">로그아웃</a>
+	<c:if test="${param.err == -1}">
+		<script>
+			alert('중복된 이메일이 있습니다.');
+			history.back();
+		</script>
 	</c:if>
-	
-	<c:if test="${loginUser == null}">
-		<a href="/user/login">로그인 하러가기</a>
+	<c:if test="${param.err == 0}">
+		<script>
+			alert('중복된 연락처가 있습니다.');
+			history.back();
+		</script>
 	</c:if>
-
-	
-	
 	
 
 </body>
