@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.java.webproject.model.UserEntity;
+import com.java.webproject.oauth.KakaoApi;
 import com.java.webproject.oauth.NaverLoginBO;
 
 @Controller
@@ -25,6 +26,10 @@ public class UserController {
 	@Autowired
 	private NaverLoginBO naverLoginBO;
 	private String apiResult = null;
+	
+	// 카카오 로그인 api
+	@Autowired
+	private KakaoApi kakaoLoginApi;
 	
 	@Autowired
 	private UserService service;
@@ -49,6 +54,12 @@ public class UserController {
 		model.addAttribute("url", naverAuthUrl);
 		session.setAttribute("url", naverAuthUrl);
 		
+		
+		//카카오
+		String kakaoAuthUrl = kakaoLoginApi.getAuthorizationUrl(session);
+		System.out.println("카카오url:"+kakaoAuthUrl);
+		model.addAttribute("kakao_url",kakaoAuthUrl);
+		session.setAttribute("kakao_url", kakaoAuthUrl);
 	}
 	
 	@GetMapping("/join")

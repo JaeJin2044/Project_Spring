@@ -23,6 +23,13 @@
 		select * from t_user
 		where u_Phone = #{u_Phone}
 	</select>
+	
+	<insert id="kakaoInsUser">
+		insert into t_user
+		(u_Id,u_Nm,u_LogType)
+		values
+		(#{u_Id},#{u_Nm},#{u_LogType})
+	</insert>
 
 
 

@@ -5,6 +5,7 @@ var frmElem = document.querySelector('#frm');
 
 //회원가입 체크 
 if(joinBtnElem){
+	
 	var u_IdElem = frmElem.u_Id;
 	var u_NmElem = frmElem.u_Nm;
 	var u_PassElem = frmElem.u_Pass;
@@ -13,6 +14,15 @@ if(joinBtnElem){
 	var u_MailElem = frmElem.u_Mail;
 	var u_GenderElem = frmElem.u_Gender;
 	var u_PhoneElem = frmElem.u_Phone;
+	
+	//정규식 체크
+	var empJ = /\s/g; //공백체크 정규식
+	var idJ = /^[a-z0-9]{4,12}$/; // a~z,0~9로 시작하는 4~12자리 아이디 
+	var pwJ = /^[A-Za-z0-9]{4,12}$/;  //A-Z,a~z,0~9로 시작하는 4~12자리 비밀번호
+	var nameJ = /^[가-힣]{2,6}$/; //가~힣,한글로 이뤄진 문자열 이름 2~6자리
+	var mailJ = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+	var phoneJ = /(01[016789])([1-9]{1}[0-9]{2,3})([0-9]{4})$/;
+
 	
 	function ajax(){
 	
@@ -44,25 +54,27 @@ if(joinBtnElem){
 			alert('회원가입 성공')
 			location.href="/user/login";
 		}
-		else{
-			alert('회원가입 실패했습니다  정보를 확인해주세요')
+		else if(myJson.result ==2){
+			alert('중복된 이메일이 있습니다.')
+			location.reload();
+		}else{
+			alert('중복된 연락처가 있습니다.')
 			location.reload();
 		}
 	}
+	
+	
+	
+	
 
 	function formCheck(){
-		if(u_IdElem.value===""){
-			alert('아이디를 입력 해주세요')
-			u_IdElem.focus();
-			return
-		}
-		if(u_NmElem.value===""){
-			alert('이름을 입력 해주세요')
+		if(!nameJ.test(u_NmElem.value)){
+			alert('이름은 한글로 이뤄진 2~6자리로 입력부탁드려요');
 			u_NmElem.focus();
 			return
 		}
-		if(u_PassElem.value===""){
-			alert('비밀번호를 입력 해주세요')
+		if(!pwJ.test(u_PassElem.value)){
+			alert('비밀번호는 A-Z,a~z,0~9로 시작하는 4~12자리 비밀번호로 입력부탁드립니다.');
 			u_PassElem.focus();
 			return
 		}
@@ -76,24 +88,29 @@ if(joinBtnElem){
 			u_AddrElem.focus();
 			return
 		}
-		if(u_PhoneElem.value===""){
-			alert("폰번호 입력 부탁드려요")
+		if(!phoneJ.test(u_PhoneElem.value)){
+			alert('휴대폰 -,특수문자 없이 제대로 입력부탁드려요');
 			u_PhoneElem.focus();
 			return
 		}
-		if(u_MailElem.value ===""){
-			alert("이메일을 입력해주세요")
+		if(!mailJ.test(u_MailElem.value)){
+			alert('이메일 @형식을 준수하여 입력부탁드립니다.');
 			u_MailElem.focus();
 			return
-		}		
+		}
+		
 		ajax();
 	}
+	
+	
+	
 
 	joinBtnElem.addEventListener('click', function() {
 		formCheck();
 		
 	})
 }
+
 
 
 
@@ -107,7 +124,19 @@ idElem.addEventListener('keyup',function(){
 	joinBtnElem.setAttribute('disabled', 'disabled');
 })
 
-if(idCheckElem){	
+if(idCheckElem){
+	var idJ = /^[a-z0-9]{4,12}$/; // a~z,0~9로 시작하는 4~12자리 아이디 
+	
+	function formIdCheck(){
+		if(!idJ.test(idElem.value)){
+			alert('아이디는 특수문자를 제외한 4~12자리로 입력해주세요')
+			idElem.focus();
+			return;
+		}
+		ajax();
+	}
+	
+	
 	function ajax(){
 		var u_IdElem = frmElem.u_Id;
 		var u_Id = u_IdElem.value;
@@ -130,9 +159,8 @@ if(idCheckElem){
 		})
 	}
 	
-
 	idCheckElem.addEventListener('click',function(){
-		ajax();
+		formIdCheck();
 	})
 	
 }

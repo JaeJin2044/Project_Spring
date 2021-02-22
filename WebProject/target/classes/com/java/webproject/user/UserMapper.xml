@@ -10,6 +10,14 @@
 	(#{u_Nm},#{u_Id},#{u_Pass},#{u_Salt},#{u_Gender},#{u_Phone},#{u_Addr},#{u_Mail})
 	</insert>
 	
+	<!--  회원가입시 이메일 & 연락처 체크  -->
+	<select id="joinCheck" resultType="UserEntity">
+	select * from t_user
+	where u_Phone = #{u_Phone} 
+	or u_Mail = #{u_Mail} 
+	</select>
+	
+	
 	<!-- 아이디 중복확인 & 로그인 체크    -->
 	<select id="idCheck" resultType="UserEntity">
 	select * from t_user

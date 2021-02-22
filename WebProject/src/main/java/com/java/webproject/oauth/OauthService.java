@@ -29,10 +29,7 @@ public class OauthService {
 		
 		return 2;
 	}
-	
-	
-	
-	
+
 	//네이버유저 회원가입 &중복 이메일,연락처 체크  (중복된 이메일 : -1 , 중복된 연락처 : 0 , 회원가입 성공 :1)
 	public int insUser(UserEntity param) {
 		int result = 0 ;
@@ -47,6 +44,24 @@ public class OauthService {
 		
 		return mapper.insUser(param);
 	}
+	
+	//카카오 신규 회원가입 
+	public int kakaoInsUser(UserEntity param) {
+		
+		return mapper.kakaoInsUser(param);
+	}
+	
+	//카카오 로그인 체크 (회원가입 완료 1),(존재하는 회원)
+	public int kakaoCheck(UserEntity param) {
+		UserEntity dbData = mapper.loginCheck(param);
+		if(dbData == null) {
+			kakaoInsUser(param);
+			return 1;
+		}
+		
+		return 2;
+	}
+	
 	
 	
 	

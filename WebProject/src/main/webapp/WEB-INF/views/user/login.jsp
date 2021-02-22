@@ -21,9 +21,19 @@
 		
 		
 		<!-- 네이버 로그인 창으로 이동 -->
-		<div id="naver_id_login" style="text-align:left;"><a href="${url}">
-		<img width="150" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a></div>
-		<br>		
+		<div id="naver_id_login" style="text-align:left;">
+			<a href="${url}">
+				<img width="150" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/>
+			</a>
+		</div>
+		
+		<!--카카오 로그인창 -->
+		<div id="kakao_id_login" style="text-align: left">
+		 <a href="${kakao_url}">
+		  <img width="150" src="/resources/img/kakao_login_medium_narrow.png" /></a> 
+		  </div>
+
+
 	</div>
 
 </body>

@@ -62,15 +62,24 @@ public class UserService {
 	}
 	
 	
-	//회원가입 성공시 return값 : 1 , 실패시 0
+	//회원가입 성공시 return값 : 1 , 실패 : 이메일 존재시 2 ,  연락처 존재 시 3 
 	public int join(UserEntity param) {
 		String u_Salt = sUtils.getSalt(); 
 		String HashPass = sUtils.getHashPw(param.getU_Pass(), u_Salt);
-		
+
 		param.setU_Salt(u_Salt);
 		param.setU_Pass(HashPass);
-
-		return mapper.insUser(param);
+		
+		UserEntity dbData = mapper.joinCheck(param);
+		
+		if(dbData == null) {
+			return mapper.insUser(param);
+		}else if(dbData.getU_Mail().equals(param.getU_Mail())) {
+			return 2;
+		}else {
+			return 3;
+		}
+		
 	}
 	
 	//아이디 찾기 (정보가 틀리면 : 0 , 정확히 입력하면 1)

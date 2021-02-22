@@ -20,4 +20,7 @@ public interface OauthMapper {
 	//기존 연락처 체크 
 	public UserEntity phoneCheck(UserEntity param);
 	
+	//카카오 아이디 회원가입
+	public int kakaoInsUser(UserEntity param);
+	
 }
