@@ -19,7 +19,6 @@
 			<div id="errMsg"></div>
 		</form>
 		
-		
 		<!-- 네이버 로그인 창으로 이동 -->
 		<div id="naver_id_login" style="text-align:left;">
 			<a href="${url}">
@@ -32,7 +31,6 @@
 		 <a href="${kakao_url}">
 		  <img width="150" src="/resources/img/kakao_login_medium_narrow.png" /></a> 
 		  </div>
-
 
 	</div>
 

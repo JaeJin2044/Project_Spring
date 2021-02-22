@@ -9,19 +9,6 @@
 </head>
 <body>
 	<h1>메인 페이지 입니다.</h1>
-	
-	<c:if test="${loginUser!=null}">
-		${loginUser.u_Nm}님 안녕하세요
-		<a href="/user/logout">로그아웃</a>
-	</c:if>
-	
-	<c:if test="${loginUser == null}">
-		<a href="/user/login">로그인 하러가기</a>
-	</c:if>
-
-	
-	
-	
-
+	<h2>여기에 맛집 하고 이것저것 이제 뿌려야함 ... 어떻게 할지 막막하다 ...</h2>
 </body>
 </html>
