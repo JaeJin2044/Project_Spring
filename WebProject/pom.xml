@@ -196,6 +196,8 @@
 			<version>1.1.2</version>
 			<scope>compile</scope>
 		</dependency>
+			
+		
 		<!-- 네이버 api로그인 세팅 -->
 		
 		
@@ -257,6 +259,14 @@
 		    <version>1.4</version>
 		</dependency>
 		
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.0</version>
+			<scope>provided</scope>
+		</dependency>
+		
 		
 		      
 	</dependencies>
@@ -281,8 +291,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.5.1</version>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                     <compilerArgument>-Xlint:all</compilerArgument>
                     <showWarnings>true</showWarnings>
                     <showDeprecation>true</showDeprecation>

@@ -18,6 +18,8 @@ import com.java.webproject.model.UserEntity;
 import com.java.webproject.oauth.KakaoApi;
 import com.java.webproject.oauth.NaverLoginBO;
 
+import lombok.extern.log4j.Log4j;
+
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -37,10 +39,7 @@ public class UserController {
 	@Autowired
 	private HttpSession session;
 	
-	@GetMapping("/err")
-	public void err() {
-		
-	}
+	
 	
 	@GetMapping("/login")
 	public void login(Model model, HttpSession session) {
@@ -130,8 +129,6 @@ public class UserController {
 		returnValue.put("result",service.findPw(param));
 		return returnValue;
 	}
-	
-	
 	
 	
 	
