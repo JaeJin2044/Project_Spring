@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.java.webproject.crawling.CrawlingMapper">
+
+	
+	<insert id="insMatzipList" parameterType="java.util.List">
+		insert into matzip
+		(m_title,m_viewDetail,m_starPoint,m_category,m_location, 
+		m_img1,m_img2,m_img3,m_img4,m_addrRoad,m_addrJibun,m_phone,m_foodType,
+		m_price,m_workingTime,m_parking)
+		values
+		<foreach collection="list" item="item" separator=" , " >
+       	(#{item.m_title},#{item.m_viewDetail},#{item.m_starPoint},#{item.m_category},
+       	 #{item.m_location},#{item.m_img1},#{item.m_img2},#{item.m_img3},#{item.m_img4},
+       	#{item.m_addrRoad},#{item.m_addrJibun},#{item.m_phone},#{item.m_foodType},#{item.m_price},
+       	#{item.m_workingTime},#{item.m_parking}
+       	)
+        </foreach>
+        
+	</insert> 
+	
+	<!-- <insert id="test">
+	insert into test_table
+	(name)
+	values
+	('name')
+	</insert> -->
+	
+
+</mapper>
