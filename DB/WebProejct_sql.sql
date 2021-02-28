@@ -42,7 +42,9 @@ create table matzip(
 	m_parking varchar(300)
 )
 
-select * from matzip;
+select * from matzip
+order by m_starPoint desc
+limit 0,20;
 
 insert into matzip
 (m_title,m_viewDetail,m_starPoint,m_category,m_location,m_img1,m_img2,m_img3,m_img4,m_addrRoad,m_addrJibun,m_phone,m_foodType,

@@ -7,11 +7,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/resources/css/main.css">
+<script defer src="/resources/javascript/slider.js"></script>
+<script defer src="https://kit.fontawesome.com/93cf0078c1.js" crossorigin="anonymous"></script>
 </head>
 <body>
 	<div id="container">
 		<tiles:insertAttribute name="header"/>
-		
 		<section>		
 			<tiles:insertAttribute name="content"/>	
 		</section>
