@@ -53,7 +53,6 @@ public class UserController {
 		model.addAttribute("url", naverAuthUrl);
 		session.setAttribute("url", naverAuthUrl);
 		
-		
 		//카카오
 		String kakaoAuthUrl = kakaoLoginApi.getAuthorizationUrl(session);
 		System.out.println("카카오url:"+kakaoAuthUrl);
@@ -123,7 +122,6 @@ public class UserController {
 	@ResponseBody
 	@PostMapping("/findPw")
 	public Map<String,Object> findPw(@RequestBody UserEntity param){
-		
 		
 		Map<String, Object> returnValue = new HashMap<String, Object>();
 		returnValue.put("result",service.findPw(param));

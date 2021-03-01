@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.java.webproject.main.MainMapper">
+	
+	
+	
+	
+	<!-- 맛집리스트+페이징  -->
+	<select id="matZipListPaging" resultType="MatZipEntity">
+		select * from matzip
+		order by m_starPoint desc
+		limit #{num}, 20
+	</select>
+	
+	<!-- 맛집리스트  -->
+	<select id="matZipList" resultType="MatZipEntity">
+		select * from matzip
+		order by m_starPoint desc
+		limit 0,20;
+	</select>
+	
+	
+	
+
+
+
+
+</mapper>

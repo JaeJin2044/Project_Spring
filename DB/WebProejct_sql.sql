@@ -20,8 +20,8 @@ select * from t_user;
 
 commit;
 
-drop table matzip;
 
+drop table matzip;
 create table matzip(
 	m_pk int unsigned auto_increment primary key,
 	m_title varchar(20) not null,
@@ -40,9 +40,11 @@ create table matzip(
 	m_price varchar(300) ,
 	m_workingTime varchar(100) ,
 	m_parking varchar(300)
-);
+)
+
 select * from matzip
-where m_title = '³ªºô·¹¶ó';
+order by m_starPoint desc
+limit 0,20;
 
 insert into matzip
 (m_title,m_viewDetail,m_starPoint,m_category,m_location,m_img1,m_img2,m_img3,m_img4,m_addrRoad,m_addrJibun,m_phone,m_foodType,
@@ -54,6 +56,8 @@ values
 commit;
 delete from matzip;
 
+
+
 create table test_table(
 	name varchar(20)
 );
@@ -62,14 +66,6 @@ insert into test_table
 (name)
 values
 ('ÀÌÀçÁø');
-
--- ÆäÀÌÂ¡ ±¸Çö Äõ¸® 
-select count(m_pk) from matzip;
-
-select * from matzip
-order by m_starPoint desc
-limit 20, 20;
-
 
 
 
