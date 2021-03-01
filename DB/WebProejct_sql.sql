@@ -16,36 +16,63 @@ create table t_user(
 	u_Mail varchar(30) unique key,
 	u_regDate datetime DEFAULT CURRENT_TIMESTAMP
 );
+select * from t_user;
 
-drop table t_user;
+commit;
 
-insert into t_user
-(u_Id,u_Nm,u_Mail,u_Gender,u_Phone,u_LogType)
+drop table matzip;
+
+create table matzip(
+	m_pk int unsigned auto_increment primary key,
+	m_title varchar(20) not null,
+	m_viewDetail varchar(50) not null,
+	m_starPoint float,
+	m_category varchar(10) not null,
+	m_location varchar(10) not null,
+	m_img1 varchar(500) not null,
+	m_img2 varchar(500) not null,
+	m_img3 varchar(500) not null,
+	m_img4 varchar(500) not null,
+	m_addrRoad varchar(100) ,
+	m_addrJibun varchar(100) ,
+	m_phone varchar(300) ,
+	m_foodType varchar(300),
+	m_price varchar(300) ,
+	m_workingTime varchar(100) ,
+	m_parking varchar(300)
+);
+select * from matzip
+where m_title = '나빌레라';
+
+insert into matzip
+(m_title,m_viewDetail,m_starPoint,m_category,m_location,m_img1,m_img2,m_img3,m_img4,m_addrRoad,m_addrJibun,m_phone,m_foodType,
+m_price,m_workingTime,m_parking)
 values
-('dlwowls1','이재진','abab2044@daum.net','M','01011112222','user');
-
-insert into t_user
-		(u_Id,u_Nm,u_LogType)
-		values
-		('이재진','안녕하세요','kakao');
-
-
-
-select * from t_user;
-commit;
-
-
-update t_user
-set u_Pass = '123456'
-where u_Id = 'shzhem764';
+('이재진','이재진','이재진','이재진','이재진','이재진','이재진','이재진','이재진','이재진',
+'이재진','이재진','이재진','이재진','이재진','이재진');
 
 commit;
+delete from matzip;
 
-delete from t_user;
+create table test_table(
+	name varchar(20)
+);
+select * from test_table;
+insert into test_table
+(name)
+values
+('이재진');
 
-select * from t_user;
+-- 페이징 구현 쿼리 
+select count(m_pk) from matzip;
 
-		
-select * from t_user
-where u_Phone = '01087782044'
-or u_Mail = 'abab2044';
+select * from matzip
+order by m_starPoint desc
+limit 20, 20;
+
+
+
+
+
+
+
