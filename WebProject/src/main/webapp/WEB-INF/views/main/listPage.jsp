@@ -43,7 +43,11 @@
 					<div class="text_wrap">
 						<div class="content-list__text">
 							<h1 class="text_title">
+<<<<<<< HEAD
 								<a href="./detail.html">${item.m_title}</a>
+=======
+								<a href="/main/detail?m_pk=${item.m_pk}">${item.m_title}</a>
+>>>>>>> jaejin
 							</h1>
 							<h3 class="text_description">${item.m_viewDetail}</h3>
 							<div class="rating__score">
@@ -52,11 +56,18 @@
 							</div>
 						</div>
 						<div class="more_info">
+<<<<<<< HEAD
 							<a href="./detail.html">더보기 </a>
 							<a href="./detail.html"><i class="fas fa-chevron-right"></i></a>
 						</div>
 					</div>
 				
+=======
+							<a href="/main/detail?m_pk=${item.m_pk}">더보기 </a>
+							<a href="/main/detail?m_pk=${item.m_pk}"><i class="fas fa-chevron-right"></i></a>
+						</div>
+					</div>
+>>>>>>> jaejin
 				</div>
 			</c:forEach>
 		</div>

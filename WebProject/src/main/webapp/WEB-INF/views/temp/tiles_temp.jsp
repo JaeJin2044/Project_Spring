@@ -7,8 +7,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<<<<<<< HEAD
 <link rel="stylesheet" href="/resources/css/main.css">
 <script defer src="/resources/javascript/slider.js"></script>
+=======
+
+<link rel="stylesheet" href="<tiles:getAsString name="categoryCss"/>">
+<!-- <script defer src="/resources/javascript/detail.js"></script> -->
+<script defer src="<tiles:getAsString name="categoryJs"/>"></script>
+>>>>>>> jaejin
 <script defer src="https://kit.fontawesome.com/93cf0078c1.js" crossorigin="anonymous"></script>
 </head>
 <body>

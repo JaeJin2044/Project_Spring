@@ -19,6 +19,13 @@
 		limit 0,20;
 	</select>
 	
+<<<<<<< HEAD
+=======
+	<select id="viewDetail" resultType="MatZipEntity">
+		select * from matzip
+		where m_pk = #{m_pk}
+	</select>
+>>>>>>> jaejin
 	
 	
 
