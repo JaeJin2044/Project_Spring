@@ -20,10 +20,14 @@ public class MainService {
 		
 	}
 	
-	//
+	//맛집 리스트(페이징)
 	public List<MatZipEntity> matZipListPaging(int num){
 		
 		return mapper.matZipListPaging(num);
+	}
+	//디테일창 리스트 
+	public MatZipEntity viewDetail(int m_pk) {
+		return mapper.viewDetail(m_pk);
 	}
 	
 	

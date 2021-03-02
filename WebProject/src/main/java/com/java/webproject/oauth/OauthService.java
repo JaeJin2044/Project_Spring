@@ -17,7 +17,7 @@ public class OauthService {
 	HttpSession session;
 	
 	//네이버 로그인 체크 (로그인 ok:2 , 회원가입성공 1)
-	public int loginCheck(UserEntity param) {
+	public int loginCheck(UserEntity param,HttpSession session) {
 		int result = 0;
 		
 		UserEntity dbData = mapper.loginCheck(param);
@@ -27,6 +27,7 @@ public class OauthService {
 			return insUser(param);
 		}
 		
+		session.setAttribute(Const.KEY_LOGINUSER, dbData);
 		return 2;
 	}
 

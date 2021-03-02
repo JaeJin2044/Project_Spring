@@ -35,6 +35,7 @@ header {
 	align-items: center;
 	padding: 20px 40px;
 	height: 50%;
+	z-index:1;
 }
 .nav-left {
 	width: 50%;

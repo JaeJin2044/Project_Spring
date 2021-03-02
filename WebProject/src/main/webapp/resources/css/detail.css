@@ -15,31 +15,6 @@ html {
 	font-family: "Cute Font", cursive;
 }
 
-.nav {
-	font-family: "Exo", sans-serif;
-	position: fixed;
-	height: 80px;
-	width: 100%;
-	display: flex;
-	align-items: center;
-	z-index: 0;
-	padding: 0px 40px;
-}
-.logo {
-	font-size: 2.5rem;
-}
-.nav-right__item a {
-	font-size: 1.7rem;
-}
-.search-bar__item {
-	width: 70%;
-	box-shadow: 2px 2px 5px #bcbcbc;
-}
-.search-bar__btn {
-	width: 20%;
-	box-shadow: 2px 2px 5px #bcbcbc;
-}
-
 .top_img {
 	display: flex;
 	align-items: center;
@@ -56,7 +31,7 @@ html {
 
 section {
 	width: 100%;
-	z-index: -1;
+	z-index: 0;
 	position: relative;
 	top: 60px;
 	padding: 40px;
@@ -100,3 +75,39 @@ section {
 .cnt i {
 	margin-right: 5px;
 }
+
+
+/* 여기서부터 내가 임시로 해놓은 css  */
+#modal.hide {
+	display: none;
+}
+
+#modal {
+	width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: #00000088;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#modal .modal-content {
+	width: 250px;
+    height: 50px;
+    background-color: white;
+    padding: 10px;
+} 
+
+#modal .modal-content #modClose {
+	cursor: pointer;
+}
+
+
+
+
+
+
+

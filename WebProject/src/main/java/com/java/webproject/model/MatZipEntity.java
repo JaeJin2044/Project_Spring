@@ -4,7 +4,7 @@ import org.apache.ibatis.type.Alias;
 
 @Alias("MatZipEntity")
 public class MatZipEntity {
-	
+	private int m_pk;
 	private String m_title;
 	private String m_viewDetail;
 	private float m_starPoint;
@@ -21,6 +21,13 @@ public class MatZipEntity {
 	private String m_price;
 	private String m_workingTime;
 	private String m_parking;
+	
+	public int getM_pk() {
+		return m_pk;
+	}
+	public void setM_pk(int m_pk) {
+		this.m_pk = m_pk;
+	}
 	public String getM_title() {
 		return m_title;
 	}

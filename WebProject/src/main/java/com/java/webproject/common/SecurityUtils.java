@@ -5,8 +5,20 @@ import javax.servlet.http.HttpSession;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Component;
 
+import com.java.webproject.Const;
+import com.java.webproject.model.UserEntity;
+
 @Component
 public class SecurityUtils {
+	
+	public int getLoginUserPk(HttpSession hs) {
+		UserEntity loginUser = getLoginUser(hs);
+		return loginUser == null ? 0 : loginUser.getU_Pk();
+	}
+	
+	public UserEntity getLoginUser(HttpSession hs) {
+		return (UserEntity)hs.getAttribute(Const.KEY_LOGINUSER);
+	}
 	
 	
 	public String getSalt() {

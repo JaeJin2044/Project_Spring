@@ -44,11 +44,12 @@ public class MainController {
 		
 	}
 	
-	@GetMapping("/map")
-	public void map(){
-		
-		
+	@GetMapping("/detail")
+	public void detail(Model model,@RequestParam("m_pk") int m_pk) {
+		MatZipEntity detail_item = service.viewDetail(m_pk);
+		model.addAttribute("detail_item", detail_item);
 	}
+	
 	
 
 	

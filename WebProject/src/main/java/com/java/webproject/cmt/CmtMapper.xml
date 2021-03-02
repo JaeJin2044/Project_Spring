@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.java.webproject.cmt.CmtMapper">
+	
+	<insert id="insCmt">
+		INSERT INTO t_comment
+		(m_pk, c_seq, u_pk, c_content)
+		SELECT #{m_pk}, IFNULL(MAX(c_seq), 0) + 1, #{u_pk}, #{c_content}
+		FROM t_comment
+		WHERE m_pk = #{m_pk}
+	</insert>
+
+
+	<select id="selCmtList" resultType="CommentDomain">
+		SELECT 
+		A.*, B.u_Nm AS writerNm
+		FROM t_comment A
+		LEFT JOIN t_user B
+		ON A.u_pk = B.u_Pk
+		WHERE A.m_pk = #{m_pk}
+		ORDER BY A.c_seq DESC
+	</select>
+	
+	<update id="updCmt">
+		UPDATE t_comment
+		SET c_content = #{c_content}
+		WHERE m_pk = #{m_pk}
+		AND c_seq = #{c_seq}
+		AND u_pk = #{u_pk}
+	</update>
+	
+	<delete id="delCmt">
+		DELETE FROM t_comment
+		WHERE m_pk = #{m_pk}
+		AND c_seq = #{c_seq}
+		AND u_pk = #{u_pk}
+	</delete>
+	
+	
+	
+	
+
+</mapper>
