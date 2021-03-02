@@ -1,7 +1,7 @@
-@import "reset.css";
-@import "header.css";
-@import "detail.css";
-@import "slider.css";
+@import "./reset.css";
+@import "./header.css";
+@import "./detail.css";
+@import "./slider.css";
 @import url("https://fonts.googleapis.com/css2?family=Exo:wght@100;200;300;400;500;600;700&family=Kirang+Haerang&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cute+Font&display=swap");
 
@@ -16,8 +16,6 @@ main {
 	z-index: 0;
 }
 
-.nav {
-}
 .content-category {
 	display: flex;
 	align-items: center;
@@ -102,7 +100,7 @@ footer {
 	height: 200px;
 	color: #f2ab39;
 	text-shadow: 2px 2px 5px#69491a;
-	background-image: url("./image/hg2.jpg");
+	background-image: url("../image/hg2.jpg");
 	top: 300px;
 }
 
