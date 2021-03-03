@@ -176,6 +176,7 @@ section {
 .cnt {
 	display: flex;
 	align-items: center;
+	justify-content: flex-start;
 	font-size: 18px;
 	color: #bcbcbc;
 	margin-top: 15px;

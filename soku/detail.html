@@ -82,9 +82,8 @@
 					</div>
 					<div class="detail_addr">서울신라호텔</div>
 					<div class="cnt">
-						<span class="view_cnt"><i class="fas fa-eye"></i>조회수</span>
-						<span class="review_cnt"><i class="fas fa-pen"></i>리뷰수</span>
-						<span class="like_cnt"><i class="fas fa-star"></i>좋아요수</span>
+						<span class="view_cnt"><i class="fas fa-eye"></i>300</span>
+						<span class="review_cnt"><i class="fas fa-pen"></i>50</span>
 					</div>
 					<div class="detail_description">
 						<table class="info">
@@ -159,6 +158,33 @@
 									<div class="review-icon">
 										<i class="far fa-laugh-squint"></i>
 										<div>좋았다</div>
+										<div class="del"><a href="">삭제</a></div>
+										<div class="mod"><a href="" onclick="">수정</a></div>
+									</div>
+								</div>
+							</li>
+							<li class="review-item">
+								<div class="review-item__items">
+									<div class="review-user">
+										<img src="./image/bg.jpeg" alt="" />
+									</div>
+									<div class="review-content">
+										<div class="regdate">2021-03-03</div>
+										<p>
+											Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus ducimus illo beatae molestiae
+											earum animi est, consequuntur sunt iusto culpa, ab facere, in excepturi molestias. Soluta illo ex
+											dolorum corporis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus ducimus illo
+											beatae molestiae earum animi est, consequuntur sunt iusto culpa, ab facere, in excepturi
+											molestias. Soluta illo ex dolorum corporis.
+										</p>
+									</div>
+									<div class="review-icon">
+										<i class="far fa-laugh-squint"></i>
+										<div>좋았다</div>
+										<div class="delMod-wrap">
+											<div class="del"><a href="">삭제</a></div>
+											<div class="mod"><a href="" onclick="">수정</a></div>
+										</div>
 									</div>
 								</div>
 							</li>
@@ -206,7 +232,7 @@
 								</label>
 							</div>
 
-							<input class="form-item form-title" type="text" placeholder="제목" />
+							<!-- <input class="form-item form-title" type="text" placeholder="제목" /> -->
 							<textarea class="form-item form-text" type="text" placeholder="내용"></textarea>
 							<input class="form-item form-submit" type="submit" value="등록" onclick="reviewModalHandle()" />
 						</form>
