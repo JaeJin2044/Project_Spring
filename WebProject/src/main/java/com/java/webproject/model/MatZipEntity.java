@@ -21,7 +21,15 @@ public class MatZipEntity {
 	private String m_price;
 	private String m_workingTime;
 	private String m_parking;
+	private int m_viewCount;
 	
+	
+	public int getM_viewCount() {
+		return m_viewCount;
+	}
+	public void setM_viewCount(int m_viewCount) {
+		this.m_viewCount = m_viewCount;
+	}
 	public int getM_pk() {
 		return m_pk;
 	}

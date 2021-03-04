@@ -8,21 +8,21 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+<link rel="stylesheet" href="/resources/css/header.css">
 <link rel="stylesheet" href="<tiles:getAsString name="categoryCss"/>">
-<!-- <script defer src="/resources/javascript/detail.js"></script> -->
+
+<script defer src="/resources/javascript/header.js"></script>
 <script defer src="<tiles:getAsString name="categoryJs"/>"></script>
 <script defer src="https://kit.fontawesome.com/93cf0078c1.js" crossorigin="anonymous"></script>
 </head>
 <body>
-	<div id="container">
-		<tiles:insertAttribute name="header"/>
+	<tiles:insertAttribute name="header"/>
 		<section>		
 			<tiles:insertAttribute name="content"/>	
 		</section>
 		<footer>
 			<tiles:insertAttribute name="footer"/>
 		</footer>
-	</div>
 
 </body>
 </html>

@@ -6,12 +6,14 @@
 
 * {
 	box-sizing: border-box;
-	font-family: "Cute Font", cursive;
+	list-style: none;
 }
 
+
 main {
+	height: 100%;
 	position: relative;
-	top: 240px;
+	top: 100px;
 	z-index: 0;
 }
 
@@ -55,6 +57,7 @@ main {
 .content-list {
 	width: 960px;
 	display: flex;
+	align-items: center;
 	padding: 25px;
 	margin: 0px 30px;
 	margin-bottom: 30px;
@@ -89,24 +92,95 @@ main {
 	color: #bcbcbc;
 }
 
+.content-list__cnt {
+	font-size: 18px;
+	color: #bcbcbc;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+.content-list__cnt span {
+	margin-right: 10px;
+}
+
+.content-list__cnt i {
+	margin-right: 5px;
+}
+
+.main-review-item__items {
+	padding: 20px 20px;
+	display: flex;
+	justify-content: space-between;
+	text-decoration: none;
+	font-size: 20px;
+	color: #919191;
+	transition: all 0.3s;
+	width: 100%;
+}
+
+.main-review-content p {
+	display: block;
+	width: 400px;
+	white-space: normal;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	line-height: 1.2rem;
+	height: 3.6rem;
+	text-align: left;
+	word-wrap: break-word;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	font-size: 15px;
+}
+.main-review-item__items:hover {
+	background: rgba(0, 0, 0, 0.05);
+	border-radius: 20px;
+	color: #f1ab3a;
+}
+.main-review-item__items .main-review-content {
+	max-width: 70%;
+	font-size: 25px;
+}
+.main-review-item__items .main-review-user img {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+.main-review-item__items .main-review-icon {
+	height: 100%;
+	font-size: 30px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	color: #f1ab3a;
+}
+
 footer {
+	position: relative;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	font-family: "Exo", sans-serif;
 	font-size: 4rem;
-	position: relative;
-	height: 200px;
-	width: 100%;
+	height: 250px;
 	color: #f2ab39;
 	text-shadow: 2px 2px 5px#69491a;
-	background-image: url("./image/hg2.jpg");
-	background-color: #bcbcbc;
-	top: 300px;
+	background-image: url("../image/hg2.jpg");
+	top: 150px;
 }
 
 .text_title {
 	margin-bottom: 5px;
+	display: flex;
+	align-items: center;
+}
+
+.text_title a {
+	margin-right: 20px;
 }
 .text_description {
 	margin-bottom: 10px;
@@ -138,13 +212,22 @@ footer {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	width: 80%;
+	width: 100%;
 	padding: 0px 20px;
 }
 .more_info {
 	display: flex;
-	align-items: center;
 	justify-content: flex-end;
+}
+.more_info__wrap {
+	display: flex;
+	align-items: center;
+}
+.more_info__wrap a {
+	transition: all 0.4s ease-in-out;
+}
+.more_info__wrap:hover a {
+	color: #f2ab39;
 }
 .more_info a {
 	height: 30px;

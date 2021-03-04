@@ -32,25 +32,48 @@
 		<div class="content">
 			<c:forEach var="item" items="${list}">
 				<div class="content-list">
-					
 					<img class="content-list__img" src="${item.m_img1}" alt="" />
 					<div class="text_wrap">
 						<div class="content-list__text">
 							<h1 class="text_title">
 								<a href="/main/detail?m_pk=${item.m_pk}">${item.m_title}</a>
+								<div class="rating__score">
+									${item.m_starPoint}
+									<i class="fas fa-star"></i>
+								</div>
 							</h1>
 							<h3 class="text_description">${item.m_viewDetail}</h3>
-							<div class="rating__score">
-								${item.m_starPoint}
-								<i class="fas fa-star"></i>
+							<div class="content-list__cnt">
+								<span class="view_cnt"><i class="fas fa-eye"></i>300</span>
+								<span class="review_cnt"><i class="fas fa-pen"></i>50</span>
 							</div>
 						</div>
-						<div class="more_info">
-							<a href="/main/detail?m_pk=${item.m_pk}">더보기 </a>
-							<a href="/main/detail?m_pk=${item.m_pk}"><i class="fas fa-chevron-right"></i></a>
-						</div>
+						<li class="main-review-item">
+							<div class="main-review-item__items">
+								<div class="main-review-user">
+									<img src="./image/bg.jpeg" alt="" />
+								</div>
+								<div class="main-review-content">
+									<div class="regdate">2021-03-03</div>
+									<p>
+										Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus ducimus illo beatae molestiae
+										earum animi est, consequuntur sunt iusto culpa, ab facere, in excepturi molestias. Soluta illo
+										ex dolorum corporis. Lorem ipsum dolor sit 
+									</p>
+								</div>
+								<div class="main-review-icon">
+									<i class="far fa-laugh-squint"></i>
+									<div>좋았다</div>
+								</div>
+							</div>
+							<div class="more_info">
+								<div class="more_info__wrap">
+									<a href="/main/detail?m_pk=${item.m_pk}">더보기</a>
+									<a href="/main/detail?m_pk=${item.m_pk}"><i class="fas fa-chevron-right"></i></a>
+								</div>
+							</div>
+						</li>
 					</div>
-				
 				</div>
 			</c:forEach>
 		</div>

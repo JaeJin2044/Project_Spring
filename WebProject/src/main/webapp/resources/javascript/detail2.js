@@ -33,64 +33,26 @@ function selCmtList(){
 			alert('글이 없습니다')
 			return 
 		}
-	
-		myJson.forEach(function(item){
-		var loginUserPk = parseInt(data.dataset.loginuserpk)
-		if(loginUserPk === item.u_pk){
-			cmtListElem.innerHTML = `
-			<li class="review-item">
-				<div class="review-item__items">
-					<div class="review-user">
-						
-						<img src="./image/bg.jpeg" alt="" />
-						<div>${item.writerNm}</div>
-					</div>
-					<div class="review-content">
-						<div class="regdate">${item.c_regDate}</div>
-						<p>
-							${item.c_content}
-						</p>
-					</div>
-					<div class="review-icon">
-						<i class="far fa-laugh-squint"></i>
-						<div>좋았다</div>
-						<div class="del"><a href="">삭제</a></div>
-						<div class="mod"><a href="" onclick="">수정</a></div>
-					</div>
-				</div>
-			</li>
-			
-		`
-		}else{
-			cmtListElem.innerHTML = `
-			<li class="review-item">
-				<div class="review-item__items">
-					<div class="review-user">
-						
-						<img src="./image/bg.jpeg" alt="" />
-						<div>${item.writerNm}</div>
-					</div>
-					<div class="review-content">
-						<div class="regdate">${item.c_regDate}</div>
-						<p>
-							${item.c_content}
-						</p>
-					</div>
-					<div class="review-icon">
-						<i class="far fa-laugh-squint"></i>
-						<div>좋았다</div>
-						
-					</div>
-				</div>
-			</li>`;
-			
-		}				
-	})
 		
-}
-
+		var tableElem = createTable()
+		
+		myJson.forEach(function(item){
+			tableElem.append(createRecord(item))		
+		})
+		cmtListElem.append(tableElem)
+	}
+	
 	function createRecord(item){
-
+		var tr = document.createElement('tr')
+		var td_1 = document.createElement('td')
+		var td_2 = document.createElement('td')
+		var td_3 = document.createElement('td')
+		var td_4 = document.createElement('td')
+		td_1.innerText = item.c_content;
+		td_2.innerText = item.writerNm;
+		td_3.innerText = item.c_regDate;
+		
+		
 		//자신이 쓴 댓글이라면 삭제 ,수정 버튼 추가 
 		var loginUserPk = parseInt(data.dataset.loginuserpk)
 		if(loginUserPk === item.u_pk) {
@@ -154,13 +116,14 @@ function selCmtList(){
 				}
 			})
 		
-			td_3.append(delBtn)
-			td_3.append(editBtn)
+			td_4.append(delBtn)
+			td_4.append(editBtn)
 		
 	}
 		tr.append(td_1);
 		tr.append(td_2);
 		tr.append(td_3);
+		tr.append(td_4);
 		return tr
 }
 	
@@ -168,8 +131,10 @@ function selCmtList(){
 		var tableElem = document.createElement('table')
 		tableElem.innerHTML = `
 		<tr>
-			<th>작성자</th>
 			<th>내용</th>
+			<th>작성자</th>
+			<th>등록일자</th>
+			<th>삭제/수정</th>
 		</tr>`
 		
 		return tableElem
@@ -182,60 +147,65 @@ function selCmtList(){
 
 selCmtList()
 
-
-// 더보기 버튼 
 var moreListElem = document.querySelector('#moreList');
 if(moreListElem){
+	
+	
 	function moreList(){
 		listCount += 10;
 		selCmtList();
 	}
+	
 	moreListElem.addEventListener('click',moreList);
 }
 
 
+
 //댓글 등록 
-var rWriteElem = document.querySelector('#rWrite')
-var rContentElem = document.querySelector('#rContent');
-
-rWriteElem.addEventListener('click',ajax)
-
-function ajax(){
-	var txtVal = rContentElem.value
-	if(txtVal ===''){
-		alert('내용이 없습니다.')
-		return
+var cmtFrmElem = document.querySelector('#cmtFrm')
+if(cmtFrmElem){
+	cmtFrmElem.onsubmit = function(e){
+		e.preventDefault()
 	}
-	var param={
-		m_pk: data.dataset.pk,
-		c_content : txtVal,
+	var txtElem = cmtFrmElem.c_content
+	var cmtWriteBtnElem = cmtFrmElem.cmtWriteBtn
+	cmtWriteBtnElem.addEventListener('click',ajax)
+	
+	function ajax(){
+		var txtVal = txtElem.value
+		if(txtVal ===''){
+			alert('내용이 없습니다.')
+			return
+		}
+		var param={
+			m_pk: data.dataset.pk,
+			c_content : txtVal,
+		}
+		
+		fetch('/cmt',{
+			method: 'post',
+			headers : {
+				'Content-Type': 'application/json',
+			},
+			body : JSON.stringify(param)
+		}).then(res=>{
+			res.json().then(myJson=>{
+				if(myJson ===1){
+					selCmtList()
+				}else{
+					alert('댓글 등록 실패')
+				}
+			})
+		})
 	}
 	
-	fetch('/cmt',{
-		method: 'post',
-		headers : {
-			'Content-Type': 'application/json',
-		},
-		body : JSON.stringify(param)
-	}).then(res=>{
-		res.json().then(myJson=>{
-			if(myJson ===1){
-				selCmtList()
-				txtVal= '';
-				review.classList.remove("review-open")	
-			}else{
-				alert('댓글 등록 실패')
-			}
-		})
-	})
+	
 }
 
 
 
 
-
-
-//  원석이형  모달 관련  js -------------------------------
+//    -------------------------------
 const modal = document.querySelector(".modal-wrapper");
 const mapModal = document.querySelector(".map-modal");
 const mapModalImg = document.querySelector(".map-modal-img");

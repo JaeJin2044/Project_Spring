@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.java.webproject.common.SecurityUtils;
@@ -28,9 +29,9 @@ public class CmtController {
 	private SecurityUtils sUtils;
 	
 	@GetMapping
-	public List<CommentDomain> list(CommentDomain p){
+	public List<CommentDomain> list(CommentDomain p, @RequestParam("listCount") int listCount){
+		p.setListCount(listCount);
 		List<CommentDomain> data = service.selCmtList(p);
-		System.out.println(data.get(0).getC_regDate());
 		return data;
 	}
 	

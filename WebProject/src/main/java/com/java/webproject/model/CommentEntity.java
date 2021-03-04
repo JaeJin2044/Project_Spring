@@ -10,7 +10,7 @@ public class CommentEntity {
 	private int m_pk;
 	private int c_seq;
 	private String c_content;
-	private Date c_regDate;
+	private String c_regDate;
 	
 	public int getC_pk() {
 		return c_pk;
@@ -43,12 +43,13 @@ public class CommentEntity {
 	public void setC_content(String c_content) {
 		this.c_content = c_content;
 	}
-	public Date getC_regDate() {
+	public String getC_regDate() {
 		return c_regDate;
 	}
-	public void setC_regDate(Date c_regDate) {
+	public void setC_regDate(String c_regDate) {
 		this.c_regDate = c_regDate;
 	}
+	
 	
 	
 }

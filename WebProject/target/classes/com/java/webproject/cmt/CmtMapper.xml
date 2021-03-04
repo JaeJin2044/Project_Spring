@@ -13,12 +13,14 @@
 
 	<select id="selCmtList" resultType="CommentDomain">
 		SELECT 
-		A.*, B.u_Nm AS writerNm
+		A.c_pk,A.u_pk,A.m_pk,A.c_seq,A.c_content,
+		DATE_FORMAT(c_regDate, '%Y-%m-%d') as c_regDate, B.u_Nm AS writerNm
 		FROM t_comment A
 		LEFT JOIN t_user B
 		ON A.u_pk = B.u_Pk
 		WHERE A.m_pk = #{m_pk}
-		ORDER BY A.c_seq DESC
+		ORDER BY A.c_seq desc
+		limit 0,#{listCount}
 	</select>
 	
 	<update id="updCmt">

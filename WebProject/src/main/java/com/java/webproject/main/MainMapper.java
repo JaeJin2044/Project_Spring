@@ -11,6 +11,10 @@ public interface MainMapper {
 	List<MatZipEntity> matZipList();
 	//맛집리스트 페이징 
 	List<MatZipEntity> matZipListPaging (int num);
+	
 	//디테일창
 	MatZipEntity viewDetail(int m_pk);
+	
+	//조회수 상승 
+	void insViewCount(int m_pk);
 }
