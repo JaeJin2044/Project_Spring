@@ -82,9 +82,8 @@ public class OauthController {
 		param.setU_Nm(kname);
 		param.setU_LogType("kakao");
 		
-		int result = service.loginCheck(param); 
+		int result = service.loginCheck(param,session); 
 		
-		session.setAttribute(Const.KEY_LOGINUSER, param);
 		return "redirect:/main/home";
 	}
 	
@@ -98,8 +97,10 @@ public class OauthController {
 		oauthToken = naverLoginBO.getAccessToken(session, code, state);
 		
 		UserEntity param = oUtils.getNaverUser(oauthToken);
-
-		int result = service.loginCheck(param);
+		System.out.println("===============================");
+		System.out.println("naver의 u_pk체크:"+param.getU_Pk());
+		
+		int result = service.loginCheck(param,session);
 
 		//중복된 이메일
 		if(result == -1 ) {
@@ -109,8 +110,6 @@ public class OauthController {
 			model.addAttribute("err",0);
 			return "redirect: /user/err";
 		}
-		
-		session.setAttribute(Const.KEY_LOGINUSER, param);
 		
 		return "redirect:/main/home";
 	}

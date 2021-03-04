@@ -18,6 +18,8 @@ import com.java.webproject.model.UserEntity;
 import com.java.webproject.oauth.KakaoApi;
 import com.java.webproject.oauth.NaverLoginBO;
 
+import lombok.extern.log4j.Log4j;
+
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -37,10 +39,7 @@ public class UserController {
 	@Autowired
 	private HttpSession session;
 	
-	@GetMapping("/err")
-	public void err() {
-		
-	}
+	
 	
 	@GetMapping("/login")
 	public void login(Model model, HttpSession session) {
@@ -53,7 +52,6 @@ public class UserController {
 		//네이버
 		model.addAttribute("url", naverAuthUrl);
 		session.setAttribute("url", naverAuthUrl);
-		
 		
 		//카카오
 		String kakaoAuthUrl = kakaoLoginApi.getAuthorizationUrl(session);
@@ -125,13 +123,10 @@ public class UserController {
 	@PostMapping("/findPw")
 	public Map<String,Object> findPw(@RequestBody UserEntity param){
 		
-		
 		Map<String, Object> returnValue = new HashMap<String, Object>();
 		returnValue.put("result",service.findPw(param));
 		return returnValue;
 	}
-	
-	
 	
 	
 	
