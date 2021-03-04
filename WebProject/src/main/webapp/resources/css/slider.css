@@ -33,7 +33,7 @@
 	width: 960px;
 	height: 300px;
 	margin: 0 auto;
-	overflow: hidden;
+	/* overflow: hidden; */
 	border-radius: 30px;
 }
 .sliders {

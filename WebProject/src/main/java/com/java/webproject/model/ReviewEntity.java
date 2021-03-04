@@ -9,7 +9,7 @@ public class ReviewEntity {
 	private int r_Seq;
 	private String r_Title;
 	private String r_Content;
-	private Date r_RegDate;
+	private String r_RegDate;
 	
 	public int getR_Pk() {
 		return r_Pk;
@@ -47,12 +47,14 @@ public class ReviewEntity {
 	public void setR_Content(String r_Content) {
 		this.r_Content = r_Content;
 	}
-	public Date getR_RegDate() {
+	
+	public String getR_RegDate() {
 		return r_RegDate;
 	}
-	public void setR_RegDate(Date r_RegDate) {
+	public void setR_RegDate(String r_RegDate) {
 		this.r_RegDate = r_RegDate;
 	}
+	
 	
 	
 	

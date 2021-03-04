@@ -1,3 +1,5 @@
+
+// -------------------------------
 let sliders = document.querySelector(".sliders"),
 	slide = document.querySelectorAll(".sliders li"),
 	currentIdx = 0,
@@ -29,3 +31,9 @@ nextBtn.addEventListener("click", function () {
 		currentIdx = 0;
 	}
 });
+
+
+
+
+
+

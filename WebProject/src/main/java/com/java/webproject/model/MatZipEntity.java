@@ -26,8 +26,26 @@ public class MatZipEntity {
 	private String m_workingTime;
 	private String m_parking;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+	private int m_viewCount;
+	private int m_commentCount;
+>>>>>>> jaejin
 	
+	public int getM_commentCount() {
+		return m_commentCount;
+	}
+	public void setM_commentCount(int m_commentCount) {
+		this.m_commentCount = m_commentCount;
+	}
+	
+	public int getM_viewCount() {
+		return m_viewCount;
+	}
+	public void setM_viewCount(int m_viewCount) {
+		this.m_viewCount = m_viewCount;
+	}
 	public int getM_pk() {
 		return m_pk;
 	}
