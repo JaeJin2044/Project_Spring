@@ -10,6 +10,11 @@
 	list-style: none;
 }
 
+html,
+body {
+	font-family: "Cute Font", cursive;
+}
+
 main {
 	height: 100%;
 	position: relative;
@@ -131,7 +136,7 @@ main {
 	display: -webkit-box;
 	-webkit-line-clamp: 3;
 	-webkit-box-orient: vertical;
-	font-size: 15px;
+	font-size: 25px;
 }
 .main-review-item__items:hover {
 	background: rgba(0, 0, 0, 0.05);

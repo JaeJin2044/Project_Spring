@@ -238,6 +238,7 @@ section {
 
 .modal .modal-img img {
 	width: 100%;
+	height: 100%;
 	max-width: 700px;
 	max-height: 400px;
 	object-fit: cover;
@@ -250,11 +251,10 @@ section {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: space-around;
-	margin-top: 30px;
+	justify-content: center;
 	width: 70%;
 	height: 90%;
-	background: white;
+	background: #aeaeae;
 	border-radius: 40px;
 }
 
@@ -309,7 +309,7 @@ section {
 	display: flex;
 	flex-direction: column;
 	align-items: left;
-	justify-content: center;
+	justify-content: space-around;
 }
 
 .label-wrap {
@@ -318,7 +318,7 @@ section {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	margin-bottom: 30px;
+	margin-bottom: 20px;
 }
 .radio-label {
 	display: flex;
@@ -378,4 +378,17 @@ section {
 
 .form-item.form-submit:hover {
 	background: #f1ab3a;
+}
+
+.delMod-wrap {
+	height: 100%;
+	display: flex;
+	align-items: flex-end;
+	font-size: 25px;
+}
+
+.delMod-wrap a {
+	text-decoration: none;
+	color: #69491a;
+	padding: 5px;
 }
