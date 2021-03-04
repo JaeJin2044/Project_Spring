@@ -103,7 +103,6 @@ public class UserController {
 		Map<String,Object> returnValue = new HashMap<String, Object>();
 		
 		returnValue.put("result", service.join(param)); 
-		
 		return returnValue;
 	}
 	

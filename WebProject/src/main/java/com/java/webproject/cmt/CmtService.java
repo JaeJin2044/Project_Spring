@@ -19,7 +19,14 @@ public class CmtService {
 	}
 	
 	public int insCmt(CommentEntity p) {
-		return mapper.insCmt(p);
+		
+		if(mapper.insCmt(p)==1) {
+			inscomCount(p);
+			return 1;
+		}else {
+			return 0;
+		}
+		
 	}
 	
 	public int updCmt(CommentEntity p) {
@@ -27,7 +34,16 @@ public class CmtService {
 	}
 	
 	public int delCmt(CommentEntity p) {
-		return mapper.delCmt(p);
+		if(mapper.delCmt(p)==1) {
+			mapper.mincomCount(p);
+			return 1 ;
+		}else {
+			return 0 ;
+		}
+	}
+	
+	public int inscomCount(CommentEntity p) {
+		return mapper.inscomCount(p);
 	}
 	
 	

@@ -44,8 +44,8 @@
 							</h1>
 							<h3 class="text_description">${item.m_viewDetail}</h3>
 							<div class="content-list__cnt">
-								<span class="view_cnt"><i class="fas fa-eye"></i>300</span>
-								<span class="review_cnt"><i class="fas fa-pen"></i>50</span>
+								<span class="view_cnt"><i class="fas fa-eye"></i>${item.m_viewCount}</span>
+								<span class="review_cnt"><i class="fas fa-pen"></i>${item.m_commentCount}</span>
 							</div>
 						</div>
 						<li class="main-review-item">

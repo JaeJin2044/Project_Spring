@@ -22,7 +22,14 @@ public class MatZipEntity {
 	private String m_workingTime;
 	private String m_parking;
 	private int m_viewCount;
+	private int m_commentCount;
 	
+	public int getM_commentCount() {
+		return m_commentCount;
+	}
+	public void setM_commentCount(int m_commentCount) {
+		this.m_commentCount = m_commentCount;
+	}
 	
 	public int getM_viewCount() {
 		return m_viewCount;

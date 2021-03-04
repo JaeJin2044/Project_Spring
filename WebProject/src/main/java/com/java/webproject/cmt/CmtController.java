@@ -38,6 +38,7 @@ public class CmtController {
 	@PostMapping
 	public int ins(@RequestBody CommentEntity p , HttpSession hs) {
 		p.setU_pk(sUtils.getLoginUserPk(hs));
+	
 		return service.insCmt(p);
 	}
 	

@@ -4,7 +4,9 @@
 
 <header class="nav">
 	<div class="nav-left">
-		<div class="logo">logo</div>
+		<a href="/main/home" style="text-decoration: none">
+			<div class="logo">logo</div>
+		</a>
 	</div>
 	<form class="search-bar">
 		<span class="search-bar__icon"><i class="fas fa-search"></i></span> <input
@@ -13,10 +15,10 @@
 	</form>
 	<div class="nav-right">
 		<div class="nav-right__item">
-			<a href="#">link1</a>
+			<a href="/main/home">맛집 목록</a>
 		</div>
 		<div class="nav-right__item">
-			<a href="#">link2</a>
+			<a href="#">채팅 목록</a>
 		</div>
 		<div class="action">
 			<div class="profile" onclick="toggleMenu()">
@@ -31,7 +33,12 @@
 					<li><i class="fas fa-user-alt"></i><a href="#">My profile</a></li>
 					<li><i class="far fa-edit"></i><a href="#">Edit profile</a></li>
 					<li><i class="fas fa-cog"></i><a href="#">Setting</a></li>
-					<li><i class="fas fa-sign-out-alt"></i><a href="#">log in</a></li>
+					<c:if test="${loginUser == null }">
+						<li><i class="fas fa-sign-out-alt"></i><a href="/user/login">login</a></li>
+					</c:if>
+					<c:if test="${loginUser != null }">
+						<li><i class="fas fa-sign-out-alt"></i><a href="/user/logout">Logout</a></li>
+					</c:if>
 				</ul>
 			</div>
 		</div>
