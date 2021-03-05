@@ -1,7 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> <%@ taglib
+uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <div class="top_img" onclick="modalHandle()">
 	<img src="${detail_item.m_img1}" alt="" />
@@ -38,46 +36,46 @@
 		<div class="detail_description">
 			<table class="info">
 				<c:if test="${detail_item.m_addrRoad != null}">
-				<tr>
-					<th>주소</th>
-					<td>${detail_item.m_addrRoad}</td>
-				</tr>
+					<tr>
+						<th>주소</th>
+						<td>${detail_item.m_addrRoad}</td>
+					</tr>
 				</c:if>
 				<c:if test="${detail_item.m_addrJibun != null}">
-				<tr>
-					<th>지번</th>
-					<td>${detail_item.m_addrJibun}</td>
-				</tr>
+					<tr>
+						<th>지번</th>
+						<td>${detail_item.m_addrJibun}</td>
+					</tr>
 				</c:if>
 				<c:if test="${detail_item.m_phone != null}">
-				<tr>
-					<th>전화번호</th>
-					<td>${detail_item.m_phone}</td>
-				</tr>
+					<tr>
+						<th>전화번호</th>
+						<td>${detail_item.m_phone}</td>
+					</tr>
 				</c:if>
 				<c:if test="${detail_item.m_category != null}">
-				<tr>
-					<th>음식종류</th>
-					<td>${detail_item.m_category}</td>
-				</tr>
+					<tr>
+						<th>음식종류</th>
+						<td>${detail_item.m_category}</td>
+					</tr>
 				</c:if>
 				<c:if test="${detail_item.m_price != null}">
-				<tr>
-					<th>가격대</th>
-					<td>${detail_item.m_price}</td>
-				</tr>
+					<tr>
+						<th>가격대</th>
+						<td>${detail_item.m_price}</td>
+					</tr>
 				</c:if>
 				<c:if test="${detail_item.m_parking != null}">
-				<tr>
-					<th>주차</th>
-					<td>${detail_item.m_parking}</td>
-				</tr>
+					<tr>
+						<th>주차</th>
+						<td>${detail_item.m_parking}</td>
+					</tr>
 				</c:if>
 				<c:if test="${detail_item.m_workingTime != null}">
-				<tr>
-					<th>영업시간</th>
-					<td>${detail_item.m_workingTime}</td>
-				</tr>
+					<tr>
+						<th>영업시간</th>
+						<td>${detail_item.m_workingTime}</td>
+					</tr>
 				</c:if>
 			</table>
 		</div>
@@ -98,12 +96,12 @@
 						<a href="#">별로였다(total)</a>
 					</li>
 				</ul>
-				
 			</div>
-				<ul id="cmtList">
-					<!-- 여기로 들어옴  -->
-				</ul>
-				<div><button id='moreList'>더보기</button></div>
+			<ul id="cmtList">
+				<!-- 여기로 들어옴  -->
+			</ul>
+			<!-- 더보기 레이아웃, 디자인수정 -->
+			<div class="more-review-list"><button id="moreList">더보기</button></div>
 		</div>
 	</div>
 	<div class="map-section">
@@ -117,11 +115,8 @@
 		<div class="map-img" onclick="mapModalHandle()">
 			<img class="map-modal-img" src="./image/map.png" alt="" />
 		</div>
-	</div>	
+	</div>
 </div>
-
-
-
 
 <!-- 리뷰 작성 모달  -->
 <div class="review-wrap">
@@ -151,20 +146,20 @@
 						</div>
 					</label>
 				</div>
-					<!-- <input class="form-item form-title" type="text" placeholder="제목" /> -->
-					<textarea class="form-item form-text" type="text" placeholder="내용" id="rContent"></textarea>
-					<input class="form-item form-submit" type="button" value="등록" id='rWrite' />
+				<!-- <input class="form-item form-title" type="text" placeholder="제목" /> -->
+				<textarea class="form-item form-text" type="text" placeholder="내용" id="rContent"></textarea>
+				<input class="form-item form-submit" type="button" value="등록" id="rWrite" />
 			</form>
 		</div>
 	</div>
 </div>
 
-
 <!-- 리뷰 수정 모달  -->
-<div id="modal" class="hide">				
+<!-- 수정모달 디자인, textarea로 변경 -->
+<div id="modal" class="hide">
 	<div class="modal-content">
-		<span id="modClose">X</span>
-		<input type="text" id="modCtnt">
-		<input type="button" id="modBtn" value="수정">
+		<span id="modClose"><i class="fas fa-times"></i></span>
+		<textarea type="text" id="modCtnt" class="modCtnt"></textarea>
+		<input type="button" id="modBtn" class="modBtn" value="수정" />
 	</div>
 </div>
