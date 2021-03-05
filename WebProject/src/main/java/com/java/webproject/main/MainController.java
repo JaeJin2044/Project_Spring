@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.java.webproject.Const;
 import com.java.webproject.common.PageUtils;
+import com.java.webproject.model.MatZipDTO;
+import com.java.webproject.model.MatZipDomain;
 import com.java.webproject.model.MatZipEntity;
 
 @Controller
@@ -22,37 +24,37 @@ public class MainController {
 	
 	@Autowired
 	private PageUtils pUtils;
+
 	
-	@GetMapping("/map")
-	public void map() {
-		
-	}
-	
-	
-	//맛집리스트 출력
+	// 맛집리스트 출력
 	@GetMapping("/home")
-	public void home(Model model) {
-		List<MatZipEntity> list = service.matZipList();
-		model.addAttribute(Const.KEY_LIST, list);
+	public void getList(Model model, @RequestParam(value = "searchText", required = false, defaultValue="")String searchText 
+			,@RequestParam(value = "page", defaultValue = "1", required = false)int page) {		
+		MatZipDTO p = new MatZipDTO();
 		
-	}
-	
-	//맛집리스트 출력
-	@GetMapping("/listPage")
-	public void home(Model model , @RequestParam("pageNum") int pageNum){
-		System.out.println();
-		int num = (pageNum*20)-20;
-		List<MatZipEntity> list = service.matZipListPaging(num);
-		list.get(0).getM_img2();
-		list.get(0).getM_title();
-		model.addAttribute(Const.KEY_LIST, list);
+		p.setPage(page);		
+		p.setRowCnt(10);
+		int rowCnt = p.getRowCnt();
+		p.setsIdx((page - 1) * rowCnt);
+		p.setSearchText(searchText);
+		p.setMaxPageNum(service.selMaxPageNum(p));
+		p.setTotalPage(p.getMaxPageNum() / rowCnt);		
+		int totalPage = p.getTotalPage();
+		model.addAttribute("page", p);
+		List<MatZipDomain> list = service.matZipSearch(p);		
 		
+		System.out.println("페이지수 : " + totalPage);
+		System.out.println("검색어 : " +  p.getSearchText());
+		System.out.println("결과값의총갯수:" + p.getMaxPageNum()); 
+		model.addAttribute(Const.KEY_LIST, list);	
 	}
+
 	
 	@GetMapping("/detail")
 	public void detail(Model model,@RequestParam("m_pk") int m_pk) {
 		MatZipEntity detail_item = service.viewDetail(m_pk);
 		model.addAttribute("detail_item", detail_item);
+		
 	}
 	
 	

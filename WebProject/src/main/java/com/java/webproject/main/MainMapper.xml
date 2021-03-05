@@ -3,20 +3,50 @@
 <mapper namespace="com.java.webproject.main.MainMapper">
 	
 	
-	
-	
-	<!-- 맛집리스트+페이징  -->
-	<select id="matZipListPaging" resultType="MatZipEntity">
-		select * from matzip
-		order by m_starPoint desc
-		limit #{num}, 20
+
+	<!-- 맛집리스트+ 검색 + 페이징 -->
+
+	<select id="matZipSearch" resultType="MatZipDomain">
+		SELECT M.*, ifnull(R.c_content, '') AS c_content, R.u_Nm AS u_nm ,
+		R.u_profile AS u_profile, DATE_FORMAT(R.c_regDate, '%Y-%m-%d') as c_regDate
+		FROM matzip M
+		LEFT JOIN (
+		SELECT A.m_pk, A.c_content, C.u_Nm , C.u_profile ,A.c_regDate
+		FROM t_comment A
+		INNER JOIN
+		(
+		SELECT m_pk, MAX(c_seq) AS c_seq
+		FROM t_comment
+		GROUP BY m_pk
+		) B
+		ON A.m_pk = B.m_pk
+		AND A.c_seq = B.c_seq
+		LEFT JOIN t_user C
+		ON A.u_pk = C.u_pk
+		) R
+		ON M.m_pk = R.m_pk
+		<if test="searchText != ''">
+			where m_title like '%' #{searchText} '%'
+			or m_viewDetail
+			like '%' #{searchText} '%'
+			or m_category like '%' #{searchText} '%'
+			or
+			m_location like '%' #{searchText} '%'
+		</if>		
+		order by M.m_starPoint desc
+		limit #{sIdx}, #{rowCnt}
 	</select>
-	
-	<!-- 맛집리스트  -->
-	<select id="matZipList" resultType="MatZipEntity">
-		select * from matzip
-		order by m_starPoint desc
-		limit 0,20;
+
+	<select id="selMaxPageNum" resultType="int">
+		select count(*) from matzip
+		<if test="searchText != ''">
+			where m_title like '%' #{searchText} '%'
+			or m_viewDetail
+			like '%' #{searchText} '%'
+			or m_category like '%' #{searchText} '%'
+			or
+			m_location like '%' #{searchText} '%'
+		</if>
 	</select>
 	
 	<select id="viewDetail" resultType="MatZipEntity">

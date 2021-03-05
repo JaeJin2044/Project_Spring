@@ -8,11 +8,12 @@
 			<div class="logo">logo</div>
 		</a>
 	</div>
-	<form class="search-bar">
+	<form class="search-bar" action="/main/home?&searchText=${searchText}&page=${page}" method="get">
 		<span class="search-bar__icon"><i class="fas fa-search"></i></span> <input
-			class="search-bar__item" type="text" placeholder="search" /> <input
-			class="search-bar__btn" type="submit" value="검색" />
+			class="search-bar__item" id="searchText" name = "searchText" type="text" placeholder="search"  value = "${searchText}"/> <input
+			class="search-bar__btn" id = "searchBtn" type="submit" value="검색" />
 	</form>
+	
 	<div class="nav-right">
 		<div class="nav-right__item">
 			<a href="/main/home">Resturant</a>

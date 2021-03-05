@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="com.java.webproject.model.MatZipDTO" %>
 
 <main>
 	<div class="container">
@@ -51,16 +52,17 @@
 						<li class="main-review-item">
 							<div class="main-review-item__items">
 								<div class="main-review-user">
-									<img src="./image/bg.jpeg" alt="" />
+								<c:if test='${item.u_nm != null}'>
+									<img src="${item.u_profile}" alt="" />
+									<div>${item.u_nm}</div>								
 								</div>
 								<div class="main-review-content">
-									<div class="regdate">2021-03-03</div>
+									<div class="regdate">${item.c_regDate}</div>
 									<p>
-										Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus ducimus illo beatae molestiae
-										earum animi est, consequuntur sunt iusto culpa, ab facere, in excepturi molestias. Soluta illo
-										ex dolorum corporis. Lorem ipsum dolor sit 
+										${item.c_content}
 									</p>
 								</div>
+								</c:if>
 								<div class="main-review-icon">
 									<i class="far fa-laugh-squint"></i>
 									<div>좋았다</div>
@@ -79,8 +81,8 @@
 		</div>
 		
 		<div style="height: 40px; text-align: center">
-			<c:forEach begin="1" end="10" var="i">
-				<a href="/main/listPage?pageNum=${i}"><span style="font-size: 40px">${i}</span></a>
+			<c:forEach  var = "i" begin="1" end = "${page.totalPage}">
+					<a href="/main/home?&searchText=${page.searchText}&page=${i}"><span style="font-size: 40px">${i}</span></a>
 			</c:forEach>
 		</div>
 	</div>
