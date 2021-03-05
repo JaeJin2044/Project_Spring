@@ -6,32 +6,34 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script defer type="text/javascript" src="/resources/javascript/login.js?ver=1"></script>
+<link rel="stylesheet" href="/resources/css/login.css">
 </head>
 <body>
-	<h1>로그인 페이지 </h1>
 	<div id="container">
 		<form id="frm">
+			<h2>Taste place</h2>
+			<div class="frm-input">
 			<div><input type="text" name="u_Id" placeholder="id" autocomplete="off"></div>
 			<div><input type="password" name="u_Pass" placeholder="password"></div>
-			<a href="/user/userSearch"><button type="button">ID/PW 찾기</button></a>
+			</div>
+			
+			<div id="btn"><input type="button" value="로그인" id="loginBtn">
 			<a href="/user/join"><button type="button">회원가입</button></a>
-			<span><input type="button" value="로그인" id="loginBtn"></span>
+			<a href="/user/userSearch"><button type="button">ID/PW 찾기</button></a>
 			<div id="errMsg"></div>
+			</div>
+			<div class="frm-output">
+				<!-- 네이버 로그인 창으로 이동 -->
+					<a href="${url}">
+						<img width="60" src="/resources/image/naver_icon.png"/>
+					</a>
+				
+				<!--카카오 로그인창 -->
+					<a href="${kakao_url}">
+						<img width="60" src="/resources/image/kakao.png"/>
+					</a>
+			</div>
 		</form>
-		
-		<!-- 네이버 로그인 창으로 이동 -->
-		<div id="naver_id_login" style="text-align:left;">
-			<a href="${url}">
-				<img width="150" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/>
-			</a>
-		</div>
-		<!--카카오 로그인창 -->
-		<div id="kakao_id_login" style="text-align: left">
-		 <a href="${kakao_url}">
-		  <img width="150" src="/resources/img/kakao_login_medium_narrow.png" /></a> 
-		  </div>
-
 	</div>
-
 </body>
 </html>

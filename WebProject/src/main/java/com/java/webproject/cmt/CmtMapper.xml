@@ -15,7 +15,7 @@
 	<select id="selCmtList" resultType="CommentDomain">
 		SELECT 
 		A.c_pk,A.u_pk,A.m_pk,A.c_seq,A.c_content,
-		DATE_FORMAT(c_regDate, '%Y-%m-%d') as c_regDate, B.u_Nm AS writerNm
+		DATE_FORMAT(c_regDate, '%Y-%m-%d') as c_regDate, B.u_Nm AS writerNm,B.u_profile
 		FROM t_comment A
 		LEFT JOIN t_user B
 		ON A.u_pk = B.u_Pk

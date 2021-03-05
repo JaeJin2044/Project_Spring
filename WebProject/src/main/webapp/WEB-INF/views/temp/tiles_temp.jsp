@@ -10,6 +10,7 @@
 
 <link rel="stylesheet" href="/resources/css/header.css">
 <link rel="stylesheet" href="<tiles:getAsString name="categoryCss"/>">
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=20d48b705551f225a9a64f8d0d66c274&libraries=services"></script>
 
 <script defer src="/resources/javascript/header.js"></script>
 <script defer src="<tiles:getAsString name="categoryJs"/>"></script>

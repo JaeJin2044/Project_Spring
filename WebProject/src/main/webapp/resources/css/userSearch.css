@@ -1,0 +1,145 @@
+@charset "UTF-8";
+
+@import url("https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Exo:ital,wght@1,800&display=swap");
+
+* {
+	box-sizing: border-box;
+	font-family: "Do Hyeon", sans-serif;
+}
+
+html,
+body {
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	align-items: center;
+}
+
+#container {
+	height: 500px;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+#frm {  /* 폼 태그 */
+	width: 500px;
+	height: 100%;
+	background: #ffd954;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 30px 20px;
+	border-radius: 20px;
+	box-shadow: 5px 5px 10px #69491a;
+}
+
+#searchId {  /* Id 찾기 폼 */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+#searchPw {  /* Pw 찾기 폼 */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+#frm h3 {  /* 폼 제목 */
+	font-family: "Exo", sans-serif; /*영어*/
+	font-size: 40px;
+	color: #d2691e;
+}
+
+#frm p {  /* 폼 p 태그 */
+	font-size: 16px;
+	color: #ff9100;
+}
+
+span { /* ID PW 찾기 글씨 */
+    font-family: 'Do Hyeon' , sans-serif;
+    font-size: 21px;
+    color: #b86824;
+    padding: 15px;
+	margin: 10px;
+}
+
+input[type="radio"] { 
+	display: none;  /* 라디오 박스 숨김 */
+}
+
+input[type="radio"] + span {
+    display:inline-block;
+    background:none;
+    padding:0px 10px;
+    text-align:center;
+    height:35px;
+    line-height:33px;
+    font-weight:500;
+    cursor:pointer;
+    background: transparent;
+    color: #b86824;
+}
+
+input[type="radio"]:checked + span {
+    /*
+    border:1px solid #69491a;
+    border-radius: 20px; */
+    background: orange;
+    border-radius: 10px;
+    color: white;
+}
+
+span:hover {
+    transform: scale(1.2);
+}
+
+.search-input input {  /* 찾기 폼에 입력값 */
+	border: none;
+	border-bottom: 2px solid #69491a;
+	background-color: transparent;
+	text-align: left;
+	margin-bottom: 20px;
+    width: 200px;
+    padding: 5px;
+    font-size: 17px;
+}
+
+.search-input input::placeholder {
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 17px;
+    font-weight: lighter;
+    font-style: italic;
+    color: gray;
+}
+
+#btn button {  /* 확인, 취소 버튼 */
+	border: none;
+	background-color: transparent;
+	padding: 15px 20px;
+	border-radius: 10px;
+	transition: all 0.5s ease-in-out;
+	margin-bottom: 20px;
+    font-size: 15px;
+}
+
+#btn button:hover {  /* 확인, 취소 버튼 마우스 올렸을 때 */
+	color: #fe9103;
+	box-shadow: 3px 3px 5px #fe9103;
+}
+
+.login-btn a {  /* login 버튼 */
+    font-family: "Exo", sans-serif; 
+	text-decoration: none;
+	color: #b86824;
+    font-size: 17px;
+}
+
+.login-btn:hover {  /* login 버튼 마우스 올렸을 때 */
+	transform: scale(1.3);
+}

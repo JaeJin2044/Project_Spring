@@ -15,19 +15,23 @@
 	</form>
 	<div class="nav-right">
 		<div class="nav-right__item">
-			<a href="/main/home">맛집 목록</a>
+			<a href="/main/home">Resturant</a>
 		</div>
 		<div class="nav-right__item">
-			<a href="#">채팅 목록</a>
+			<a href="#">Chatt</a>
 		</div>
 		<div class="action">
 			<div class="profile" onclick="toggleMenu()">
-				<img src="./image/thunder.png" alt="프로필이미지" />
+				<c:if test='${loginUser == null }'>
+					<img src="https://png.pngtree.com/png-vector/20190826/ourlarge/pngtree-basic-png-image_1696860.jpg" alt="프로필이미지" />
+				</c:if>
+				<c:if test='${loginUser !=null}'>
+					<img src="${loginUser.u_profile}" alt="프로필이미지" />
+				</c:if>
 			</div>
 			<div class="menu">
 				<h3>
-					user name <br />
-					<span>regdate</span>
+					${loginUser.u_Nm}<br />
 				</h3>
 				<ul>
 					<li><i class="fas fa-user-alt"></i><a href="#">My profile</a></li>

@@ -2,17 +2,16 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-
-<div class="top_img" onclick="modalHandle()">
-	<img src="${detail_item.m_img1}" alt="" />
-	<img src="${detail_item.m_img2}" alt="" />
-	<img src="${detail_item.m_img3}" alt="" />
-	<img src="${detail_item.m_img4}" alt="" />
+<div class="top_img" >
+	<img src="${detail_item.m_img1}" alt="" onclick="modalHandle('${detail_item.m_img1}')" />
+	<img src="${detail_item.m_img2}" alt="" onclick="modalHandle('${detail_item.m_img2}')" />
+	<img src="${detail_item.m_img3}" alt="" onclick="modalHandle('${detail_item.m_img3}')" />
+	<img src="${detail_item.m_img4}" alt="" onclick="modalHandle('${detail_item.m_img4}')" />
 </div>
 <div class="modal-wrapper">
 	<div class="modal">
 		<div class="modal-img">
-			<img src="./image/01.jpg" alt="" />
+			<img src="" alt="" id="imgModal"/>
 		</div>
 	</div>
 </div>
@@ -106,17 +105,17 @@
 				<div><button id='moreList'>더보기</button></div>
 		</div>
 	</div>
+
 	<div class="map-section">
 		<div class="map-modal-wrapper">
 			<div class="map-modal">
 				<div class="map-modal-img">
-					<img src="./image/map.png" alt="" />
 				</div>
 			</div>
 		</div>
 		<div class="map-img" onclick="mapModalHandle()">
-			<img class="map-modal-img" src="./image/map.png" alt="" />
-		</div>
+			<div id="map" style="width:100%;height:350px;"></div>
+		</div> 
 	</div>	
 </div>
 
@@ -168,3 +167,6 @@
 		<input type="button" id="modBtn" value="수정">
 	</div>
 </div>
+
+
+

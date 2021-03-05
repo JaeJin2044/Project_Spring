@@ -6,7 +6,7 @@ import org.apache.ibatis.type.Alias;
 
 @Alias("UserEntity")
 public class UserEntity {
-	private int u_Pk;
+	private int u_pk;
 	private String u_Nm;
 	private String u_Id;
 	private String u_Pass;
@@ -17,7 +17,16 @@ public class UserEntity {
 	private String u_Mail;
 	private Date u_regDate;
 	private String u_LogType;
+	private String u_profile;
 	
+	
+	
+	public String getU_profile() {
+		return u_profile;
+	}
+	public void setU_profile(String u_profile) {
+		this.u_profile = u_profile;
+	}
 	public String getU_LogType() {
 		return u_LogType;
 	}
@@ -25,10 +34,10 @@ public class UserEntity {
 		this.u_LogType = u_LogType;
 	}
 	public int getU_Pk() {
-		return u_Pk;
+		return u_pk;
 	}
 	public void setU_Pk(int u_Pk) {
-		this.u_Pk = u_Pk;
+		this.u_pk = u_Pk;
 	}
 	public String getU_Nm() {
 		return u_Nm;

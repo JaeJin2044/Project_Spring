@@ -23,6 +23,11 @@ public class MainController {
 	@Autowired
 	private PageUtils pUtils;
 	
+	@GetMapping("/map")
+	public void map() {
+		
+	}
+	
 	
 	//맛집리스트 출력
 	@GetMapping("/home")

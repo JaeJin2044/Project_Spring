@@ -120,6 +120,15 @@
 		
 		<!--  여기서 부터 세팅 부분  -->
 		
+		<!-- 채팅 관련 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-websocket</artifactId>
+			<version>4.2.4.RELEASE</version>
+		</dependency>
+		
+		
+		<!--  -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>

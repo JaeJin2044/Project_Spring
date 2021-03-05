@@ -6,7 +6,7 @@ import org.apache.ibatis.type.Alias;
 public class MatZipDomain extends MatZipEntity {
 
 	private String c_content;
-
+	
 	public String getC_content() {
 		return c_content;
 	}

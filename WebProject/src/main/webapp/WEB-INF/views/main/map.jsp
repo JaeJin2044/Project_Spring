@@ -25,7 +25,7 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
 var geocoder = new kakao.maps.services.Geocoder();
 
 // 주소로 좌표를 검색합니다
-geocoder.addressSearch('대구시 중구 삼덕동1가 17-23 동진빌딩 B1', function(result, status) {
+geocoder.addressSearch('대구광역시 동구 율하동 907-5', function(result, status) {
 
     // 정상적으로 검색이 완료됐으면 
      if (status === kakao.maps.services.Status.OK) {
@@ -40,7 +40,7 @@ geocoder.addressSearch('대구시 중구 삼덕동1가 17-23 동진빌딩 B1', f
 
         // 인포윈도우로 장소에 대한 설명을 표시합니다
         var infowindow = new kakao.maps.InfoWindow({
-            content: '<div style="width:150px;text-align:center;padding:6px 0;">나빌레라</div>'
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">우리집</div>'
         });
         infowindow.open(map, marker);
 
