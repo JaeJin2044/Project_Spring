@@ -13,4 +13,6 @@ public interface CmtMapper {
 	List<CommentDomain> selCmtList(CommentDomain p);
 	int updCmt(CommentEntity p);
 	int delCmt(CommentEntity p);
+	int inscomCount(CommentEntity p);
+	int mincomCount(CommentEntity p);
 }

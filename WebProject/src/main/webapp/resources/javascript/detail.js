@@ -1,19 +1,6 @@
 
 //댓글 시작
 var cmtListElem = document.querySelector('#cmtList');
-var modalElem = document.querySelector('#modal')
-var modCtntElem = document.querySelector('#modCtnt') //수정 내용
-var modBtnElem = document.querySelector('#modBtn') //수정버튼
-
-
-if(modalElem) {
-	//모달 닫기 버튼
-	var modalCloseElem = document.querySelector('#modClose')
-	modalCloseElem.addEventListener('click', function () {
-		//hide클래스(모달창)
-		modalElem.classList.add('hide')
-	})
-}
 
 var listCount = 10;
 function selCmtList(){
@@ -33,16 +20,17 @@ function selCmtList(){
 			alert('글이 없습니다')
 			return 
 		}
-	
+		
 		myJson.forEach(function(item){
-		var loginUserPk = parseInt(data.dataset.loginuserpk)
-		if(loginUserPk === item.u_pk){
-			cmtListElem.innerHTML = `
+			var loginUserPk = parseInt(data.dataset.loginuserpk)
+			if(loginUserPk === item.u_pk) {
+			//수정 할 내용 빈칸제거 ..
+			var content = item.c_content.replace(/\s/gi, "");
+			cmtListElem.innerHTML += `
 			<li class="review-item">
 				<div class="review-item__items">
 					<div class="review-user">
-						
-						<img src="./image/bg.jpeg" alt="" />
+						<img src="/resources/image/hg2.jpg" alt="" />
 						<div>${item.writerNm}</div>
 					</div>
 					<div class="review-content">
@@ -54,20 +42,18 @@ function selCmtList(){
 					<div class="review-icon">
 						<i class="far fa-laugh-squint"></i>
 						<div>좋았다</div>
-						<div class="del"><a href="">삭제</a></div>
-						<div class="mod"><a href="" onclick="">수정</a></div>
+						<div><button onclick=delAjax(${item.m_pk},${item.c_seq})>삭제</button></div>
+						<div><button onclick=editMod(${item.m_pk},'${content}',${item.c_seq})>수정</button></div>
 					</div>
 				</div>
 			</li>
-			
-		`
+		`;
 		}else{
-			cmtListElem.innerHTML = `
+			cmtListElem.innerHTML += `
 			<li class="review-item">
 				<div class="review-item__items">
 					<div class="review-user">
-						
-						<img src="./image/bg.jpeg" alt="" />
+						<img src="/resources/image/hg2.jpg" alt="" />
 						<div>${item.writerNm}</div>
 					</div>
 					<div class="review-content">
@@ -79,106 +65,82 @@ function selCmtList(){
 					<div class="review-icon">
 						<i class="far fa-laugh-squint"></i>
 						<div>좋았다</div>
-						
-					</div>
 				</div>
-			</li>`;
-			
-		}				
+				</div>
+			</li>
+		`;
+	}
+	}
+)}
+
+}
+		
+
+
+var modalElem = document.querySelector('#modal')
+var modCtntElem = document.querySelector('#modCtnt') //수정 내용
+var modBtnElem = document.querySelector('#modBtn') //수정버튼
+
+if(modalElem) {
+	//모달 닫기 버튼
+		var modalCloseElem = document.querySelector('#modClose')
+		modalCloseElem.addEventListener('click', function () {
+		//hide클래스(모달창)
+		modalElem.classList.add('hide')
 	})
-		
 }
 
-	function createRecord(item){
-
-		//자신이 쓴 댓글이라면 삭제 ,수정 버튼 추가 
-		var loginUserPk = parseInt(data.dataset.loginuserpk)
-		if(loginUserPk === item.u_pk) {
-			//삭제
-			function delAjax(){
-				fetch(`/cmt?m_pk=${item.m_pk}&c_seq=${item.c_seq}`,{
-					method: 'delete'
-				}).then(res => res.json())
-				.then(myJson => {
-					if(myJson ===1){
-						selCmtList()
-					}else{
-						alert('삭제를 실패 하였습니다.')
-					}
-				})
-			}
-			
-			//수정 처리 
-			function modAjax(param){
-				fetch('/cmt',{
-					method: 'put',
-					headers:{
-						'Content-Type': 'application/json'
-					},
-					body: JSON.stringify(param)
-				}).then(res => res.json())
-				.then(myJson => {
-					if(myJson === 1 ){
-						modalElem.classList.add('hide')
-						selCmtList()	
-					}else{
-						alert('수정이 실패하였습니다.')
-					}
-				})
-			}
-			
-			var delBtn = document.createElement('input')			
-			delBtn.type = 'button'
-			delBtn.value = '삭제'
-			delBtn.addEventListener('click', function() {
-				if(confirm('삭제 하시겠습니까?')) {
-					delAjax()
-				}
-			})
-			
-			var editBtn = document.createElement('input')
-			editBtn.type = 'button'
-			editBtn.value = '수정'
-			editBtn.addEventListener('click', function() {
-				//수정할 수 있는 창이 열릴꺼임!!!
-				modCtntElem.value = item.c_content
-				modalElem.classList.remove('hide')
-				
-				modBtnElem.onclick = function() {
-					var param = {
-						m_pk: item.m_pk,
-						c_seq: item.c_seq,
-						c_content: modCtntElem.value
-					}
-					modAjax(param)
-				}
-			})
-		
-			td_3.append(delBtn)
-			td_3.append(editBtn)
-		
+//수정 모달 띄우기 
+function editMod(mPk,cContent,cSeq){
+	modCtntElem.value = cContent;
+	modalElem.classList.remove('hide')
+	
+	modBtnElem.onclick = function() {
+		var param = {
+			m_pk: mPk,
+			c_seq: cSeq,
+			c_content: modCtntElem.value
+		}
+		modAjax(param)
 	}
-		tr.append(td_1);
-		tr.append(td_2);
-		tr.append(td_3);
-		return tr
 }
-	
-	function createTable(){
-		var tableElem = document.createElement('table')
-		tableElem.innerHTML = `
-		<tr>
-			<th>작성자</th>
-			<th>내용</th>
-		</tr>`
-		
-		return tableElem
+
+//댓글 수정
+function modAjax (param) {
+	fetch('/cmt', {
+		method: 'put',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(param)
+	}).then(res => res.json())
+	.then(myJson => {					
+		if(myJson === 1) {
+			modalElem.classList.add('hide')	
+			selCmtList()
+		} else {
+			alert('수정을 실패하였습니다.')
+		}
+	})
+}
+
+//삭제
+function delAjax(param1,param2){
+	if(confirm('삭제 하시겠습니까?')){
+		var m_pk = param1;
+		var c_seq = param2;
+		fetch(`/cmt?m_pk=${m_pk}&c_seq=${c_seq}`,{
+			method: 'delete'
+		}).then(res => res.json())
+		.then(myJson => {
+			if(myJson ===1){
+				selCmtList()
+			}else{
+				alert('삭제를 실패 하였습니다.')
+			}
+		})
 	}
-	
-	
 }
-
-
 
 selCmtList()
 
@@ -222,6 +184,7 @@ function ajax(){
 			if(myJson ===1){
 				selCmtList()
 				txtVal= '';
+				rContentElem.value='';
 				review.classList.remove("review-open")	
 			}else{
 				alert('댓글 등록 실패')
@@ -229,8 +192,6 @@ function ajax(){
 		})
 	})
 }
-
-
 
 
 
@@ -258,19 +219,14 @@ window.addEventListener("click", function (e) {
 	e.target === mapModalImg ? mapModal.classList.remove("map-modal__open") : false;
 });
 
-//review-modal
-function reviewModalHandle() {
-	review.classList.toggle("review-open");
-}
-
 window.addEventListener("click", function (e) {
 	e.target === review ? review.classList.remove("review-open") : false;
 });
 
-
-
-
-
+//review-modal
+function reviewModalHandle() {
+	review.classList.toggle("review-open");
+}
 
 
 

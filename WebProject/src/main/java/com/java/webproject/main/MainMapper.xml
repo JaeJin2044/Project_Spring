@@ -25,7 +25,6 @@
 	</select>
 	
 	<!-- 조회수 상승  -->
-	
 	<update id="insViewCount">
 		update matzip 
 		set m_viewCount = m_viewCount+1

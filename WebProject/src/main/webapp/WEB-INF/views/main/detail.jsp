@@ -32,7 +32,7 @@
 		</div>
 		<div class="cnt">
 			<span class="view_cnt"><i class="fas fa-eye"></i>${detail_item.m_viewCount}</span>
-			<span class="review_cnt"><i class="fas fa-pen"></i>50</span>
+			<span class="review_cnt"><i class="fas fa-pen"></i>${detail_item.m_commentCount}</span>
 		</div>
 		<div id="data" data-loginuserpk="${sessionScope.loginUser.u_Pk}" data-pk="${requestScope.detail_item.m_pk}"></div>
 		<div class="detail_description">
@@ -98,16 +98,14 @@
 						<a href="#">별로였다(total)</a>
 					</li>
 				</ul>
+				
 			</div>
-			
-			<div id="cmtList">
-			</div>
-			<div><input type="button" id='moreList'>더보기</div>
+				<ul id="cmtList">
+					<!-- 여기로 들어옴  -->
+				</ul>
+				<div><button id='moreList'>더보기</button></div>
 		</div>
 	</div>
-	
-	
-	
 	<div class="map-section">
 		<div class="map-modal-wrapper">
 			<div class="map-modal">
@@ -119,17 +117,9 @@
 		<div class="map-img" onclick="mapModalHandle()">
 			<img class="map-modal-img" src="./image/map.png" alt="" />
 		</div>
-	</div>
+	</div>	
 </div>
 
-<!-- 수정 모달  -->
-<div id="modal" class="hide">				
-	<div class="modal-content">
-		<span id="modClose">X</span>
-		<input type="text" id="modCtnt">
-		<input type="button" id="modBtn" value="수정">
-	</div>
-</div>
 
 
 
@@ -170,46 +160,11 @@
 </div>
 
 
-
-
-
-
-
-
-<%-- <!--  ----------------------------------- -->
-<div class="title-wrap">
-				<div class="detail_title" >
-				<div id="data" data-loginuserpk="${sessionScope.loginUser.u_Pk}" data-pk="${requestScope.detail_item.m_pk}"></div>
-					${detail_item.m_title}
-					<span class="rating">${detail_item.m_title}</span>
-					<div class="detail_description"></div>
-					<div class="cnt">
-						<span class="view_cnt"><i class="fas fa-eye"></i>조회수</span>
-						<span class="review_cnt"><i class="fas fa-pen"></i>리뷰수</span>
-					</div>
-				</div>
-			</div> 
-<h2>여기서부터 댓글리스트 </h2>
-	<hr />	
-	<div id="cmtList">
-	
+<!-- 리뷰 수정 모달  -->
+<div id="modal" class="hide">				
+	<div class="modal-content">
+		<span id="modClose">X</span>
+		<input type="text" id="modCtnt">
+		<input type="button" id="modBtn" value="수정">
 	</div>
-	<button id="moreList">더보기</button>
-	
-	<c:if test="${sessionScope.loginUser != null}">
-		<h4>리뷰작성</h4>
-		<div>
-			<form id="cmtFrm">
-				<div><input type="text" name="c_content" ></div>
-				<div><input type="button" name="cmtWriteBtn" value="리뷰등록"></div>
-			</form>
-		</div>
-		
-		<div id="modal" class="hide">
-			<div class="modal-content">
-				<span id="modClose">X</span>
-				<input type="text" id="modCtnt">
-				<input type="button" id="modBtn" value="수정">
-			</div>
-		</div>
-	</c:if>  --%>
+</div>
