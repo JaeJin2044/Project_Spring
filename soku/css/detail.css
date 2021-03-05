@@ -1,4 +1,5 @@
-@import "review.css";
+@import "./review.css";
+@import "./chat-modal.css";
 @import url("https://fonts.googleapis.com/css2?family=Exo:wght@100;200;300;400;500;600;700&family=Kirang+Haerang&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cute+Font&display=swap");
 
@@ -55,6 +56,7 @@ section {
 	margin-right: 50px;
 }
 .map-section {
+	position: relative;
 	width: 30%;
 	min-width: 350px;
 	margin-right: 20px;

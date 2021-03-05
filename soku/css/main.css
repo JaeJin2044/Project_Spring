@@ -243,3 +243,7 @@ footer {
 .more_info i {
 	margin-left: 10px;
 }
+
+.sliders li img {
+	width: 100%;
+}

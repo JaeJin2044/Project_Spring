@@ -219,3 +219,11 @@ window.addEventListener("click", function (e) {
 function reviewModalHandle() {
 	review.classList.toggle("review-open");
 }
+
+//chat-modal
+function openChatModal() {
+	chat.classList.toggle("open-chat");
+}
+function closeChatModal() {
+	chat.classList.remove("open-chat");
+}

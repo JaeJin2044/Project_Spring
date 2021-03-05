@@ -115,6 +115,18 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 		<div class="map-img" onclick="mapModalHandle()">
 			<img class="map-modal-img" src="./image/map.png" alt="" />
 		</div>
+
+		<!-- chat modal -->
+		<div class="chat-btn">
+			<button onclick="openChatModal()">채팅시작</button>
+		</div>
+		<div class="chat-modal-wrap">
+			<div class="chat-modal">
+				<div class="chat">
+					<button class="chat-close" onclick="closeChatModal()"><i class="fas fa-times"></i></button>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 
