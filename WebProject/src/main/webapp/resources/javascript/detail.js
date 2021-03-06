@@ -2,8 +2,12 @@
 //댓글 시작
 var cmtListElem = document.querySelector('#cmtList');
 
+
+
 var listCount = 10;
 function selCmtList(){
+	
+	
 	fetch(`/cmt?m_pk=${data.dataset.pk}&listCount=${listCount}`)
 	.then(res => res.json())
 	.then(myJson => {
@@ -22,6 +26,7 @@ function selCmtList(){
 		}
 		
 		myJson.forEach(function(item){
+			
 			var loginUserPk = parseInt(data.dataset.loginuserpk)
 			if(loginUserPk === item.u_pk) {
 			//수정 할 내용 빈칸제거 ..
@@ -193,7 +198,13 @@ function ajax(){
 	})
 }
 
+
+
+
+var mapAddr = mapData.dataset.addr;
+var mapTitle = mapData.dataset.title;
 //-------------- 지도관련 -----------------------------------------------
+
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
         center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
@@ -207,8 +218,8 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
 var geocoder = new kakao.maps.services.Geocoder();
 
 // 주소로 좌표를 검색합니다
-geocoder.addressSearch('대구광역시 동구 율하동 907-5', function(result, status) {
-
+geocoder.addressSearch(mapAddr, function(result, status) {
+	
     // 정상적으로 검색이 완료됐으면 
      if (status === kakao.maps.services.Status.OK) {
 
@@ -222,7 +233,7 @@ geocoder.addressSearch('대구광역시 동구 율하동 907-5', function(result
 
         // 인포윈도우로 장소에 대한 설명을 표시합니다
         var infowindow = new kakao.maps.InfoWindow({
-            content: '<div style="width:150px;text-align:center;padding:6px 0;">우리집</div>'
+            content: `<div style="width:150px;text-align:center;padding:6px 0;">${mapTitle}</div>`
         });
         infowindow.open(map, marker);
 
@@ -231,13 +242,6 @@ geocoder.addressSearch('대구광역시 동구 율하동 907-5', function(result
     } 
 });    
 //-------------- 지도관련 -----------------------------------------------
-
-
-// --채팅 관련 -------------------------------------------------------------
-
-
-
-// --채팅 관련 -------------------------------------------------------------
 
 
 

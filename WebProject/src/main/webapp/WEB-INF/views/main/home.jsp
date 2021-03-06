@@ -7,14 +7,14 @@
 	<div class="container">
 		<div class="slider-wrapper">
 			<ul class="sliders">
-				<li><img src="/resources/image/01.jpg" alt="더미이미지" /></li>
-				<li><img src="/resources/image/01.jpg" alt="더미이미지" /></li>
-				<li><img src="/resources/image/01.jpg" alt="더미이미지" /></li>
-				<li><img src="/resources/image/01.jpg" alt="더미이미지" /></li>
-				<li><img src="/resources/image/01.jpg" alt="더미이미지" /></li>
-				<li><img src="/resources/image/01.jpg" alt="더미이미지" /></li>
-				<li><img src="/resources/image/01.jpg" alt="더미이미지" /></li>
-				<li><img src="/resources/image/01.jpg" alt="더미이미지" /></li>
+				<li><img src="/resources/image/kakao.png" alt="더미이미지" /></li>
+				<li><img src="/resources/image/naver_icon.png" alt="더미이미지" /></li>
+				<li><img src="/resources/image/kakao.png" alt="더미이미지" /></li>
+				<li><img src="/resources/image/naver_icon.png" alt="더미이미지" /></li>
+				<li><img src="/resources/image/kakao.png" alt="더미이미지" /></li>
+				<li><img src="/resources/image/naver_icon.png" alt="더미이미지" /></li>
+				<li><img src="/resources/image/kakao.png" alt="더미이미지" /></li>
+				<li><img src="/resources/image/naver_icon.png" alt="더미이미지" /></li>
 			</ul>
 		</div>
 		<div class="controls">

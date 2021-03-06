@@ -25,13 +25,11 @@ public class MainController {
 	@Autowired
 	private PageUtils pUtils;
 
-	
 	// 맛집리스트 출력
 	@GetMapping("/home")
 	public void getList(Model model, @RequestParam(value = "searchText", required = false, defaultValue="")String searchText 
 			,@RequestParam(value = "page", defaultValue = "1", required = false)int page) {		
 		MatZipDTO p = new MatZipDTO();
-		
 		p.setPage(page);		
 		p.setRowCnt(10);
 		int rowCnt = p.getRowCnt();
@@ -56,6 +54,13 @@ public class MainController {
 		model.addAttribute("detail_item", detail_item);
 		
 	}
+	
+	
+	@GetMapping("/boardList")
+	public void boardList() {
+		
+	}
+	
 	
 	
 

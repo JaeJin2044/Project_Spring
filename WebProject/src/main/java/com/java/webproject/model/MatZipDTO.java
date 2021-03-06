@@ -28,8 +28,6 @@ public class MatZipDTO {
 	public void setTotalPage(int totalPage) {
 		this.totalPage = totalPage;
 	}
-	
-	
 	public int getEndPage() {
 		return endPage;
 	}

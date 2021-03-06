@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="bd451135-897e-439c-a749-a70fa0ed7acb" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/WebProject/src/main/java/com/java/webproject/main/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebProject/src/main/java/com/java/webproject/main/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebProject/src/main/java/com/java/webproject/model/MatZipDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/WebProject/src/main/java/com/java/webproject/model/MatZipDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebProject/src/main/webapp/WEB-INF/views/main/detail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebProject/src/main/webapp/WEB-INF/views/main/detail.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebProject/src/main/webapp/WEB-INF/views/main/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebProject/src/main/webapp/WEB-INF/views/main/home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebProject/src/main/webapp/WEB-INF/views/temp/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebProject/src/main/webapp/WEB-INF/views/temp/header.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebProject/src/main/webapp/WEB-INF/views/temp/tiles_temp.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/WebProject/src/main/webapp/WEB-INF/views/temp/tiles_temp.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebProject/src/main/webapp/resources/css/join.css" beforeDir="false" afterPath="$PROJECT_DIR$/WebProject/src/main/webapp/resources/css/join.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebProject/src/main/webapp/resources/javascript/detail.js" beforeDir="false" afterPath="$PROJECT_DIR$/WebProject/src/main/webapp/resources/javascript/detail.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebProject/target/classes/com/java/webproject/main/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebProject/target/classes/com/java/webproject/main/MainController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebProject/target/classes/com/java/webproject/model/MatZipDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/WebProject/target/classes/com/java/webproject/model/MatZipDTO.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectId" id="1pO229QRnYnbkUhqaZEUSPHF7zs" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bd451135-897e-439c-a749-a70fa0ed7acb" name="Default Changelist" comment="" />
+      <created>1615039616241</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1615039616241</updated>
+      <workItem from="1615039622359" duration="2000" />
+    </task>
+    <servers />
+  </component>
+</project>

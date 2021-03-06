@@ -49,3 +49,5 @@
 		</div>
 	</div>
 </header>
+
+<script defer src="/resources/javascript/header.js"></script>

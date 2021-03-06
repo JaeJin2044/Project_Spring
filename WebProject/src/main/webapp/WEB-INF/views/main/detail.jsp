@@ -33,7 +33,7 @@
 			<span class="view_cnt"><i class="fas fa-eye"></i>${detail_item.m_viewCount}</span>
 			<span class="review_cnt"><i class="fas fa-pen"></i>${detail_item.m_commentCount}</span>
 		</div>
-		<div id="data" data-loginuserpk="${sessionScope.loginUser.u_Pk}" data-pk="${requestScope.detail_item.m_pk}"></div>
+			<div id="data" data-loginuserpk="${sessionScope.loginUser.u_Pk}" data-pk="${requestScope.detail_item.m_pk}"></div>
 		<div class="detail_description">
 			<table class="info">
 				<c:if test="${detail_item.m_addrRoad != null}">
@@ -107,6 +107,7 @@
 	</div>
 
 	<div class="map-section">
+		<div id="mapData" data-addr="${detail_item.m_addrRoad}" data-title="${detail_item.m_title}">
 		<div class="map-modal-wrapper">
 			<div class="map-modal">
 				<div class="map-modal-img">
@@ -168,6 +169,8 @@
 	</div>
 </div>
 
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=20d48b705551f225a9a64f8d0d66c274&libraries=services"></script>
 
 
 
