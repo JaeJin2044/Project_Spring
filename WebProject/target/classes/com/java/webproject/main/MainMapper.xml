@@ -7,11 +7,11 @@
 	<!-- 맛집리스트+ 검색 + 페이징 -->
 
 	<select id="matZipSearch" resultType="MatZipDomain">
-		SELECT M.*, ifnull(R.c_content, '') AS c_content, R.u_Nm AS u_nm ,
-		R.u_profile AS u_profile, DATE_FORMAT(R.c_regDate, '%Y-%m-%d') as c_regDate
+		SELECT M.*, ifnull(R.c_content, '') AS c_content, R.u_Nm AS u_nm , 
+		R.u_profile AS u_profile, DATE_FORMAT(R.c_regDate, '%Y-%m-%d') as c_regDate , R.u_pk
 		FROM matzip M
 		LEFT JOIN (
-		SELECT A.m_pk, A.c_content, C.u_Nm , C.u_profile ,A.c_regDate
+		SELECT A.m_pk, A.c_content, C.u_Nm , C.u_profile ,A.c_regDate , A.u_pk 
 		FROM t_comment A
 		INNER JOIN
 		(
@@ -61,6 +61,56 @@
 		where m_pk = #{m_pk}
 	</update>
 	
+	<!-- 프로필 수정 창 리스트 -->
+	<select id="selUser" resultType="UserEntity">
+		select * from t_user
+		where u_Pk = #{u_Pk}
+	</select>
+	
+	<!-- 프로필 이미지 등록  -->
+	<update id="updUser">
+		UPDATE t_user
+		<set>
+			<if test=" u_profile != null ">
+				u_profile = #{u_profile}
+			</if>
+		</set>
+		WHERE u_Pk = #{u_Pk}
+	</update>
+	
+	<!--  좋아요 리스트  -->
+	<select id="likeList" resultType="LikeEntity">
+		select * from t_like
+		where u_pk = #{u_pk}
+	</select>
+	
+	
+	<!-- 좋아요 등록  -->
+	<insert id="insLike">
+		insert into t_like
+		(m_pk,u_pk,m_img1,m_viewDetail,m_starPoint,m_commentCount,m_viewCount,m_title)
+		values
+		(#{m_pk},#{u_pk},#{m_img1},#{m_viewDetail},#{m_starPoint},#{m_commentCount},#{m_viewCount},#{m_title})
+	</insert>
+	
+	<!-- 좋아용 맛집1개찾기 -->
+	<select id="selMatzip" resultType="MatZipDomain">
+		select * from matzip
+		where m_pk = #{m_pk}
+	</select>
+	
+	<!-- 좋아요 중복검사  -->
+	<select id="selLike" resultType="LikeEntity">
+		select * from t_like
+		where u_pk = #{u_pk} 
+		and m_pk = #{m_pk}
+	</select>
+	
+	<!-- 좋아요 목록 삭제 -->
+	<delete id="delLike">
+		delete from t_like
+		where l_pk = #{l_pk}
+	</delete>	
 	
 
 

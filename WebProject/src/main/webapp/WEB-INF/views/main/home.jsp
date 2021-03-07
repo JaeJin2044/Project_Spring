@@ -42,18 +42,31 @@
 									${item.m_starPoint}
 									<i class="fas fa-star"></i>
 								</div>
+								<div class="main-review-icon">
+									<i class="far fa-laugh-squint"></i>
+									<a href="/main/insLike?m_pk=${item.m_pk}"><div>좋았다</div></a>
+								</div>
 							</h1>
 							<h3 class="text_description">${item.m_viewDetail}</h3>
 							<div class="content-list__cnt">
 								<span class="view_cnt"><i class="fas fa-eye"></i>${item.m_viewCount}</span>
 								<span class="review_cnt"><i class="fas fa-pen"></i>${item.m_commentCount}</span>
 							</div>
-						</div>
+					</div>
 						<li class="main-review-item">
 							<div class="main-review-item__items">
 								<div class="main-review-user">
+								<c:choose>
+									<c:when test="${item.u_profile == null}">
+										<c:set var="src" value="profile.jpg"/>
+									</c:when>		
+									<c:otherwise>
+										<c:set var="src" value="user/${item.u_pk}/${item.u_profile}"/>
+									</c:otherwise>
+								</c:choose>
+										
 								<c:if test='${item.u_nm != null}'>
-									<img src="${item.u_profile}" alt="" />
+									<img src="/resources/image/${src}" alt="" />
 									<div>${item.u_nm}</div>								
 								</div>
 								<div class="main-review-content">
@@ -63,10 +76,6 @@
 									</p>
 								</div>
 								</c:if>
-								<div class="main-review-icon">
-									<i class="far fa-laugh-squint"></i>
-									<div>좋았다</div>
-								</div>
 							</div>
 							<div class="more_info">
 								<div class="more_info__wrap">

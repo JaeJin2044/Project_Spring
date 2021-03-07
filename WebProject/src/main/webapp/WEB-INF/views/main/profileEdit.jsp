@@ -1,52 +1,51 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	<div id="container">
-		<form id="frm" autocomplete="off">
-			<div>
-				<div><label for="id">아이디</label></div>
-					<input type="text" name="u_Id" id="id" placeholder="id" autocomplete="off">
-					<input type="button" id="idCheck" value="아이디 중복확인">
-					<div id="msg">아이디를 확인해주세요</div>
-				<label for="name">이름</label>
-					<div><input type="text" name="u_Nm" id="name" placeholder="name" autocomplete="off"></div>
-				<label for="pass">비밀번호</label>
-					<div><input type="password" name="u_Pass" id="pass" autocomplete="off"></div>
-				<label for="passRe">비밀번호 확인</label>
-					<div><input type="password" name="u_PassRe" id="passRe" autocomplete="off"></div>	
-				<div>
-					<label for="addr">주소</label>
-					<div><input type="text" name="u_Addr" id="addr" autocomplete="off" placeholder="address" ></div>
-				</div>
-				<div>
-					<label for="phone">휴대폰</label>
-					<div><input type="text" name="u_Phone" id="phone" autocomplete="off" placeholder="phone" ></div>
-				</div>
-				<div>
-					<label for="mail">이메일</label>
-					<div><input type="email" name="u_Mail" id="mail" placeholder="mail" autocomplete="off"></div>
-				</div>
-				<div>Gender : 
-					<label>man<input type="radio" name="u_Gender" value="man" checked></label>
-					<label>woman<input type="radio" name="u_Gender" value="woman"></label>
-				</div>
-				<div>
-					<input type="button" id="joinBtn" disabled="disabled" value="JOIN">
-				</div>
-				<a href="/user/login">로그인하러가기</a>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	
+<div id="container">
+// ${loginUser.u_Pk} // ${loginUser.u_Nm} //${loginUser.u_Pass}
+	<form id="frm" autocomplete="off">
+			<h2>My profile</h2>
+		<div class="frm-input">
+
+		<c:choose>
+			<c:when test="${loginUser.u_profile == null}">
+				<c:set var="src" value="profile.jpg"/>
+			</c:when>		
+			<c:otherwise>
+				<c:set var="src" value="user/${loginUser.u_Pk}/${loginUser.u_profile}"/>
+			</c:otherwise>
+		</c:choose>
+		<img src="/resources/image/${src}" alt="프로필 이미지">
+		
+			<div>프로필 이미지 업로드 : <input type="file" accept="image/*" id="profileImg"></div>
+			<div><input type="button" value="업로드" onclick="profileUpload()"> </div>
+		</div>
+		
+		
+		
+			</div>
+			<div class="id-input">
+				<input type="text" name="u_Id" id="id" value= "${loginUser.u_Id}" autocomplete="off" readonly>
 			</div>
 			
-		</form>
-	
-	</div>
+			<div>
+				<input type="text" name="u_Nm" id="name" placeholder="${loginUser.u_Nm}" autocomplete="off" >
+			</div>
 
+			<div>
+				<input type="text" name="u_Phone" id="phone" placeholder="${loginUser.u_Phone}" placeholder="phone" >
+			</div>
+			
+			<div>
+				<input type="email" name="u_Mail" id="mail" placeholder="${loginUser.u_Mail}" autocomplete="off">
+			</div>
+			
+			<div>
+				<input type="button" id="joinBtn" disabled="disabled" value="수정">
+			</div>
+		</div>
+	</form>
+</div>
 
-
-</body>
-</html>
+<script src="/resources/javascript/profileEdit.js"></script>

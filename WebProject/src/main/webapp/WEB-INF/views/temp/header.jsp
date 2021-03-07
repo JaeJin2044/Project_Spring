@@ -23,21 +23,24 @@
 		</div>
 		<div class="action">
 			<div class="profile" onclick="toggleMenu()">
-				<c:if test='${loginUser == null }'>
-					<img src="https://png.pngtree.com/png-vector/20190826/ourlarge/pngtree-basic-png-image_1696860.jpg" alt="프로필이미지" />
-				</c:if>
-				<c:if test='${loginUser !=null}'>
-					<img src="${loginUser.u_profile}" alt="프로필이미지" />
-				</c:if>
+				<c:choose>
+					<c:when test="${loginUser.u_profile == null}">
+						<c:set var="src" value="profile.jpg"/>
+					</c:when>		
+					<c:otherwise>
+						<c:set var="src" value="user/${loginUser.u_Pk}/${loginUser.u_profile}"/>
+					</c:otherwise>
+				</c:choose>
+			<img src="/resources/image/${src}" alt="프로필 이미지">
 			</div>
 			<div class="menu">
 				<h3>
 					${loginUser.u_Nm}<br />
 				</h3>
 				<ul>
-					<li><i class="fas fa-user-alt"></i><a href="#">My profile</a></li>
-					<li><i class="far fa-edit"></i><a href="#">Edit profile</a></li>
-					<li><i class="fas fa-cog"></i><a href="#">Setting</a></li>
+					<li><i class="fas fa-user-alt"></i><a href="/main/profileEdit">My profile</a></li>
+					<li><i class="far fa-edit"></i><a href="">Edit profile</a></li>
+					<li><i class="fas fa-cog"></i><a href="/main/likeList">Like</a></li>
 					<c:if test="${loginUser == null }">
 						<li><i class="fas fa-sign-out-alt"></i><a href="/user/login">login</a></li>
 					</c:if>
@@ -50,4 +53,3 @@
 	</div>
 </header>
 
-<script defer src="/resources/javascript/header.js"></script>

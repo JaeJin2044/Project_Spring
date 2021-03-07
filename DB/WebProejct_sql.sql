@@ -31,16 +31,27 @@ limit 0 ,20;
 
 select * from t_user;
 
-
-select A.*, B.u_Pk, B.u_Nm,B.u_profile ,C.*  from matzip A
-  left join t_comment C
-  on A.m_pk = C.m_pk
-  left join t_user B
-  on B.u_Pk = C.u_pk
-  WHERE C.c_seq = MAX(C.c_seq)      
-  order BY A.m_starPoint desc
-  LIMIT 0, 20;
-
+--  - --------------
+SELECT M.*, ifnull(R.c_content, '') AS c_content, R.u_Nm , R.u_profile, DATE_FORMAT(R.c_regDate, '%Y-%m-%d') as c_regDate
+FROM matzip M
+LEFT JOIN (
+   SELECT A.m_pk, A.c_content, C.u_Nm , C.u_profile ,A.c_regDate 
+   FROM t_comment A
+   INNER JOIN
+   (
+      SELECT m_pk, MAX(c_seq) AS c_seq
+      FROM t_comment
+      GROUP BY m_pk
+   ) B
+   ON A.m_pk = B.m_pk
+   AND A.c_seq = B.c_seq
+   LEFT JOIN t_user C
+   ON A.u_pk = C.u_pk
+) R
+ON M.m_pk = R.m_pk
+ORDER BY M.m_starpoint DESC 
+LIMIT 0, 20;
+--  ---------------
 
 select MAX(c_seq) from t_comment ;
 

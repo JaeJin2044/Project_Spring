@@ -13,6 +13,7 @@
 
 <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
+<script defer src="/resources/javascript/header.js"></script>
 <script defer src="<tiles:getAsString name="categoryJs"/>"></script>
 <script defer src="https://kit.fontawesome.com/93cf0078c1.js" crossorigin="anonymous"></script>
 </head>

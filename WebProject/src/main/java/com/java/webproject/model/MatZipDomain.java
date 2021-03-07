@@ -9,8 +9,17 @@ public class MatZipDomain extends MatZipEntity {
 	private String u_profile;
 	private String u_nm;
 	private String c_regDate;
+	private int u_pk;
 	
 	
+	public int getU_pk() {
+		return u_pk;
+	}
+
+	public void setU_pk(int u_pk) {
+		this.u_pk = u_pk;
+	}
+
 	public String getU_profile() {
 		return u_profile;
 	}

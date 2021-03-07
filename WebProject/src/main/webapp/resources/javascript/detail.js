@@ -27,15 +27,24 @@ function selCmtList(){
 		
 		myJson.forEach(function(item){
 			
+
 			var loginUserPk = parseInt(data.dataset.loginuserpk)
-			if(loginUserPk === item.u_pk) {
-			//수정 할 내용 빈칸제거 ..
 			var content = item.c_content.replace(/\s/gi, "");
+			var profile = "";
+			
+			if(item.u_profile == null){
+				profile = 'profile.jpg';
+			}else{
+				profile = `user/${item.u_pk}/${item.u_profile}`;
+			}
+			
+			if(loginUserPk === item.u_pk) {
+	
 			cmtListElem.innerHTML += `
 			<li class="review-item">
 				<div class="review-item__items">
 					<div class="review-user">
-						<img src="${item.u_profile}" alt="" />
+						<img src="/resources/image/${profile}" alt="" />
 						<div>${item.writerNm}</div>
 					</div>
 					<div class="review-content">
@@ -53,12 +62,13 @@ function selCmtList(){
 				</div>
 			</li>
 		`;
-		}else{
+		} 
+		else{
 			cmtListElem.innerHTML += `
 			<li class="review-item">
 				<div class="review-item__items">
 					<div class="review-user">
-						<img src="${item.u_profile}" alt="" />
+						<img src="/resources/image/${profile}" alt="" />
 						<div>${item.writerNm}</div>
 					</div>
 					<div class="review-content">
@@ -74,8 +84,9 @@ function selCmtList(){
 				</div>
 			</li>
 		`;
+		}
 	}
-	}
+	
 )}
 
 }
