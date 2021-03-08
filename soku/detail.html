@@ -8,7 +8,6 @@
 		<link rel="stylesheet" href="./css/main.css" />
 		<script defer src="./css/main.css"></script>
 		<script defer src="./js/detail.js"></script>
-		<script defer src="./js/main.js"></script>
 		<script defer src="https://kit.fontawesome.com/93cf0078c1.js" crossorigin="anonymous"></script>
 	</head>
 	<body>
@@ -23,7 +22,9 @@
 			</form>
 			<div class="nav-right">
 				<div class="nav-right__item"><a href="#">link1</a></div>
-				<div class="nav-right__item"><a href="#">link2</a></div>
+				<div class="nav-right__item">
+					<button onclick="openChatModal()">link2</button>
+				</div>
 				<div class="action">
 					<div class="profile" onclick="toggleMenu()">
 						<img src="./image/thunder.png" alt="프로필이미지" />
@@ -229,7 +230,7 @@
 			</div>
 
 			<!-- 리뷰 수정 모달  -->
-			<div id="modal" class="">
+			<div id="modal" class="hide">
 				<div class="modal-content">
 					<form class="modReview-modal" action="">
 						<div id="modClose"><i class="fas fa-times"></i></div>

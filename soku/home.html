@@ -7,7 +7,6 @@
 		<title>main page</title>
 		<link rel="stylesheet" href="./css/main.css" />
 		<script defer src="./js/main.js"></script>
-		<script defer src="./js/slide.js"></script>
 		<script defer src="https://kit.fontawesome.com/93cf0078c1.js" crossorigin="anonymous"></script>
 	</head>
 	<body>
@@ -22,7 +21,7 @@
 			</form>
 			<div class="nav-right">
 				<div class="nav-right__item"><a href="#">link1</a></div>
-				<div class="nav-right__item"><a href="#">link2</a></div>
+				<div class="nav-right__item"><button onclick="openChatModal()">Chat</button></div>
 				<div class="action">
 					<div class="profile" onclick="toggleMenu()">
 						<img src="./image/thunder.png" alt="프로필이미지" />
@@ -116,6 +115,17 @@
 							</li>
 						</div>
 					</div>
+					<div class="chat-btn">
+						<button onclick="openChatModal()">채팅시작</button>
+					</div>
+					<div class="chat-modal-wrap">
+						<div class="chat-modal">
+							<div class="chat">
+								<button class="chat-close" onclick="closeChatModal()"><i class="fas fa-times"></i></button>
+							</div>
+						</div>
+					</div>
+
 					<div class="paging">
 						<a href="">1</a>
 						<a href="">2</a>
