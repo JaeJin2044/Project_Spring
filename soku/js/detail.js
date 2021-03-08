@@ -220,6 +220,7 @@ function reviewModalHandle() {
 	review.classList.toggle("review-open");
 }
 
+const chat = document.querySelector(".chat");
 //chat-modal
 function openChatModal() {
 	chat.classList.toggle("open-chat");

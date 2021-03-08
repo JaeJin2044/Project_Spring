@@ -6,8 +6,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>detail page</title>
 		<link rel="stylesheet" href="./css/main.css" />
-		<script defer src="./js/main.js"></script>
+		<script defer src="./css/main.css"></script>
 		<script defer src="./js/detail.js"></script>
+		<script defer src="./js/main.js"></script>
 		<script defer src="https://kit.fontawesome.com/93cf0078c1.js" crossorigin="anonymous"></script>
 	</head>
 	<body>
@@ -63,12 +64,21 @@
 							<span class="restaurant_name">${detail_item.m_title}</span>
 							<span class="rating">${detail_item.m_starPoint}</span>
 						</div>
-						<c:if test="${loginUser != null}">
-							<a class="wrate-review" href="#" onclick="reviewModalHandle()">
-								<i class="fas fa-pencil-alt"></i>
-								<div>리뷰쓰기</div>
+						<div class="review-btn-wrap">
+							<a class="review-btn">
+								<c:if test="${loginUser != null}">
+									<a class="wrate-review" href="#" onclick="reviewModalHandle()">
+										<i class="fas fa-pencil-alt"></i>
+										<div>리뷰쓰기</div>
+									</a>
+								</c:if>
 							</a>
-						</c:if>
+							<!-- 찜하기버튼 추가 -->
+							<a class="like-btn" href="#">
+								<i class="fas fa-shopping-basket"></i>
+								<div>찜하기</div>
+							</a>
+						</div>
 					</div>
 					<div class="cnt">
 						<span class="view_cnt"><i class="fas fa-eye"></i>${detail_item.m_viewCount}</span>
@@ -142,16 +152,7 @@
 										<p>
 											L Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui facilis quam consequatur eum
 											accusantium impedit commodi ab similique vitae facere, natus eveniet, iusto sed ipsam eligendi
-											aliquam. Voluptate, rerum officiis. L Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui
-											facilis quam consequatur eum accusantium impedit commodi ab similique vitae facere, natus eveniet,
-											iusto sed ipsam eligendi aliquam. Voluptate, rerum officiis. L Lorem ipsum dolor sit amet
-											consectetur adipisicing elit. Qui facilis quam consequatur eum accusantium impedit commodi ab
-											similique vitae facere, natus eveniet, iusto sed ipsam eligendi aliquam. Voluptate, rerum
-											officiis. L Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui facilis quam consequatur
-											eum accusantium impedit commodi ab similique vitae facere, natus eveniet, iusto sed ipsam eligendi
-											aliquam. Voluptate, rerum officiis. L Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui
-											facilis quam consequatur eum accusantium impedit commodi ab similique vitae facere, natus eveniet,
-											iusto sed ipsam eligendi aliquam. Voluptate, rerum officiis.
+											aliquam. Vol
 										</p>
 									</div>
 									<div class="review-icon">
@@ -228,11 +229,13 @@
 			</div>
 
 			<!-- 리뷰 수정 모달  -->
-			<div id="modal" class="hide">
+			<div id="modal" class="">
 				<div class="modal-content">
-					<span id="modClose"><i class="fas fa-times"></i></span>
-					<textarea type="text" id="modCtnt" class="modCtnt"></textarea>
-					<input type="button" id="modBtn" class="modBtn" value="수정" />
+					<form class="modReview-modal" action="">
+						<div id="modClose"><i class="fas fa-times"></i></div>
+						<textarea type="text" id="modCtnt" placeholder="내용" autocomplete="off"></textarea>
+						<input type="button" id="modBtn" value="수정" />
+					</form>
 				</div>
 			</div>
 		</section>
