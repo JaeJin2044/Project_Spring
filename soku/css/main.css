@@ -1,8 +1,8 @@
 @import "./reset.css";
 @import "./header.css";
 @import "./detail.css";
-@import "./slider.css";
-@import "./chat-modal.css";
+/* @import "./slider.css"; */
+/* @import "./chat-modal.css"; */
 @import url("https://fonts.googleapis.com/css2?family=Exo:wght@100;200;300;400;500;600;700&family=Kirang+Haerang&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cute+Font&display=swap");
 
@@ -13,7 +13,6 @@
 
 html,
 body {
-	font-family: "Cute Font", cursive;
 	position: relative;
 }
 
@@ -21,6 +20,7 @@ main {
 	height: 100%;
 	top: 100px;
 	z-index: 0;
+	position: relative;
 }
 
 .content-category {
