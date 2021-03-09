@@ -99,7 +99,7 @@ public class CrawlingUtils {
 				}
 				
 				matzipEntity.setM_location(location);
-				matzipEntity.setM_category("한식");	
+//				matzipEntity.setM_category("한식");	
 				
 				System.out.println("title ="+title);
 				System.out.println("viewDetail ="+viewDetail);

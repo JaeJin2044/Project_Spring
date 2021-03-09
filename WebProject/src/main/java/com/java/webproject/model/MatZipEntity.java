@@ -4,12 +4,14 @@ import org.apache.ibatis.type.Alias;
 
 @Alias("MatZipEntity")
 public class MatZipEntity {
+	
 	private int m_pk;
 	private String m_title;
 	private String m_viewDetail;
 	private float m_starPoint;
-	private String m_category;
+	private int m_category;
 	private String m_location;
+	
 	private String m_img1;
 	private String m_img2;
 	private String m_img3;
@@ -24,6 +26,13 @@ public class MatZipEntity {
 	private int m_viewCount;
 	private int m_commentCount;
 	
+	
+	public int getM_category() {
+		return m_category;
+	}
+	public void setM_category(int m_category) {
+		this.m_category = m_category;
+	}
 	public int getM_commentCount() {
 		return m_commentCount;
 	}
@@ -62,12 +71,7 @@ public class MatZipEntity {
 	public void setM_starPoint(float m_starPoint) {
 		this.m_starPoint = m_starPoint;
 	}
-	public String getM_category() {
-		return m_category;
-	}
-	public void setM_category(String m_category) {
-		this.m_category = m_category;
-	}
+	
 	public String getM_location() {
 		return m_location;
 	}

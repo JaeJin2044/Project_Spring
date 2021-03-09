@@ -23,12 +23,12 @@
 		</div>
 
 		<div class="content-category">
-			<div class="content-category__item"><a href="#">한식</a></div>
-			<div class="content-category__item"><a href="#">양식</a></div>
-			<div class="content-category__item"><a href="#">중식</a></div>
-			<div class="content-category__item"><a href="#">일식</a></div>
-			<div class="content-category__item"><a href="#">분식</a></div>
-			<div class="content-category__item"><a href="#">카페/디저트</a></div>
+			<div class="content-category__item"><a href="/main/home?&searchText=${page.searchText}&page=${page.page}&category=1">한식</a></div>
+			<div class="content-category__item"><a href="/main/home?&searchText=${page.searchText}&page=${page.page}&category=2">양식</a></div>
+			<div class="content-category__item"><a href="/main/home?&searchText=${page.searchText}&page=${page.page}&category=3">중식</a></div>
+			<div class="content-category__item"><a href="/main/home?&searchText=${page.searchText}&page=${page.page}&category=4">일식</a></div>
+			<div class="content-category__item"><a href="/main/home?&searchText=${page.searchText}&page=${page.page}&category=5">분식</a></div>
+			<div class="content-category__item"><a href="/main/home?&searchText=${page.searchText}&page=${page.page}&category=6">카페/디저트</a></div>
 		</div>
 		<div class="content">
 			<c:forEach var="item" items="${list}">
@@ -88,11 +88,18 @@
 				</div>
 			</c:forEach>
 		</div>
-		
 		<div style="height: 40px; text-align: center">
-			<c:forEach  var = "i" begin="1" end = "${page.totalPage}">
-					<a href="/main/home?&searchText=${page.searchText}&page=${i}"><span style="font-size: 40px">${i}</span></a>
-			</c:forEach>
-		</div>
+	         <c:if test="${page.prev}">
+	            <li><a href = "/main/home?&searchText=${page.searchText}&page=${page.page -1}&category=${page.category}">이전</a></li>
+	         </c:if>
+	         <c:if test="${page.endPage !=0}">
+	         <c:forEach  var = "i" begin="${page.startPage}" end = "${page.endPage}">
+	               <a href="/main/home?&searchText=${page.searchText}&page=${i}&category=${page.category}"><span style="font-size: 40px">${i}</span></a>
+	         </c:forEach>
+	         </c:if>
+	         <c:if test="${page.next}">
+	            <li><a href = "/main/home?&searchText=${page.searchText}&page=${page.page + 1}&category=${page.category}">다음</a></li>
+	         </c:if>
+      </div>
 	</div>
 </main>

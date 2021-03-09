@@ -32,6 +32,18 @@
 			or m_category like '%' #{searchText} '%'
 			or
 			m_location like '%' #{searchText} '%'
+		</if>
+		<if test="searchText != '' and category > 0">
+			where m_title like '%' #{searchText} '%'
+			or m_viewDetail
+			like '%' #{searchText} '%'
+			or m_category like '%' #{searchText} '%'
+			or
+			m_location like '%' #{searchText} '%'
+			and category = #{category}
+		</if>
+		<if test = "category > 0">
+			where category = #{category}		
 		</if>		
 		order by M.m_starPoint desc
 		limit #{sIdx}, #{rowCnt}

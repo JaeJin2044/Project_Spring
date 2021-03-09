@@ -7,12 +7,10 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.jsoup.examples.ListLinks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -48,22 +46,16 @@ public class MainController {
 	@GetMapping("/home")
 	public void getList(Model model,
 			@RequestParam(value = "searchText", required = false, defaultValue = "") String searchText,
-			@RequestParam(value = "page", defaultValue = "1", required = false) int page) {
-		MatZipDTO p = new MatZipDTO();
-		p.setPage(page);
-		p.setRowCnt(10);
-		int rowCnt = p.getRowCnt();
-		p.setsIdx((page - 1) * rowCnt);
-		p.setSearchText(searchText);
+			@RequestParam(value = "page", defaultValue = "1", required = false) int page,
+			@RequestParam(value = "category", defaultValue = "0", required = false) int category) {
+
+		MatZipDTO p = new MatZipDTO(searchText, page, 10, category);
 		p.setMaxPageNum(service.selMaxPageNum(p));
-		p.setTotalPage(p.getMaxPageNum() / rowCnt);
-		int totalPage = p.getTotalPage();
+		p.dataCalc();
+
 		model.addAttribute("page", p);
 		List<MatZipDomain> list = service.matZipSearch(p);
 
-		System.out.println("페이지수 : " + totalPage);
-		System.out.println("검색어 : " + p.getSearchText());
-		System.out.println("결과값의총갯수:" + p.getMaxPageNum());
 		model.addAttribute(Const.KEY_LIST, list);
 	}
 
@@ -112,7 +104,7 @@ public class MainController {
 	}
 
 	@GetMapping("/insLike")
-	public String insLike(MatZipDomain p) {
+	public String insLike(MatZipDomain p, HttpServletResponse response) throws IOException {
 
 		System.out.println("insLike 겟 매핑 ");
 
@@ -120,23 +112,27 @@ public class MainController {
 		if (result == 1) {
 			return "redirect:/main/likeList";
 		} else {
+			return "redirect:/main/insLikeError";
+		}
+
+	}
+
+	@GetMapping("/delLike")
+	public String delLike(LikeEntity p) {
+
+		int result = service.delLike(p);
+
+		if (result == 1) {
+			return "redirect:/main/likeList";
+		} else {
 			return "redirect:/main/home";
 		}
 
 	}
-	
-	@GetMapping("/delLike")
-	public String delLike(LikeEntity p) {
-		
-		int result = service.delLike(p);
-		
-		if(result ==1) {
-			return "redirect:/main/likeList";
-		}else {
-			return "redirect:/main/home";
-		}
-		
+
+	@GetMapping("/insLikeError")
+	public void insLikeError() {
+
 	}
-	
 
 }

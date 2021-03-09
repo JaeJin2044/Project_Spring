@@ -5,6 +5,8 @@ var cmtListElem = document.querySelector('#cmtList');
 
 
 var listCount = 10;
+var category = 0;
+
 function selCmtList(){
 	
 	
@@ -54,10 +56,12 @@ function selCmtList(){
 						</p>
 					</div>
 					<div class="review-icon">
-						<i class="far fa-laugh-squint"></i>
-						<div>좋았다</div>
-						<div><button onclick=delAjax(${item.m_pk},${item.c_seq})>삭제</button></div>
-						<div><button onclick=editMod(${item.m_pk},'${content}',${item.c_seq})>수정</button></div>
+						<div>
+							<button onclick=delAjax(${item.m_pk},${item.c_seq})><i class="fas fa-trash-alt"></i></button>
+						</div>
+						<div>
+							<button onclick=editMod(${item.m_pk},'${content}',${item.c_seq})><i class="fas fa-pencil-alt"></i></button>
+						</div>
 					</div>
 				</div>
 			</li>
@@ -77,10 +81,7 @@ function selCmtList(){
 							${item.c_content}
 						</p>
 					</div>
-					<div class="review-icon">
-						<i class="far fa-laugh-squint"></i>
-						<div>좋았다</div>
-				</div>
+					<div class="review-icon" style="width:20px"></div>
 				</div>
 			</li>
 		`;
@@ -271,21 +272,26 @@ function modalHandle(param) {
 	imgElem.src = param;
 	modal.classList.toggle("modal-open");
 }
+
+
+//chat-modal
+const chat = document.querySelector(".chat");
+function openChatModal() {
+	chat.classList.toggle("open-chat");
+}
+function closeChatModal() {
+	chat.classList.remove("open-chat");
+}
+
+
 window.addEventListener("click", function (e) {
 	e.target === modal ? modal.classList.remove("modal-open") : false;
-});
-
-//map-modal
-function mapModalHandle() {
-	mapModal.classList.toggle("map-modal__open");
-}
-window.addEventListener("click", function (e) {
-	e.target === mapModalImg ? mapModal.classList.remove("map-modal__open") : false;
 });
 
 window.addEventListener("click", function (e) {
 	e.target === review ? review.classList.remove("review-open") : false;
 });
+
 
 //review-modal
 function reviewModalHandle() {
