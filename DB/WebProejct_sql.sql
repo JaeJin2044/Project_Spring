@@ -35,6 +35,12 @@ select * from matzip
 order by m_starPoint desc
 limit 0 ,20;
 
+
+update matzip 
+set m_category = 3
+where m_pk between 40 and 100;
+
+
 select * from t_user;
 
 --  - --------------

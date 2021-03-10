@@ -34,9 +34,40 @@
 	<!-- 비밀번호 변경  -->
 	<update id="changePw">
 		update t_user
-		set u_Pass = #{u_Pass}
+		set u_Pass = #{u_Pass} , 
+			u_Salt = #{u_Salt}
 		where u_Id = #{u_Id}
 	</update>
+	
+	<!-- 회원 정보수정시 중복 체크 -->
+   <select id="mailCheck" resultType="int">
+      select count(*) from t_user
+      where u_Mail = #{u_Mail}
+   </select>
+   
+   
+   <select id="phoneCheck" resultType="int">
+      select count(*) from t_user
+      where u_Phone = #{u_Phone}
+   </select>
+	
+	
+	<!--  회원정보 수정  -->
+	<update id="editUser">
+		update t_user
+		set u_Phone = #{u_Phone},
+		u_Mail = #{u_Mail}
+		where u_Pk = #{u_Pk}
+	</update>
+	
+	
+	<!-- 정보수정 중복 체크   -->
+	<select id="selUser" resultType="UserEntity">
+		select * from t_user
+		where u_Pk = #{u_Pk}
+	</select>
+	
+	
 	
 
 

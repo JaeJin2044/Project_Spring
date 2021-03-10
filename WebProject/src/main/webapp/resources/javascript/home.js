@@ -32,6 +32,10 @@ nextBtn.addEventListener("click", function () {
 	}
 });
 
+var likeBtnElem = document.querySelector('#likeBtn');
+
+
+
 
 
 

@@ -15,16 +15,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.java.webproject.Const;
 import com.java.webproject.common.PageUtils;
 import com.java.webproject.common.SecurityUtils;
+import com.java.webproject.model.CommentDomain;
 import com.java.webproject.model.LikeEntity;
 import com.java.webproject.model.MatZipDTO;
 import com.java.webproject.model.MatZipDomain;
 import com.java.webproject.model.MatZipEntity;
 import com.java.webproject.model.UserEntity;
+
 
 @Controller
 @RequestMapping("/main")
@@ -46,12 +49,23 @@ public class MainController {
 	@GetMapping("/home")
 	public void getList(Model model,
 			@RequestParam(value = "searchText", required = false, defaultValue = "") String searchText,
-			@RequestParam(value = "page", defaultValue = "1", required = false) int page,
-			@RequestParam(value = "category", defaultValue = "0", required = false) int category) {
+			@RequestParam(value = "page", defaultValue = "1", required = false) String page,
+			@RequestParam(value = "m_category", defaultValue = "0", required = false) int m_category) {
+		if (page == null) {
+			page = "1";
+		}
 
-		MatZipDTO p = new MatZipDTO(searchText, page, 10, category);
+		MatZipDTO p = new MatZipDTO(searchText, Integer.parseInt(page), 10, m_category);
 		p.setMaxPageNum(service.selMaxPageNum(p));
+		if (p.getMaxPageNum() % 10 != 0 && p.getStartPage() > 1) {
+			p.setCntPage((p.getMaxPageNum() / 10) + 1);
+		}
 		p.dataCalc();
+		System.out.println("==============================");
+		System.out.println("시작 페이지 :" + p.getStartPage());
+		System.out.println("표시될 끝 페이지 :" + p.getEndPage());
+		System.out.println("최종 라스트 페이지: " + p.getLastPage());
+		System.out.println("최종 게시물의 수 :" + p.getMaxPageNum());
 
 		model.addAttribute("page", p);
 		List<MatZipDomain> list = service.matZipSearch(p);
@@ -65,19 +79,21 @@ public class MainController {
 		model.addAttribute("detail_item", detail_item);
 
 	}
+	
+	//프로필창 로그인유저 체크 
+	@GetMapping("/checkProfile")
+	public String checkProfile() {
+		
+		if(sUtils.getLoginUserPk(hs)==0) {
+			return "redirect:/err/wantLogin";
+		}else {
+			return "redirect:/main/profileEdit";
+		}
+	}
+	
 
 	@GetMapping("/profileEdit")
 	public void profileEdit(Model model) throws IOException {
-
-//		if(sUtils.getLoginUserPk(hs) == 0 ) {
-//			response.setCharacterEncoding("UTF-8");
-//			response.setContentType("text/html; charset=UTF-8");
-//			PrintWriter out = response.getWriter();
-//			out.println("<script>");
-//			out.println("alert('로그인이 필요한 서비스입니다')");
-//			out.println("history.back();");
-//			out.println("</script>");
-//		}
 
 		System.out.println(sUtils.getLoginUserPk(hs));
 		UserEntity param = service.selUser();
@@ -95,24 +111,62 @@ public class MainController {
 		return service.uploadProfile(profileImg, hs);
 	}
 
-	@GetMapping("/likeList")
-	public void likeList(Model model, HttpSession hs) {
-		List<LikeEntity> data = service.likeList(hs);
-		if (data != null) {
-			model.addAttribute(Const.KEY_LIST, data);
+	
+	//좋아요 리스트(로그인 유저 구분) 
+	@GetMapping("/checkUser")
+	public String checkLike() {
+		
+		if(sUtils.getLoginUserPk(hs)==0) {
+			return "redirect:/err/wantLogin";
+		}else {
+			return "redirect:/main/likeList";
 		}
 	}
+	
+	@GetMapping("/likeList")
+	public void likeList() {
+		
+	}
+	
+	//좋아요 리스트 아작스 
+	@ResponseBody
+	@GetMapping
+	public List<LikeEntity> list(Model model, HttpSession hs, @RequestParam("listCount") int listCount){
+		System.out.println("여기 라이크 리스트 겟매핑");
+		System.out.println("listCount = "+listCount);
+		System.out.println(sUtils.getLoginUserPk(hs));
+		List<LikeEntity> returnValue = service.likeList(hs,listCount);	
+		return returnValue;
+	} 
+	
+	
+	//회원 삭제 
+	@GetMapping("/delUser")
+	public String profileEdit(UserEntity p) {
+		System.out.println("delUser pk = "+p.getU_Pk());
+		int result = service.delUser(p);
+		
+		if(result == 1) {
+			hs.invalidate();
+			return "redirect: /err/userDel";
+		}else {
+			return "redirect: /err/failDelUser";
+		}	
+	}
+	
 
 	@GetMapping("/insLike")
 	public String insLike(MatZipDomain p, HttpServletResponse response) throws IOException {
 
-		System.out.println("insLike 겟 매핑 ");
+		if(sUtils.getLoginUserPk(hs)==0) {
+			return "redirect:/err/wantLogin";
+		}
 
 		int result = service.insLike(p);
 		if (result == 1) {
 			return "redirect:/main/likeList";
 		} else {
-			return "redirect:/main/insLikeError";
+			return "redirect:/err/insLikeError";
 		}
 
 	}
@@ -134,5 +188,14 @@ public class MainController {
 	public void insLikeError() {
 
 	}
+	
+	//비밀번호 변경
+	@GetMapping("/passChange")
+	public void passChange() {
+		
+	}
+	
+	
+	
 
 }

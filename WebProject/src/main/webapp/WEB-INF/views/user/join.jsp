@@ -13,7 +13,6 @@
 		<form id="frm" autocomplete="off">
 				<h2>Join us</h2>
 			<div class="frm-input">
-
 				<div class="id-input">
 					<input type="text" name="u_Id" id="id" placeholder="id" autocomplete="off">
 					<input type="button" style="width:50pt; height:30pt;" id="idCheck" value="Check">
@@ -34,15 +33,12 @@
 				<div>
 					<input type="text" name="u_Addr" id="addr" autocomplete="off" placeholder="address" >
 				</div>
-				
 				<div>
 					<input type="text" name="u_Phone" id="phone" autocomplete="off" placeholder="phone" >
 				</div>
-				
 				<div>
 					<input type="email" name="u_Mail" id="mail" placeholder="mail" autocomplete="off">
 				</div>
-
 				<div>
 					<label for="gender1" class="gender_label">
 					<input type="radio" id="gender1" name="u_Gender" value="man"><span>man</span>

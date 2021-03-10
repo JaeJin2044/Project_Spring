@@ -3,43 +3,71 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 	
 	
-<main>
-<div id="container">
-	<form id="frm" autocomplete="off">
-			<h2>My profile</h2>
-		<div class="frm-input">
-		<c:choose>
-			<c:when test="${loginUser.u_profile == null}">
-				<c:set var="src" value="profile.jpg"/>
-			</c:when>		
-			<c:otherwise>
-				<c:set var="src" value="user/${loginUser.u_Pk}/${loginUser.u_profile}"/>
-			</c:otherwise>
-		</c:choose>
-		<img src="/resources/image/${src}" alt="프로필 이미지">
+<div id="container" class="conteiner">
+		<div class="myProfile">
+			<div class="slider-wrapper"></div>
+			<div class="profile-title">My Profile</div>
 		</div>
-		<div>
-			<div>프로필 이미지 업로드 : <input type="file" accept="image/*" id="profileImg"></div>
-			<div><input type="button" value="업로드" onclick="profileUpload()"> </div>
+		<div class="frm-wrapper">
+			<form action="" class="img-profile-frm">
+				<c:choose>
+				<c:when test="${loginUser.u_profile == null}">
+					<c:set var="src" value="profile.jpg" />
+				</c:when>
+				<c:otherwise>
+					<c:set var="src" value="user/${loginUser.u_Pk}/${loginUser.u_profile}" />
+				</c:otherwise>
+			</c:choose>
+			<div class="frm-img-wrap">
+				<h2>profile image</h2>
+				<div class="frm-img">
+					<label for="profileImg">
+						<img src="/resources/image/${src}" alt="프로필 이미지" />
+					</label>
+				</div>
+			</div>
+			<div class="uploadImg">
+				<div class="upload-item">
+					<label for="profileImg">파일선택</label>
+					<input type="file" accept="image/*" id="profileImg" />
+				</div>
+				<div class="upload-btn">
+					<input type="button" value="업로드" onclick="profileUpload()" />
+				</div>
+			</div>
+		</form>
+		<div class="mod-profile-frm">
+			<h2>Edit profile</h2>
+			<div class="frm-data">
+				<input type="hidden" name="u_Pk" id="u_Pk" value="${loginUser.u_Pk}">
+				<input type="text" name="u_Nm" id="name" value="${loginUser.u_Nm}" readonly />
+				<input type="text" name="u_Phone" id="phone" placeholder="${loginUser.u_Phone eq null ? '전화번호' : loginUser.u_Phone}" autocomplete="off">
+				<input type="email" name="u_Mail" id="mail" placeholder="${loginUser.u_Mail eq null ? '이메일' : loginUser.u_Mail}" autocomplete="off">
+			</div>
+			<div class="frm-data-submit">
+				<input type="button" id="editUserBtn" value="수정" />
+			</div>
 		</div>
-		<div class="id-input">
-			<input type="text" name="u_Id" id="id" value= "${loginUser.u_Id}" autocomplete="off" readonly>
-		</div>
-		<div>
-			<input type="text" name="u_Nm" id="name" placeholder="${loginUser.u_Nm}" autocomplete="off" >
-		</div>
-
-		<div>
-			<input type="text" name="u_Phone" id="phone" placeholder="${loginUser.u_Phone}" placeholder="phone" >
-		</div>
-		
-		<div>
-			<input type="email" name="u_Mail" id="mail" placeholder="${loginUser.u_Mail}" autocomplete="off">
-		</div>
-		<div>
-			<input type="button" id="joinBtn" disabled="disabled" value="수정">
-		</div>
-	</form>
+	</div>
+	
+	<div class="frm-data-outBtn">
+		<button class="openBtn">PW변경</button>
+		<input type="button" onclick="delUserBtn(${loginUser.u_Pk})" value="회원탈퇴" />
+	</div>
 </div>
-</main>
-<script src="/resources/javascript/profileEdit.js"></script>
+<div class="modal hidden">
+	<div class="bg"></div>
+	<div class="modalBox">
+		<div class="modalBox-wrap">
+			<p>* 비밀번호를 정확히 입력하고 [변경]을 눌러주세요 *</p>
+			<div class="modalBox-input">
+				<div id="data" data-loginusernm="${sessionScope.loginUser.u_Id}"></div>
+	    		<input type="password" placeholder="신규 비밀번호" id="pass">
+    			<input type="password" placeholder="비밀번호 재확인" id="passCheck">
+
+			</div>
+			<button class="chgBtn" id="passChangeBtn">변경</button>
+		</div>
+	</div>
+</div>
+

@@ -104,11 +104,10 @@ public class OauthController {
 
 		//중복된 이메일
 		if(result == -1 ) {
-			model.addAttribute("err",-1);
-			return "redirect:/user/err";
+			return "redirect:/err/sameEmail";
 		}else if(result == 0) { // 중복된 연락처 
-			model.addAttribute("err",0);
-			return "redirect: /user/err";
+			
+			return "redirect: /err/samePhone";
 		}
 		
 		return "redirect:/main/home";

@@ -1,0 +1,182 @@
+@import url("https://fonts.googleapis.com/css2?family=Cute+Font&display=swap");
+
+* {
+	padding: 0;
+	margin: 0;
+	font-family: "Cute Font", cursive;
+}
+
+html,
+body {
+	width: 100vw;
+	height: 100vh;
+}
+
+main{
+	top : 100px;
+	z-index: 0;
+} 
+
+.slider-wrapper {
+	height: 150px;
+	position: relative;
+	background-image: url("/resources/image/hg2.jpg");
+}
+
+
+.container {
+	position:relative;
+	top : 50px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.likeList {
+	margin: 40px;
+	color: #f2ab39;
+}
+
+.list-Title{
+	width:700px;
+	display: flex;
+	justify-content: flex-start;
+	margin-bottom: 20px;
+	color:#f2ab39;
+	font-size : 30px;
+	padding: 20px;
+}
+
+.content-list {
+	width: 700px;
+	background: white;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	border-radius: 40px;
+	padding: 20px;
+	box-shadow: 5px 5px 10px #bcbcbc;
+	margin-bottom: 20px;
+}
+
+.content-list img {
+	max-width: 100px;
+	max-height: 100px;
+	border-radius: 30px;
+	margin-right: 20px;
+}
+
+.text_wrap {
+	width: 80%;
+	height: 100px;
+	display: flex;
+	align-items: flex-start;
+}
+
+.text_title {
+	display: flex;
+	font-size: 28px;
+	color: #aeaeae;
+	margin-bottom: 5px;
+}
+
+.rating__score {
+	display: flex;
+	align-items: center;
+	font-size: 23px;
+	color: #aeaeae;
+}
+.rating__score i {
+	color: #f2ab39;
+	font-size: 20px;
+}
+
+.text_title a {
+	display: flex;
+	align-items: center;
+	color: #f2ab39;
+	text-decoration: none;
+	margin-right: 10px;
+}
+.text_title a:focus {
+	outline: none;
+}
+
+.text_description {
+	font-size: 22px;
+	color: #aeaeae;
+	margin-bottom: 5px;
+}
+
+.content-list__cnt {
+	font-size: 18px;
+	display: flex;
+	align-items: center;
+	color: #bcbcbc;
+}
+
+.view_cnt {
+	display: flex;
+	align-items: center;
+	margin-right: 5px;
+}
+.view_cnt i {
+	margin-right: 3px;
+}
+
+.review_cnt {
+	display: flex;
+	align-items: center;
+}
+
+.review_cnt i {
+	margin-right: 3px;
+}
+
+.delBtn {
+	cursor: pointer;
+	border: none;
+	background: transparent;
+	font-size: 20px;
+	color: #f2ab39;
+	transition: all 0.5s ease-in-out;
+}
+
+.delBtn:hover {
+	color: #69491a;
+}
+
+.delBtn:focus {
+	outline: none;
+}
+
+/* 더보기 css */
+
+.more-like-list {
+	margin-top: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	top: 20px;
+	padding:30px;
+}
+
+.more-like-list button {
+	font-size: 25px;
+	border: none;
+	cursor: pointer;
+	background: none;
+	color: #919191;
+	transition: all 0.5s ease-in-out;
+}
+
+.more-like-list button:hover {
+	color: #69491a;
+}
+
+.more-like-list button:focus {
+	outline: none;
+}
+

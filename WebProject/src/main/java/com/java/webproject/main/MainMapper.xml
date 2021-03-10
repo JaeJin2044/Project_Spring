@@ -33,17 +33,17 @@
 			or
 			m_location like '%' #{searchText} '%'
 		</if>
-		<if test="searchText != '' and category > 0">
+		<if test="searchText != '' and m_category > 0">
 			where m_title like '%' #{searchText} '%'
 			or m_viewDetail
 			like '%' #{searchText} '%'
 			or m_category like '%' #{searchText} '%'
 			or
 			m_location like '%' #{searchText} '%'
-			and category = #{category}
+			and m_category = #{m_category}
 		</if>
-		<if test = "category > 0">
-			where category = #{category}		
+		<if test = "m_category > 0">
+			where m_category = #{m_category}		
 		</if>		
 		order by M.m_starPoint desc
 		limit #{sIdx}, #{rowCnt}
@@ -59,6 +59,18 @@
 			or
 			m_location like '%' #{searchText} '%'
 		</if>
+		<if test="searchText != '' and m_category > 0">
+			where m_title like '%' #{searchText} '%'
+			or m_viewDetail
+			like '%' #{searchText} '%'
+			or m_category like '%' #{searchText} '%'
+			or
+			m_location like '%' #{searchText} '%'
+			and m_category = #{m_category}
+		</if>
+		<if test = "m_category > 0">
+			where m_category = #{m_category}		
+		</if>		
 	</select>
 	
 	<select id="viewDetail" resultType="MatZipEntity">
@@ -93,7 +105,8 @@
 	<!--  좋아요 리스트  -->
 	<select id="likeList" resultType="LikeEntity">
 		select * from t_like
-		where u_pk = #{u_pk}
+		where u_pk = #{u_pk} 
+		limit 0, #{listCount}
 	</select>
 	
 	
@@ -123,6 +136,12 @@
 		delete from t_like
 		where l_pk = #{l_pk}
 	</delete>	
+	
+	<!-- 회원 탈퇴  -->
+	<delete id="delUser">
+		delete from t_user
+		where u_Pk = #{u_Pk}
+	</delete>
 	
 
 

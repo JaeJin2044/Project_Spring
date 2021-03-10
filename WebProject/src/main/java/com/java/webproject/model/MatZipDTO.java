@@ -2,7 +2,7 @@ package com.java.webproject.model;
 
 public class MatZipDTO {
 	private int m_pk;
-	private int category;
+	private int m_category;
 	private int page;
 	private int startPage;
 	private int endPage;
@@ -18,12 +18,14 @@ public class MatZipDTO {
 	private int lastPage;
 	private boolean prev;
 	private boolean next;
-
+	
+	
+	
 	public MatZipDTO() {
 	}
 
-	public MatZipDTO(String searchText, int page, int rowCnt, int category) {
-		setCategory(category);
+	public MatZipDTO(String searchText, int page, int rowCnt, int m_category) {
+		setM_category(m_category);
 		setSearchText(searchText);
 		setPage(page);
 		setRowCnt(rowCnt);
@@ -48,19 +50,23 @@ public class MatZipDTO {
      }
      // 시작, 끝 페이지 계산
      public void calcStartEndPage(int page, int cntPage) {
-        setEndPage(((int)Math.ceil((double)page / (double)cntPage) * cntPage));
+        setEndPage(((int) Math.ceil((double) page / (double) cntPage) * cntPage));
+        
         if (getLastPage() < getEndPage()) {
            setEndPage(getLastPage());
         }
-        setStartPage(getEndPage() - cntPage + 1);
-        if (getStartPage() < 1) {
-           setStartPage(1);
-        }
         
+        if (getLastPage() < 10) { 
+           setStartPage(1);
+        } else if(getEndPage() % 10 != 0) {
+           setStartPage(getPage());
+        } else {
+           setStartPage(getEndPage() - cntPage + 1);	
+        }
+
         prev = getStartPage() == 1 ? false : true;
         next = getEndPage() * getRowCnt() >= getMaxPageNum() ? false : true;
      }
-     
      public void calcStartEnd(int page, int rowCnt) {
         setEnd(page * rowCnt);
         setStart(getEnd() - rowCnt + 1);
@@ -163,12 +169,14 @@ public class MatZipDTO {
 		this.m_pk = m_pk;
 	}
 
-	public int getCategory() {
-		return category;
+	
+
+	public int getM_category() {
+		return m_category;
 	}
 
-	public void setCategory(int category) {
-		this.category = category;
+	public void setM_category(int m_category) {
+		this.m_category = m_category;
 	}
 
 	public int getPage() {

@@ -2,6 +2,8 @@ package com.java.webproject.main;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.java.webproject.model.LikeEntity;
 import com.java.webproject.model.MatZipDTO;
 import com.java.webproject.model.MatZipDomain;
@@ -25,7 +27,7 @@ public interface MainMapper {
 	int updUser(UserEntity p);
 	
 	//좋아요 리스트
-	List<LikeEntity> likeList(int u_pk);
+	List<LikeEntity> likeList(@Param("u_pk")int u_pk, @Param("listCount")int listCount);
 	
 	//좋아요 추가 
 	int  insLike(MatZipDomain p);
@@ -37,6 +39,9 @@ public interface MainMapper {
 	LikeEntity selLike(MatZipDomain p);
 	//좋아요 리스트 삭제
 	int delLike(LikeEntity p);
+	
+	//회원 탈퇴 
+	int delUser(UserEntity p);
 	
 	
 }

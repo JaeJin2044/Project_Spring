@@ -1,16 +1,38 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<main>
+/**
+ * 
+ */
 
-<div class="slider-wrapper" ></div>
-	<div id="container" class="container">
-		<div class="list-Title"><h1>Like List</h1></div>
-		<div id="selLikeList" >
-		
-		
-		</div>
-		<%-- <c:forEach var="item" items="${list}">
+
+function delLikeList(l_pk){
+		if(confirm('정말 삭제하시겠습니까?')){
+			location.href= "/main/delLike?l_pk="+l_pk;
+		}else{
+			location.href="/main/likeList";
+	}
+}
+
+
+
+var listCount = 5;
+var selLikeListElem = document.querySelector('#selLikeList')
+function selLikeList(){
+	fetch(`/main?listCount=${listCount}`)
+	.then(res => res.json())
+	.then(myJson => {
+		clearView()
+		createView(myJson)
+	})
+	
+	function clearView(){
+		selLikeListElem.innerHTML = ''
+	}
+	
+	function createView(myJson){
+		if(myJson.length === 0){
+			return 
+		}
+		myJson.forEach(function(item){
+			selLikeListElem.innerHTML += `
 			<div class="content-list">
       	 			 <img class="content-list__img" src="${item.m_img1}" alt="" />
 			<div class="text_wrap">
@@ -34,23 +56,29 @@
           </button>
 			</div>
 			<a href="/main/delLike?l_pk=${item.l_pk}"></a>
-		</c:forEach>	 --%>
-	</div> 
-	<div class="more-like-list">
-        <button id="moreList">더보기</button>
-     </div>
-</main>
+		`;
+		}) 
+	}
+	
+}
+
+
+selLikeList();
 
 
 
 
 
+// 더보기 버튼 
+var moreListElem = document.querySelector('#moreList');
+if(moreListElem){
+	function moreList(){
+		listCount += 5;
+		selLikeList();
+	}
+	moreListElem.addEventListener('click',moreList);
+}
 
 
 
 
-
-
-
-    
-   

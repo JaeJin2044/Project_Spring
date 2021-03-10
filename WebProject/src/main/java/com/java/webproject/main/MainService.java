@@ -99,13 +99,14 @@ public class MainService {
 	}
 	
 	//좋아요 리스트 
-	public List<LikeEntity> likeList(HttpSession hs) {
+	public List<LikeEntity> likeList(HttpSession hs,int listCount) {
 		if(sUtils.getLoginUserPk(hs) == 0) {
 			System.out.println("로그인이 필요합니다.");
 			return null;
 		}
-		
-		return mapper.likeList(sUtils.getLoginUserPk(hs));
+		System.out.println("서비스 loginPk = "+sUtils.getLoginUserPk(hs));
+		System.out.println("서비스 리스트 카운트 = "+listCount);
+		return mapper.likeList(sUtils.getLoginUserPk(hs),listCount);
 	}
 	
 	public int insLike(MatZipDomain p) {
@@ -137,6 +138,11 @@ public class MainService {
 			System.out.println("삭제 실패 ");
 			return 0;
 		}
+	}
+	
+	//회원 탈퇴 
+	public int delUser(UserEntity p ) {
+		return mapper.delUser(p);
 	}
 	
 	

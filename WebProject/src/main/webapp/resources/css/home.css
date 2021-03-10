@@ -1,24 +1,30 @@
-@import "slider.css";
+@import "reset.css";
+@import "header.css";
+/* @import "./slider.css"; */
+/* @import "./chat-modal.css"; */
 @import url("https://fonts.googleapis.com/css2?family=Exo:wght@100;200;300;400;500;600;700&family=Kirang+Haerang&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cute+Font&display=swap");
 
 * {
 	box-sizing: border-box;
 	list-style: none;
-	
-}
-html , body{
-	font-family: "Cute Font",cursive;
-	font-size: 100%;
-	vertical-align: baseline;
 }
 
+html,
+body {
+	position: relative;
+}
 
 main {
 	height: 100%;
-	position: relative;
 	top: 100px;
 	z-index: 0;
+}
+
+.slider-wrapper {
+	height: 150px;
+	position: relative;
+	background-image: url("/resources/image/hg2.jpg");
 }
 
 .content-category {
@@ -44,6 +50,8 @@ main {
 }
 
 .container {
+	position: relative;
+	top: 0;
 	width: 100%;
 	display: flex;
 	flex-direction: column;
@@ -60,6 +68,7 @@ main {
 
 .content-list {
 	width: 960px;
+	max-height: 300px;
 	display: flex;
 	align-items: center;
 	padding: 25px;
@@ -75,9 +84,9 @@ main {
 }
 
 .content-list__img {
-	width: 200px;
-	height: 200px;
-	border-radius: 40px;
+	width: 220px;
+	height: 220px;
+	border-radius: 20px;
 }
 
 .content-list__text {
@@ -122,6 +131,12 @@ main {
 	width: 100%;
 }
 
+.main-review-content {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
 .main-review-content p {
 	display: block;
 	width: 400px;
@@ -142,6 +157,11 @@ main {
 	border-radius: 20px;
 	color: #f1ab3a;
 }
+
+.main-review-item__items {
+	display: flex;
+	justify-content: flex-start;
+}
 .main-review-item__items .main-review-content {
 	max-width: 70%;
 	font-size: 25px;
@@ -152,7 +172,9 @@ main {
 	border-radius: 50%;
 	cursor: pointer;
 }
-
+.main-review-user {
+	margin-right: 30px;
+}
 .main-review-item__items .main-review-icon {
 	height: 100%;
 	font-size: 30px;
@@ -163,21 +185,8 @@ main {
 	color: #f1ab3a;
 }
 
-footer {
-	position: relative;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-family: "Exo", sans-serif;
-	font-size: 4rem;
-	height: 250px;
-	color: #f2ab39;
-	text-shadow: 2px 2px 5px#69491a;
-	background-image: url("../image/hg2.jpg");
-	top: 150px;
-}
-
 .text_title {
+	position: relative;
 	margin-bottom: 5px;
 	display: flex;
 	align-items: center;
@@ -213,21 +222,26 @@ footer {
 }
 
 .text_wrap {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	width: 100%;
 	padding: 0px 20px;
 }
-.more_info {
-	display: flex;
-	justify-content: flex-end;
-}
+
 .more_info__wrap {
+	width: 100px;
+	text-align: right;
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
 	display: flex;
 	align-items: center;
+	text-align: right;
 }
 .more_info__wrap a {
+	text-decoration: none;
 	transition: all 0.4s ease-in-out;
 }
 .more_info__wrap:hover a {
@@ -242,6 +256,88 @@ footer {
 .more_info i {
 	margin-left: 10px;
 }
+
+.sliders li img {
+	width: 100%;
+}
+
+.paging {
+	font-size: 35px;
+	margin: 20px;
+}
+
+.paging a {
+	text-decoration: none;
+	color: #f2ab39;
+	margin-right: 5px;
+	transition: all 0.5s ease-in-out;
+}
+
+.paging a:hover,
+.paging a:focus {
+	color: #69491a;
+	outline: none;
+}
+
+.like-btn {
+	position: absolute;
+	font-size: 15px;
+	top: 10px;
+	right: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+	color: #f1ab3a;
+	transition: all 0.5s ease-in-out;
+	margin-left: 20px;
+}
+.like-btn:hover {
+	color: #69491a;
+}
+.like-btn i {
+	font-size: 30px;
+	margin-bottom: 10px;
+}
+.like-btn div {
+	font-size: 25px;
+}
+
+
+/* 페이징 넘버 css */
+
+.paging {
+	font-size: 35px;
+	margin: 20px;
+	
+}
+.paging-wrapper {
+	text-align:center;
+	width: 100%;
+	height: 50px;
+}
+
+.paging-wrapper a i {
+	margin : 0px 10px;
+	font-size: 15px;
+}
+
+.paging a {
+	text-decoration: none;
+	color: #f2ab39;
+	margin-right: 5px;
+	transition: all 0.5s ease-in-out;
+}
+
+.paging a:hover{
+	color: #69491a;
+}
+.paging a:focus {
+	outline: none;
+}
+
+ 
 
 
 

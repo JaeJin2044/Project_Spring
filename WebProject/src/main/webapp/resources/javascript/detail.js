@@ -1,14 +1,9 @@
 
 //댓글 시작
 var cmtListElem = document.querySelector('#cmtList');
-
-
-
-var listCount = 10;
-var category = 0;
+var listCount = 5;
 
 function selCmtList(){
-	
 	
 	fetch(`/cmt?m_pk=${data.dataset.pk}&listCount=${listCount}`)
 	.then(res => res.json())
@@ -23,10 +18,8 @@ function selCmtList(){
 	
 	function createView(myJson){
 		if(myJson.length === 0){
-			alert('글이 없습니다')
 			return 
 		}
-		
 		myJson.forEach(function(item){
 			
 
@@ -86,9 +79,8 @@ function selCmtList(){
 			</li>
 		`;
 		}
-	}
-	
-)}
+	})
+}
 
 }
 		
@@ -262,7 +254,6 @@ geocoder.addressSearch(mapAddr, function(result, status) {
 const modal = document.querySelector(".modal-wrapper");
 const mapModal = document.querySelector(".map-modal");
 const mapModalImg = document.querySelector(".map-modal-img");
-
 const review = document.querySelector(".review-wrap");
 
 
@@ -275,7 +266,7 @@ function modalHandle(param) {
 
 
 //chat-modal
-const chat = document.querySelector(".chat");
+var chat = document.querySelector(".chat");
 function openChatModal() {
 	chat.classList.toggle("open-chat");
 }
@@ -297,8 +288,6 @@ window.addEventListener("click", function (e) {
 function reviewModalHandle() {
 	review.classList.toggle("review-open");
 }
-
-
 
 
 

@@ -127,6 +127,30 @@ public class UserController {
 		return returnValue;
 	}
 	
+	//비밀번호 변경
+	@ResponseBody
+	@PostMapping("/passChange")
+	public Map<String,Object> passChange(@RequestBody UserEntity param){
+		System.out.println("비밀번호 변경 method u_Id ="+param.getU_Id());
+		System.out.println("비밀번호 변경 method u_Pass ="+param.getU_Pass());
+		Map<String, Object> returnValue = new HashMap<String, Object>();
+		returnValue.put("result", service.passChange(param));
+		return returnValue;
+	}
 	
+	
+	//프로필 수정 
+	@ResponseBody
+	@PostMapping("/editUser")
+	public Map<String,Object> editUser(@RequestBody UserEntity param){
+		System.out.println("받은 유저 pk = "+param.getU_Pk());
+		System.out.println("받은 휴대폰 번호 ="+param.getU_Phone());
+		System.out.println("받은 메일  ="+param.getU_Mail());
+		Map<String, Object> returnValue = new HashMap<String, Object>();
+		returnValue.put("result", service.editUser(param));
+		
+		return returnValue;
+	
+	}
 	
 }
