@@ -4,31 +4,31 @@
 
 	<select id="loginCheck" resultType="UserEntity">
 		select * from t_user
-		where u_Id = #{u_Id}
+		where u_id = #{u_id}
 	</select>
 	
 	<insert id="insUser">
 		insert into t_user
-		(u_Id,u_Nm,u_Mail,u_Gender,u_Phone,u_LogType)
+		(u_id,u_nm,u_mail,u_gender,u_phone,u_logType)
 		values
-		(#{u_Id},#{u_Nm},#{u_Mail},#{u_Gender},#{u_Phone},#{u_LogType})
+		(#{u_id},#{u_nm},#{u_mail},#{u_gender},#{u_phone},#{u_logType})
 	</insert>
 	
 	<select id="mailCheck" resultType="UserEntity">
 		select * from t_user
-		where u_Mail = #{u_Mail}
+		where u_mail = #{u_mail}
 	</select>
 
 	<select id="phoneCheck" resultType="UserEntity">
 		select * from t_user
-		where u_Phone = #{u_Phone}
+		where u_phone = #{u_phone}
 	</select>
 	
 	<insert id="kakaoInsUser">
 		insert into t_user
-		(u_Id,u_Nm,u_LogType)
+		(u_id,u_nm,u_logType)
 		values
-		(#{u_Id},#{u_Nm},#{u_LogType})
+		(#{u_id},#{u_nm},#{u_logType})
 	</insert>
 
 

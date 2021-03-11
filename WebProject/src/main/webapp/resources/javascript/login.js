@@ -5,8 +5,8 @@ var loginBtnElem = document.querySelector('#loginBtn')
 if(loginBtnElem) {
 	
 	var frmElem = document.querySelector('#frm')
-	var u_IdElem = frmElem.u_Id;
-	var u_PassElem = frmElem.u_Pass;
+	var u_IdElem = frmElem.u_id;
+	var u_PassElem = frmElem.u_pass;
 	var errMsgElem = document.querySelector('#errMsg')
 	function ajax() {
 		if(u_IdElem.value === '') {
@@ -18,8 +18,8 @@ if(loginBtnElem) {
 		}
 		
 		var param = {			
-			u_Id: u_IdElem.value,
-			u_Pass: u_PassElem.value
+			u_id: u_IdElem.value,
+			u_pass: u_PassElem.value
 		}
 		
 		fetch('/user/login', {

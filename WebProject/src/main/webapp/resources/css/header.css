@@ -8,6 +8,10 @@ body {
 	font-family: "Cute Font",cursive;
 }
 
+.logo_text{
+	font-family: "Exo", sans-serif !important;
+}
+
 /* navigation */
 .nav {
 	position: fixed;
@@ -49,6 +53,8 @@ body {
 	position: fixed;
 	top: 15px;
 	right: 70px;
+	font-family: "Cute Font",cursive;
+	font-size :25px;
 }
 
 .action .profile {
@@ -309,6 +315,7 @@ ol, ul {
 	font-size: 20px;
 }
 .chat-wrapper {
+	padding: 0px 10px;
 	display: flex;
 	align-items: flex-start;
 	width: 90%;
@@ -321,7 +328,6 @@ ol, ul {
 .chating {
 	width: 100%;
 	height: 100%;
-	
 }
 
 .chating p {
@@ -329,17 +335,62 @@ ol, ul {
 }
 
 .chating .me {
-	color: #20639B;
+	color: black;
 	text-align: right;
+	
+	background-color: #ffd954;
+	padding: 5px;
+	border-radius: 20px;
+	margin-bottom: 10px;
+	
+	position: relative;
+	z-index: 0;
+}
+
+.chating .me::before{
+	content: "";
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	width: 20px;
+	height: 20px;
+	background: #ffd954;
+	transform: rotate(90deg);
+	z-index: -1;
+}
+
+
+.chating .others {
+	color: black;
+	text-align: left;
+	
+	background-color: tomato;
+	padding: 5px;
+	border-radius: 20px;
+	margin-bottom: 10px;
+	position: relative;
+	z-index: 0;
+}
+.chating .others::before {
+	content: "";
+	position: absolute;
+	top: 0px;
+	left: 0;
+	width: 20px;
+	height: 20px;
+	background: tomato;
+	transform: rotate(90deg);
+	z-index: -1;
 	
 }
 
-.chating .others {
-	color: #20639B;
-	text-align: left;
-	
-	
-}
+<!--    -->
+
+
+
+<!--    -->
+
+
 
 #yourMsg {
 	display: none;
@@ -385,6 +436,7 @@ ol, ul {
 	align-items: center;
 	justify-content: center;
 	transition: all 0.5s ease-in-out;
+	border: none;
 }
 
 #startBtn:hover,

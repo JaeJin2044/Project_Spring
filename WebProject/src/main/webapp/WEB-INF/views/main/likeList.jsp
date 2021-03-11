@@ -6,35 +6,9 @@
 <div class="slider-wrapper" ></div>
 	<div id="container" class="container">
 		<div class="list-Title"><h1>Like List</h1></div>
-		<div id="selLikeList" >
-		
-		
-		</div>
-		<%-- <c:forEach var="item" items="${list}">
-			<div class="content-list">
-      	 			 <img class="content-list__img" src="${item.m_img1}" alt="" />
-			<div class="text_wrap">
-				<div class="content-list__text">
-					<div class="text_title">
-						<a href="/main/detail?m_pk=${item.m_pk}">${item.m_title}</a>
-						<div class="rating__score">
-							${item.m_starPoint}
-							<i class="fas fa-star"></i>
-						</div>
-					</div>
-					<div class="text_description">${item.m_viewDetail}</div>
-					<div class="content-list__cnt">
-						<span class="view_cnt"><i class="fas fa-eye"></i>${item.m_viewCount}</span>
-						<span class="review_cnt"><i class="fas fa-pen"></i>${item.m_commentCount}</span>
-					</div>
-				</div>
+			<div id="selLikeList" >
+			
 			</div>
-			<button class="delBtn" onclick="delLikeList(${item.l_pk})">
-            <i class="fas fa-trash-alt"></i>
-          </button>
-			</div>
-			<a href="/main/delLike?l_pk=${item.l_pk}"></a>
-		</c:forEach>	 --%>
 	</div> 
 	<div class="more-like-list">
         <button id="moreList">더보기</button>

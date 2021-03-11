@@ -49,22 +49,13 @@ public class OauthUtils {
 		String tmp_mobile = (String)response_obj.get("mobile");
 		String mobile = tmp_mobile.replace("-", "");
 		
-		
-		System.out.println("response_obj"+response_obj);
-		System.out.println("id ="+id);
-		System.out.println("email ="+mail);
-		System.out.println("name ="+name);
-		System.out.println("mobile ="+mobile);
-		System.out.println("gender ="+gender);
-		System.out.println("LogType ="+LogType);
-		
 		UserEntity param = new UserEntity();
-		param.setU_Id(id);
-		param.setU_Mail(mail);
-		param.setU_Nm(name);
-		param.setU_Phone(mobile);
-		param.setU_Gender(gender);
-		param.setU_LogType(LogType);
+		param.setU_id(id);
+		param.setU_mail(mail);
+		param.setU_nm(name);
+		param.setU_phone(mobile);
+		param.setU_gender(gender);
+		param.setU_logType(LogType);
 		
 		return param;
 	}

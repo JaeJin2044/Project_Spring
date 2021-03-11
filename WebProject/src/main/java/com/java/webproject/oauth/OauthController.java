@@ -54,10 +54,6 @@ public class OauthController {
 		
 		JsonNode properties = userInfo.path("properties");
 		JsonNode kakao_account = userInfo.path("kakao_account");
-		System.out.println("properties: "+properties);
-		System.out.println("kakao_account ="+kakao_account);
-		System.out.println("==========================");
-		
 	
 		JsonNode kId = userInfo.path("id");
 		String kid = kId.asText();
@@ -70,17 +66,10 @@ public class OauthController {
 		kbirthday = kakao_account.path("birthday").asText();
 		kage = kakao_account.path("age_range").asText();
 		
-		System.out.println("keamil = "+kemail);
-		System.out.println("kname = "+kname);
-		System.out.println("kimage = "+kimage);
-		System.out.println("kgender = "+kgender);
-		System.out.println("kbirthday = "+kbirthday);
-		System.out.println("kage = "+kage);
-		
 		UserEntity param = new UserEntity();
-		param.setU_Id(kid);
-		param.setU_Nm(kname);
-		param.setU_LogType("kakao");
+		param.setU_id(kid);
+		param.setU_nm(kname);
+		param.setU_logType("kakao");
 		
 		int result = service.loginCheck(param,session); 
 		
@@ -97,9 +86,6 @@ public class OauthController {
 		oauthToken = naverLoginBO.getAccessToken(session, code, state);
 		
 		UserEntity param = oUtils.getNaverUser(oauthToken);
-		System.out.println("===============================");
-		System.out.println("naver의 u_pk체크:"+param.getU_Pk());
-		
 		int result = service.loginCheck(param,session);
 
 		//중복된 이메일

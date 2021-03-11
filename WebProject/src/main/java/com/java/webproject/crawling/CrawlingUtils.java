@@ -57,12 +57,10 @@ public class CrawlingUtils {
 		
 		
 		for (int i = 1; i <= 10; i++) {
-			
-			
+					
 			//페이지에 i값을 더해줌(10페이지)
 			Document PageDoc = Jsoup.connect(PageUrl+i).get();
 			System.out.println("에러페이지= "+i);
-			
 		
 			
 			for (int j = 0; j < 20; j++) {
@@ -72,8 +70,7 @@ public class CrawlingUtils {
 				Elements parseTitle = PageDoc.select("h2.title");
 				Elements parseCategory = PageDoc.select("p.etc");
 				Elements parseStarPoint = PageDoc.select("strong");
-				
-				
+							
 				String title = parseTitle.get(j).text();
 				String viewDetail =parseCategory.get(j).text();
 				String starPoint = parseStarPoint.get(j).text();
@@ -98,20 +95,7 @@ public class CrawlingUtils {
 					matzipEntity.setM_starPoint(0);
 				}
 				
-				matzipEntity.setM_location(location);
-//				matzipEntity.setM_category("한식");	
-				
-				System.out.println("title ="+title);
-				System.out.println("viewDetail ="+viewDetail);
-				System.out.println("starPoint ="+starPoint);
-				System.out.println("location ="+location);
-				System.out.println("category ="+"한식");
-			
-				System.out.println("=============================");
-				System.out.println("이제부터 디테일 확인 ");
-				System.out.println("===============================");
-				
-				
+				matzipEntity.setM_location(location);				
 				
 				//디테일 url추출
 				Document detailDoc = Jsoup.connect(detailUrl+matZipString[i-1][j]).get();
@@ -123,13 +107,6 @@ public class CrawlingUtils {
 				matzipEntity.setM_img2(parseDetailImg.get(1).attr("src"));
 				matzipEntity.setM_img3(parseDetailImg.get(2).attr("src"));
 				matzipEntity.setM_img4(parseDetailImg.get(3).attr("src"));
-				
-				System.out.println("img1 ="+parseDetailImg.get(0).attr("src"));
-				System.out.println("img2 ="+parseDetailImg.get(1).attr("src"));
-				System.out.println("img3 ="+parseDetailImg.get(2).attr("src"));
-				System.out.println("img4 ="+parseDetailImg.get(3).attr("src"));
-				
-				
 				
 				//디테일 정보 추출 
 				Elements parseDetailInfo = detailDoc.select("tbody td");
@@ -239,25 +216,13 @@ public class CrawlingUtils {
 				matzipEntity.setM_parking(parking);
 				matzipEntity.setM_workingTime(workingTime);
 				
-				
-				System.out.println("도로명 ="+addrRoad);
-				System.out.println("지번 ="+addrJibun);
-				System.out.println("phone="+phone);
-				System.out.println("foodType="+foodType);
-				System.out.println("price="+price);
-				System.out.println("parking="+parking);
-				System.out.println("workingTime="+workingTime);
-				
-				System.out.println("=================디테일 끝 ======================  페이지="+i+" 가게="+j);
-			
 				matzipList.add(matzipEntity);
 		
 			}
 			
 			
 		}
-//		CrawlingService service = new CrawlingService();
-//		service.insMatzipList(matzipList);
+
 		return matzipList;
 	}
 	

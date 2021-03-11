@@ -32,16 +32,15 @@ public class UserService {
 			return 2;
 		}
 
-		String salt = dbData.getU_Salt();
+		String salt = dbData.getU_salt();
 		if (salt == null) {
-			System.out.println("여기는 솔트 null 분기문 ");
 			return 3;
 		}
 
-		String tempPw = sUtils.getHashPw(param.getU_Pass(), salt);
+		String tempPw = sUtils.getHashPw(param.getU_pass(), salt);
 
 		// 비밀번호 확인
-		if (!tempPw.equals(dbData.getU_Pass())) {
+		if (!tempPw.equals(dbData.getU_pass())) {
 
 			return 3;
 		}
@@ -65,16 +64,16 @@ public class UserService {
 	// 회원가입 성공시 return값 : 1 , 실패 : 이메일 존재시 2 , 연락처 존재 시 3
 	public int join(UserEntity param) {
 		String u_Salt = sUtils.getSalt();
-		String HashPass = sUtils.getHashPw(param.getU_Pass(), u_Salt);
+		String HashPass = sUtils.getHashPw(param.getU_pass(), u_Salt);
 
-		param.setU_Salt(u_Salt);
-		param.setU_Pass(HashPass);
+		param.setU_salt(u_Salt);
+		param.setU_pass(HashPass);
 
 		UserEntity dbData = mapper.joinCheck(param);
 
 		if (dbData == null) {
 			return mapper.insUser(param);
-		} else if (dbData.getU_Mail().equals(param.getU_Mail())) {
+		} else if (dbData.getU_mail().equals(param.getU_mail())) {
 			return 2;
 		} else {
 			return 3;
@@ -90,6 +89,7 @@ public class UserService {
 		if (dbData == null) {
 			return null;
 		}
+		
 		return dbData;
 	}
 
@@ -100,7 +100,7 @@ public class UserService {
 		if (ck == null) {
 			System.out.println("등록되지 않은 아이디입니다.");
 			return -1;
-		} else if (!ck.getU_Mail().equals(param.getU_Mail())) {
+		} else if (!ck.getU_mail().equals(param.getU_mail())) {
 			System.out.println("등록되지 않은 이메일 입니다.");
 			return 0;
 		}
@@ -109,13 +109,13 @@ public class UserService {
 		String code = sUtils.getPrivateCode(10);
 
 		// 비밀번호 변경(솔트값사용해서 임시비밀번호를 암호화)
-		String salt = ck.getU_Salt();
+		String salt = ck.getU_salt();
 		String tempPw = sUtils.getHashPw(code, salt);
-		ck.setU_Pass(tempPw);
+		ck.setU_pass(tempPw);
 		mapper.changePw(ck);
 
 		// 유저가 보는 임시비밀번호로 설정후 해당 이메일 발송
-		ck.setU_Pass(code);
+		ck.setU_pass(code);
 		mUtils.sendMail(ck);
 
 		return 1;
@@ -126,14 +126,14 @@ public class UserService {
 		UserEntity data = new UserEntity();
 
 		String u_Salt = sUtils.getSalt();
-		String HashPass = sUtils.getHashPw(param.getU_Pass(), u_Salt);
+		String HashPass = sUtils.getHashPw(param.getU_pass(), u_Salt);
 
-		data.setU_Salt(u_Salt);
-		data.setU_Pass(HashPass);
-		data.setU_Id(param.getU_Id());
+		data.setU_salt(u_Salt);
+		data.setU_pass(HashPass);
+		data.setU_id(param.getU_id());
 
-		System.out.println(data.getU_Pass());
-		System.out.println(data.getU_Id());
+		System.out.println(data.getU_pass());
+		System.out.println(data.getU_id());
 
 		int result = mapper.changePw(data);
 
@@ -146,15 +146,16 @@ public class UserService {
 		int mailck = mapper.mailCheck(param);
 		int phoneck = mapper.phoneCheck(param);
 		int result = 0;
-		boolean ckmail = param.getU_Mail().equals("");
-		boolean ckphone = param.getU_Phone().equals("");
+		
+		boolean ckmail = param.getU_mail().equals("");
+		boolean ckphone = param.getU_phone().equals("");
 
 		if (ckmail) {
-			param.setU_Mail(dbData.getU_Mail());
+			param.setU_mail(dbData.getU_mail());
 		}
 
 		if (ckphone) {
-			param.setU_Phone(dbData.getU_Phone());
+			param.setU_phone(dbData.getU_phone());
 		}
 
 		if (mailck != 0) {

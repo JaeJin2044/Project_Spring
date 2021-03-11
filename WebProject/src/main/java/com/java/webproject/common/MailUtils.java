@@ -10,9 +10,6 @@ public class MailUtils {
 
 	
 	public void sendMail(UserEntity param) {
-		System.out.println("여기 sendMail메서드 : "+param.getU_Id());
-		System.out.println("여기 sendMail메서드 : "+param.getU_Mail());
-		System.out.println("여기 sendMail메서드 : "+param.getU_Pass());
 		
 		// Mail Server 설정
 		String charSet = "utf-8";
@@ -29,10 +26,13 @@ public class MailUtils {
 		
 		subject = "임시비밀번호입니다";
 		
-		msg += "안녕하세요 귀하의 임시 비밀 번호는"+param.getU_Pass();
+		msg += ""
+				+ "<h1>안녕하세요</h1>"
+				+ " 귀하의 임시 비밀 번호는 "+param.getU_pass()+"입니다.<br>"
+				+ "로그인후 수정 부탁드려요";
 		
 
-		String mail = param.getU_Mail();
+		String mail = param.getU_mail();
 		try {
 			HtmlEmail email = new HtmlEmail();
 			email.setDebug(true);

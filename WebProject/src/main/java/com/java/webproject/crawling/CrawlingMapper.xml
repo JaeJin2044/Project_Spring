@@ -15,16 +15,7 @@
        	#{item.m_addrRoad},#{item.m_addrJibun},#{item.m_phone},#{item.m_foodType},#{item.m_price},
        	#{item.m_workingTime},#{item.m_parking}
        	)
-        </foreach>
-        
+        </foreach>  
 	</insert> 
-	
-	<!-- <insert id="test">
-	insert into test_table
-	(name)
-	values
-	('name')
-	</insert> -->
-	
 
 </mapper>

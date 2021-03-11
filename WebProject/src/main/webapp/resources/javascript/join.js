@@ -6,14 +6,13 @@ var frmElem = document.querySelector('#frm');
 //회원가입 체크 
 if(joinBtnElem){
 	
-	var u_IdElem = frmElem.u_Id;
-	var u_NmElem = frmElem.u_Nm;
-	var u_PassElem = frmElem.u_Pass;
+	var u_IdElem = frmElem.u_id;
+	var u_NmElem = frmElem.u_nm;
+	var u_PassElem = frmElem.u_pass;
 	var u_PassReElem = frmElem.u_PassRe;
-	var u_AddrElem = frmElem.u_Addr;
-	var u_MailElem = frmElem.u_Mail;
-	var u_GenderElem = frmElem.u_Gender;
-	var u_PhoneElem = frmElem.u_Phone;
+	var u_MailElem = frmElem.u_mail;
+	var u_GenderElem = frmElem.u_gender;
+	var u_PhoneElem = frmElem.u_phone;
 	
 	//정규식 체크
 	var empJ = /\s/g; //공백체크 정규식
@@ -27,13 +26,12 @@ if(joinBtnElem){
 	function ajax(){
 	
 		var param = {			
-			u_Id: u_IdElem.value,
-			u_Nm: u_NmElem.value,
-			u_Pass: u_PassElem.value,
-			u_Addr: u_AddrElem.value,
-			u_Mail: u_MailElem.value,
-			u_Phone: u_PhoneElem.value,
-			u_Gender: u_GenderElem.value
+			u_id: u_IdElem.value,
+			u_nm: u_NmElem.value,
+			u_pass: u_PassElem.value,
+			u_mail: u_MailElem.value,
+			u_phone: u_PhoneElem.value,
+			u_gender: u_GenderElem.value
 			}
 		
 		fetch('/user/join', {
@@ -81,11 +79,6 @@ if(joinBtnElem){
 		if(u_PassElem.value !== u_PassReElem.value){
 			alert("비밀번호가 일치 하지 않습니다.")
 			u_PassReElem.focus();
-			return
-		}
-		if(u_AddrElem.value ===""){
-			alert("주소를입력해주세요")
-			u_AddrElem.focus();
 			return
 		}
 		if(!phoneJ.test(u_PhoneElem.value)){
@@ -138,11 +131,11 @@ if(idCheckElem){
 	
 	
 	function ajax(){
-		var u_IdElem = frmElem.u_Id;
-		var u_Id = u_IdElem.value;
+		var u_IdElem = frmElem.u_id;
+		var u_id = u_IdElem.value;
 		var msgElem = document.querySelector("#msg");
 		
-		fetch(`/user/chkId/${u_Id}`)
+		fetch(`/user/chkId/${u_id}`)
 		.then(function(res){
 			return res.json()
 		})

@@ -28,8 +28,8 @@ function idSearch_click(){
 	}
 	
 	var param = {
-		u_Nm : u_NmElem.value,
-		u_Phone : u_PhoneElem.value
+		u_nm : u_NmElem.value,
+		u_phone : u_PhoneElem.value
 	}
 	
 	fetch('/user/findId',{
@@ -44,7 +44,7 @@ function idSearch_click(){
 		if(myJson.result == null){
 			alert('정보를 잘못 입력하셨어요.. 회원정보확인바람');
 		}else{
-			msgElem.innerText = "당신의 아이디는 : "+myJson.result.u_Id;
+			msgElem.innerText = "당신의 아이디는 : "+myJson.result.u_id;
 		}
 		
 	})
@@ -68,8 +68,8 @@ function pwSearch_click(){
 	}
 	
 	var param = {
-		u_Id : u_IdElem.value,
-		u_Mail : u_MailElem.value
+		u_id : u_IdElem.value,
+		u_mail : u_MailElem.value
 	}
 	
 	fetch("/user/findPw",{
@@ -90,6 +90,7 @@ function pwSearch_click(){
 			u_MailElem.focus()
 		}else{
 			alert('고객님의 이메일로 임시비밀번호를 발송 하였습니다.')
+			location.href="/user/login";
 		}
 	})
 	

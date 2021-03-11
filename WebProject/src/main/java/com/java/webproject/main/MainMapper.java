@@ -5,15 +5,18 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.java.webproject.model.LikeEntity;
-import com.java.webproject.model.MatZipDTO;
+import com.java.webproject.model.PageVO;
 import com.java.webproject.model.MatZipDomain;
 import com.java.webproject.model.MatZipEntity;
 import com.java.webproject.model.UserEntity;
 
 public interface MainMapper {
-
-	List<MatZipDomain> matZipSearch(MatZipDTO p);
-	int selMaxPageNum(MatZipDTO p);
+	//맛집 검색
+	List<MatZipDomain> matZipSearch(PageVO p);
+	
+	//게시물 총 개수 
+	int selMaxPageNum(PageVO p);
+	
 	//디테일창
 	MatZipEntity viewDetail(int m_pk);
 	
@@ -37,6 +40,7 @@ public interface MainMapper {
 	
 	//좋아요 중복확인
 	LikeEntity selLike(MatZipDomain p);
+	
 	//좋아요 리스트 삭제
 	int delLike(LikeEntity p);
 	

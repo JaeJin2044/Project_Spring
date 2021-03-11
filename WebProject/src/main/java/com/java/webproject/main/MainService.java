@@ -14,7 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.java.webproject.common.FileUtils;
 import com.java.webproject.common.SecurityUtils;
 import com.java.webproject.model.LikeEntity;
-import com.java.webproject.model.MatZipDTO;
+import com.java.webproject.model.PageVO;
 import com.java.webproject.model.MatZipDomain;
 import com.java.webproject.model.MatZipEntity;
 import com.java.webproject.model.UserEntity;
@@ -33,15 +33,14 @@ public class MainService {
 	
 	
 	//맛집 리스트 출력
-	public int selMaxPageNum(MatZipDTO p) {
+	public int selMaxPageNum(PageVO p) {
 		return mapper.selMaxPageNum(p);
 	}	
-	public List<MatZipDomain> matZipSearch(MatZipDTO p){
+	public List<MatZipDomain> matZipSearch(PageVO p){
 		return mapper.matZipSearch(p);
 	}
 	
-	
-	
+
 	//디테일창 리스트 
 	public MatZipEntity viewDetail(int m_pk) {
 		
@@ -60,7 +59,7 @@ public class MainService {
 	//프로필 수정창 리스트
 	public UserEntity selUser() {
 		UserEntity userInfo = new UserEntity();
-		userInfo.setU_Pk(sUtils.getLoginUserPk(hs));
+		userInfo.setU_pk(sUtils.getLoginUserPk(hs));
 		return mapper.selUser(userInfo);
 	}
 	
@@ -71,15 +70,13 @@ public class MainService {
 			return 0;
 		}
 		String folder = "/resources/image/user/" + userPk;		
-		System.out.println("folder name = "+folder);
 		String profileImg = fUtils.transferTo(mf, folder);
-		System.out.println("profileImg = "+profileImg);
 		if(profileImg == null) { //파일 생성 실패
 			return 0;
 		}
 		
 		UserEntity p = new UserEntity();
-		p.setU_Pk(userPk);
+		p.setU_pk(userPk);
 		
 		//기존이미지가 존재했다면 이미지 삭제!
 		UserEntity userInfo = mapper.selUser(p);

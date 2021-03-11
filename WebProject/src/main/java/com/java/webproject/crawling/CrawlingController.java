@@ -12,15 +12,16 @@ public class CrawlingController {
 	@Autowired
 	CrawlingService service;
 	
-	@GetMapping("/insList")
-	public String insList() {
-		System.out.println("ㅎㅇ");
-		try {
-			service.insMatzipList(CrawlingUtils.insMatzipList());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return "redirect:/user/join";
-	}
+	//데이터 값을 넣기 위한 URL
+//	@GetMapping("/insList")
+//	public String insList() {
+//		System.out.println("ㅎㅇ");
+//		try {
+//			service.insMatzipList(CrawlingUtils.insMatzipList());
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		
+//		return "redirect:/user/join";
+//	}
 }

@@ -5,66 +5,66 @@
 	<!-- 회원가입 -->
 	<insert id="insUser">
 	insert into t_user
-	(u_Nm,u_Id,u_Pass,u_Salt,u_Gender,u_Phone,u_Addr,u_Mail)
+	(u_nm,u_id,u_pass,u_salt,u_gender,u_phone,u_mail)
 	values
-	(#{u_Nm},#{u_Id},#{u_Pass},#{u_Salt},#{u_Gender},#{u_Phone},#{u_Addr},#{u_Mail})
+	(#{u_nm},#{u_id},#{u_pass},#{u_salt},#{u_gender},#{u_phone},#{u_mail})
 	</insert>
 	
 	<!--  회원가입시 이메일 & 연락처 체크  -->
 	<select id="joinCheck" resultType="UserEntity">
 	select * from t_user
-	where u_Phone = #{u_Phone} 
-	or u_Mail = #{u_Mail} 
+	where u_phone = #{u_phone} 
+	or u_mail = #{u_mail} 
 	</select>
 	
 	
 	<!-- 아이디 중복확인 & 로그인 체크    -->
 	<select id="idCheck" resultType="UserEntity">
 	select * from t_user
-	where u_Id = #{u_Id}
+	where u_id = #{u_id}
 	</select>
 	
 	<!-- 아이디 찾기  -->
 	<select id="findId" resultType="UserEntity">
-	select u_Id from t_user
-	where u_Nm = #{u_Nm}
-	and u_Phone = #{u_Phone}
+	select u_id from t_user
+	where u_nm = #{u_nm}
+	and u_phone = #{u_phone}
 	</select>
 	
 	<!-- 비밀번호 변경  -->
 	<update id="changePw">
 		update t_user
-		set u_Pass = #{u_Pass} , 
-			u_Salt = #{u_Salt}
-		where u_Id = #{u_Id}
+		set u_pass = #{u_pass} , 
+			u_salt = #{u_salt}
+		where u_id = #{u_id}
 	</update>
 	
 	<!-- 회원 정보수정시 중복 체크 -->
    <select id="mailCheck" resultType="int">
       select count(*) from t_user
-      where u_Mail = #{u_Mail}
+      where u_mail = #{u_mail}
    </select>
    
    
    <select id="phoneCheck" resultType="int">
       select count(*) from t_user
-      where u_Phone = #{u_Phone}
+      where u_phone = #{u_phone}
    </select>
 	
 	
 	<!--  회원정보 수정  -->
 	<update id="editUser">
 		update t_user
-		set u_Phone = #{u_Phone},
-		u_Mail = #{u_Mail}
-		where u_Pk = #{u_Pk}
+		set u_phone = #{u_phone},
+		u_mail = #{u_mail}
+		where u_pk = #{u_pk}
 	</update>
 	
 	
 	<!-- 정보수정 중복 체크   -->
 	<select id="selUser" resultType="UserEntity">
 		select * from t_user
-		where u_Pk = #{u_Pk}
+		where u_pk = #{u_pk}
 	</select>
 	
 	

@@ -1,9 +1,9 @@
 
 
 //회원탈퇴 
-function delUserBtn(u_Pk){
+function delUserBtn(u_pk){
 	if(confirm('회원 탈퇴 하시겠습니까?')){
-			location.href= "/main/delUser?u_Pk="+u_Pk;
+			location.href= "/main/delUser?u_pk="+u_pk;
 		}else{
 			location.href="/main/profileEdit";
 	}
@@ -29,7 +29,8 @@ function profileUpload() {
   	}).then(res => res.json())
 	.then(myJson => {
 		if(myJson === 1) {
-			location.reload()
+			alert('프로필이 수정되었으니 다시 로그인부탁드립니다.');
+			location.href="/user/logout";
 		} else {
 			alert('이미지 업로드에 실패하였습니다.')
 		}
@@ -67,9 +68,9 @@ var userPkElem = document.querySelector('#u_Pk');
 		
  		
  		var param = {			
-				u_Pk : userPkElem.value,
- 				u_Phone : phoneElem.value,
- 				u_Mail : mailElem.value
+				u_pk : userPkElem.value,
+ 				u_phone : phoneElem.value,
+ 				u_mail : mailElem.value
  			}
  		
  		fetch('/user/editUser', {
@@ -94,8 +95,8 @@ var userPkElem = document.querySelector('#u_Pk');
 			alert('이미 존재하는 이메일입니다.')
 			location.reload()
 		}else if(myJson.result === 1){
-			alert('회원 정보 수정이 완료 되었습니다.')
-			location.reload()
+			alert('프로필이 수정되었으니 다시 로그인부탁드립니다.');
+			location.href="/user/logout";
 		}else if(myJson.result === 4){
 			alert('수정할값을 입력해주세요.')
 			location.reload()
@@ -131,8 +132,8 @@ var passChangeBtnElem = document.querySelector('#passChangeBtn');
  		}
  		
  		var param = {			
- 				u_Pass: userPass,
- 				u_Id : data.dataset.loginusernm
+ 				u_pass: userPass,
+ 				u_id : data.dataset.loginusernm
  			}
  		
  		fetch('/user/passChange', {

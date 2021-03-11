@@ -1,6 +1,9 @@
 package com.java.webproject.model;
 
-public class MatZipDTO {
+import org.springframework.stereotype.Component;
+
+@Component
+public class PageVO {
 	private int m_pk;
 	private int m_category;
 	private int page;
@@ -18,13 +21,11 @@ public class MatZipDTO {
 	private int lastPage;
 	private boolean prev;
 	private boolean next;
-	
-	
-	
-	public MatZipDTO() {
+
+	public PageVO() {
 	}
 
-	public MatZipDTO(String searchText, int page, int rowCnt, int m_category) {
+	public PageVO(String searchText, int page, int rowCnt, int m_category) {
 		setM_category(m_category);
 		setSearchText(searchText);
 		setPage(page);
@@ -32,47 +33,48 @@ public class MatZipDTO {
 		setsIdx((page - 1) * getRowCnt());
 	}
 
-	public void dataCalc() {       
-        setTotalPage(getMaxPageNum() / getRowCnt());
-           if(getTotalPage() < 1 ) {
-              setLastPage(0);
-              setEndPage(0);
-           } else {
-              calcLastPage(getMaxPageNum(), getRowCnt());      
-              calcStartEndPage(getPage(), getCntPage());
-              calcStartEnd(getPage(), getCntPage());
-        }
-     }
+	public void dataCalc() {
+		setTotalPage(getMaxPageNum() / getRowCnt());
+		if (getTotalPage() < 1) {
+			setLastPage(0);
+			setEndPage(0);
+		} else {
+			calcLastPage(getMaxPageNum(), getRowCnt());
+			calcStartEndPage(getPage(), getCntPage());
+			calcStartEnd(getPage(), getCntPage());
+		}
+	}
 
-     // 제일 마지막 페이지 계산
-     public void calcLastPage(int maxPageNum, int rowCnt) {
-        setLastPage((int) Math.ceil((double)maxPageNum / (double)rowCnt));
-     }
-     // 시작, 끝 페이지 계산
-     public void calcStartEndPage(int page, int cntPage) {
-        setEndPage(((int) Math.ceil((double) page / (double) cntPage) * cntPage));
-        
-        if (getLastPage() < getEndPage()) {
-           setEndPage(getLastPage());
-        }
-        
-        if (getLastPage() < 10) { 
-           setStartPage(1);
-        } else if(getEndPage() % 10 != 0) {
-           setStartPage(getPage());
-        } else {
-           setStartPage(getEndPage() - cntPage + 1);	
-        }
+	// 제일 마지막 페이지 계산
+	public void calcLastPage(int maxPageNum, int rowCnt) {
+		setLastPage((int) Math.ceil((double) maxPageNum / (double) rowCnt));
+	}
 
-        prev = getStartPage() == 1 ? false : true;
-        next = getEndPage() * getRowCnt() >= getMaxPageNum() ? false : true;
-     }
-     public void calcStartEnd(int page, int rowCnt) {
-        setEnd(page * rowCnt);
-        setStart(getEnd() - rowCnt + 1);
-     }
+	// 시작, 끝 페이지 계산
+	public void calcStartEndPage(int page, int cntPage) {
+		setEndPage(((int) Math.ceil((double) page / (double) cntPage) * cntPage));
 
-	
+		if (getLastPage() < getEndPage()) {
+			setEndPage(getLastPage());
+		}
+
+		if (getLastPage() < 10) {
+			setStartPage(1);
+		} else if (getEndPage() % 10 != 0) {
+			setStartPage(getPage());
+		} else {
+			setStartPage(getEndPage() - cntPage + 1);
+		}
+
+		prev = getStartPage() == 1 ? false : true;
+		next = getEndPage() * getRowCnt() >= getMaxPageNum() ? false : true;
+	}
+
+	public void calcStartEnd(int page, int rowCnt) {
+		setEnd(page * rowCnt);
+		setStart(getEnd() - rowCnt + 1);
+	}
+
 	public int getStartPage() {
 		return startPage;
 	}
@@ -168,8 +170,6 @@ public class MatZipDTO {
 	public void setM_pk(int m_pk) {
 		this.m_pk = m_pk;
 	}
-
-	
 
 	public int getM_category() {
 		return m_category;

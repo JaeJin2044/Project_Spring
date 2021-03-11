@@ -1,7 +1,5 @@
 package com.java.webproject.model;
 
-import java.util.Date;
-
 import org.apache.ibatis.type.Alias;
 @Alias("CommentEntity")
 public class CommentEntity {

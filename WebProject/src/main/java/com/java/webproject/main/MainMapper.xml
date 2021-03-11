@@ -5,13 +5,12 @@
 	
 
 	<!-- 맛집리스트+ 검색 + 페이징 -->
-
 	<select id="matZipSearch" resultType="MatZipDomain">
-		SELECT M.*, ifnull(R.c_content, '') AS c_content, R.u_Nm AS u_nm , 
+		SELECT M.*, ifnull(R.c_content, '') AS c_content, R.u_nm AS u_nm , 
 		R.u_profile AS u_profile, DATE_FORMAT(R.c_regDate, '%Y-%m-%d') as c_regDate , R.u_pk
 		FROM matzip M
 		LEFT JOIN (
-		SELECT A.m_pk, A.c_content, C.u_Nm , C.u_profile ,A.c_regDate , A.u_pk 
+		SELECT A.m_pk, A.c_content, C.u_nm , C.u_profile ,A.c_regDate , A.u_pk 
 		FROM t_comment A
 		INNER JOIN
 		(
@@ -49,6 +48,7 @@
 		limit #{sIdx}, #{rowCnt}
 	</select>
 
+	<!-- 게시물 총 개수 -->
 	<select id="selMaxPageNum" resultType="int">
 		select count(*) from matzip
 		<if test="searchText != ''">
@@ -73,6 +73,7 @@
 		</if>		
 	</select>
 	
+	<!-- 디테일창 보기 -->
 	<select id="viewDetail" resultType="MatZipEntity">
 		select * from matzip
 		where m_pk = #{m_pk}
@@ -88,7 +89,7 @@
 	<!-- 프로필 수정 창 리스트 -->
 	<select id="selUser" resultType="UserEntity">
 		select * from t_user
-		where u_Pk = #{u_Pk}
+		where u_pk = #{u_pk}
 	</select>
 	
 	<!-- 프로필 이미지 등록  -->
@@ -99,7 +100,7 @@
 				u_profile = #{u_profile}
 			</if>
 		</set>
-		WHERE u_Pk = #{u_Pk}
+		WHERE u_pk = #{u_pk}
 	</update>
 	
 	<!--  좋아요 리스트  -->
@@ -140,7 +141,7 @@
 	<!-- 회원 탈퇴  -->
 	<delete id="delUser">
 		delete from t_user
-		where u_Pk = #{u_Pk}
+		where u_pk = #{u_pk}
 	</delete>
 	
 

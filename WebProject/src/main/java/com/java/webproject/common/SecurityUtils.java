@@ -13,7 +13,7 @@ public class SecurityUtils {
 	
 	public int getLoginUserPk(HttpSession hs) {
 		UserEntity loginUser = getLoginUser(hs);
-		return loginUser == null ? 0 : loginUser.getU_Pk();
+		return loginUser == null ? 0 : loginUser.getU_pk();
 	}
 	
 	public UserEntity getLoginUser(HttpSession hs) {

@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
+<!-- 디테일창 이미지 -->
 <div class="top_img">
 	<img src="${detail_item.m_img1}" alt=""
 		onclick="modalHandle('${detail_item.m_img1}')" /> <img
@@ -13,6 +15,8 @@
 		src="${detail_item.m_img4}" alt=""
 		onclick="modalHandle('${detail_item.m_img4}')" />
 </div>
+
+<!-- 이미지 모달창  -->
 <div class="modal-wrapper">
 	<div class="modal">
 		<div class="modal-img">
@@ -34,7 +38,8 @@
 						<i class="fas fa-pencil-alt"></i>
 						<div>리뷰쓰기</div>
 					</a>
-					<a class="like-btn" href="/main/insLike?m_pk=${detail_item.m_pk}"> <i class="fas fa-shopping-basket"></i>
+					<a class="like-btn" href="/main/insLike?m_pk=${detail_item.m_pk}">
+						<i class="fas fa-shopping-basket"></i>
 						<div>찜하기</div>
 					</a>
 				</c:if>
@@ -45,7 +50,7 @@
 			<span class="view_cnt"><i class="fas fa-eye"></i>${detail_item.m_viewCount}</span>
 			<span class="review_cnt"><i class="fas fa-pen"></i>${detail_item.m_commentCount}</span>
 		</div>
-		<div id="data" data-loginuserpk="${sessionScope.loginUser.u_Pk}"
+		<div id="data" data-loginuserpk="${sessionScope.loginUser.u_pk}"
 			data-pk="${requestScope.detail_item.m_pk}"></div>
 		<div class="detail_description">
 			<table class="info">
@@ -55,6 +60,7 @@
 						<td>${detail_item.m_addrRoad}</td>
 					</tr>
 				</c:if>
+
 				<c:if test="${detail_item.m_addrJibun != null}">
 					<tr>
 						<th>지번</th>
@@ -125,20 +131,22 @@
 			</div>
 		</div>
 	</div>
-	<div class="chat-btn">
-		<button onclick="openChatModal()">채팅시작</button>
-	</div>
+	<c:if test="${loginUser != null }">
+		<div class="chat-btn">
+			<button onclick="openChatModal()">채팅시작</button>
+		</div>
+	</c:if>
 	<div class="chat-modal-wrap">
-		<input type="hidden" id="sessionId" value="" /> 
-		<input type="hidden" id="h_userName" value="" />
+		<input type="hidden" id="sessionId" value="" /> <input type="hidden"
+			id="h_userName" value="" />
 		<div class="chat-modal">
 			<div class="chat">
 				<!-- <button class="chat-close" onclick="closeChatModal()"><i class="fas fa-times"></i></button> -->
 				<div class="chat-wrapper">
-					<div class="chattWrap" id="container_chatt">										
-						
+					<div class="chattWrap" id="container_chatt">
+
 						<div id="chating" class="chating"></div>
-						
+
 					</div>
 				</div>
 				<div id="yourMsg" class="yourMsg">
@@ -147,7 +155,9 @@
 							<div class="chat-ctnt">
 								<input id="chatting" type="text" placeholder="write message" />
 							</div>
-							<div class="chat-ctnt"><button onclick="send()" id="sendBtn">보내기</button></div>
+							<div class="chat-ctnt">
+								<button onclick="send()" id="sendBtn">보내기</button>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -155,9 +165,12 @@
 					<div class="inputTable">
 						<div class="chat-wrap">
 							<div class="chat-ctnt">
-								<input type="text" name="userName" id="userName" value="${loginUser.u_Nm}" readonly />
+								<input type="text" name="userName" id="userName"
+									value="${loginUser.u_nm}" readonly />
 							</div>
-							<div class="chat-ctnt"><button onclick="chatName()" id="startBtn">입장</button></div>
+							<div class="chat-ctnt">
+								<button onclick="chatName()" id="startBtn">입장</button>
+							</div>
 						</div>
 					</div>
 				</div>

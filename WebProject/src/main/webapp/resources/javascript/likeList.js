@@ -1,6 +1,3 @@
-/**
- * 
- */
 
 
 function delLikeList(l_pk){

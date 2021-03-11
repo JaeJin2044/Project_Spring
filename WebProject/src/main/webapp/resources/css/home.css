@@ -1,7 +1,7 @@
 @import "reset.css";
 @import "header.css";
-/* @import "./slider.css"; */
-/* @import "./chat-modal.css"; */
+
+
 @import url("https://fonts.googleapis.com/css2?family=Exo:wght@100;200;300;400;500;600;700&family=Kirang+Haerang&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cute+Font&display=swap");
 
@@ -272,6 +272,7 @@ main {
 	margin-right: 5px;
 	transition: all 0.5s ease-in-out;
 }
+
 
 .paging a:hover,
 .paging a:focus {

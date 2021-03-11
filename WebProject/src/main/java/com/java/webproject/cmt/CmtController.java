@@ -28,6 +28,7 @@ public class CmtController {
 	@Autowired
 	private SecurityUtils sUtils;
 	
+	//댓글 리스트
 	@GetMapping
 	public List<CommentDomain> list(CommentDomain p, @RequestParam("listCount") int listCount){
 		p.setListCount(listCount);
@@ -35,6 +36,7 @@ public class CmtController {
 		return data;
 	}
 	
+	//댓글 작성
 	@PostMapping
 	public int ins(@RequestBody CommentEntity p , HttpSession hs) {
 		p.setU_pk(sUtils.getLoginUserPk(hs));
@@ -42,18 +44,16 @@ public class CmtController {
 		return service.insCmt(p);
 	}
 	
+	//댓글 수정
 	@PutMapping
 	public int upd(@RequestBody CommentEntity p, HttpSession hs) {
-		System.out.println("m_pk : " + p.getM_pk());
-		System.out.println("c_seq : " + p.getC_seq());		
-		System.out.println("c_content : " + p.getC_content());
 		p.setU_pk(sUtils.getLoginUserPk(hs));
 		return service.updCmt(p);
 	}
+	
+	//댓글 삭제 
 	@DeleteMapping
-	public int del(CommentEntity p, HttpSession hs) {
-		System.out.println("m_pk : " + p.getM_pk());
-		System.out.println("c_seq : " + p.getC_seq());		
+	public int del(CommentEntity p, HttpSession hs) {	
 		p.setU_pk(sUtils.getLoginUserPk(hs));
 		return service.delCmt(p);
 	}
