@@ -42,7 +42,7 @@ function idSearch_click(){
 		return res.json()
 	}).then(function(myJson){
 		if(myJson.result == null){
-			alert('정보를 잘못 입력하셨어요.. 회원정보확인바람');
+			alert('정보를 잘못 입력하셨어요.. 회원정보를 확인 부탁드려요');
 		}else{
 			msgElem.innerText = "당신의 아이디는 : "+myJson.result.u_id;
 		}
